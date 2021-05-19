@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app clipped-left color="transparent" dark prominent shrink-on-scroll flat>
+    <v-app-bar app clipped-left color="transparent" fixed dark shrink-on-scroll flat src="../assets/tst.png">
         
-        <img class="mr-3" :src="require('../assets/app_icon_info.png')" height="40"/>
+        <img class="mr-3" :src="require('../assets/app_icon_info.png')" height="48"/>
         <v-toolbar-title class="font-weight-medium">Карта жителя Новороссийска</v-toolbar-title>
         <v-spacer></v-spacer>
 
@@ -15,8 +15,8 @@
           <v-img src="../assets/f2.jpg"></v-img>
           <v-container>
             <v-spacer></v-spacer>
-            <scroll-y-reverse-transition>
-              <v-row dense>
+            <v-scroll-y-reverse-transition appear hide-on-leave>
+              <v-row dense class="my-12">
                 <v-col cols="6">
                   <v-card elevation="0">
                     <!-- <v-card-title class="text-h5">
@@ -33,11 +33,11 @@
                   </v-card>
                 </v-col>
               </v-row>
-            </scroll-y-reverse-transition>
+            </v-scroll-y-reverse-transition>
             
             <v-spacer></v-spacer>
-            <scroll-y-reverse-transition>
-              <v-row dense>
+            <v-scroll-y-reverse-transition appear hide-on-leave>
+              <v-row dense class="my-12">
                 <v-col cols="6">
                   <v-card elevation="0">
                     <v-img src="../assets/f2.jpg"></v-img>
@@ -54,10 +54,11 @@
                   </v-card>
                 </v-col>
               </v-row>
-            </scroll-y-reverse-transition>
+            </v-scroll-y-reverse-transition>
 
             <v-spacer></v-spacer>
-            <v-row dense transition="scroll-y-reverse-transition">
+            <v-scroll-y-reverse-transition appear hide-on-leave>
+            <v-row dense class="my-12">
               <v-col cols="6">
                 <v-card elevation="0">
                   <!-- <v-card-title class="text-h5">
@@ -74,9 +75,11 @@
                 </v-card>
               </v-col>
             </v-row>
+            </v-scroll-y-reverse-transition>
 
             <v-spacer></v-spacer>
-            <v-row dense transition="scroll-y-reverse-transition">
+            <v-scroll-y-reverse-transition appear hide-on-leave>
+            <v-row dense class="my-12">
               <v-col cols="6">
                 <v-card elevation="0">
                   <v-img src="../assets/f4.jpg"></v-img>
@@ -93,12 +96,15 @@
                 </v-card>
               </v-col>
             </v-row>
+            </v-scroll-y-reverse-transition>
 
-            <v-row dense transition="scroll-y-reverse-transition">
-              <v-col cols="12">
-                <v-btn block rounded elevation="0" color="accent">begin!</v-btn>
-              </v-col>
-            </v-row>
+            <v-scroll-y-reverse-transition appear hide-on-leave>
+              <v-row dense transition="scroll-y-reverse-transition">
+                <v-col cols="12">
+                  <v-btn block rounded elevation="0" color="accent" href="#/main" class="my-12" >begin!</v-btn>
+                </v-col>
+              </v-row>
+            </v-scroll-y-reverse-transition>
           </v-container>
   </v-app>
 </template>
