@@ -1,29 +1,28 @@
 <template>
-  <v-row>
-    <v-col cols="12">
-      <v-card outlined >
-        <v-card-title class="text-h5">
-          Map
-        </v-card-title>
-          <yandex-map 
-            :coords="coords"
-            :zoom="10" 
-            @click="onClick"
-          >
-            <ymap-marker 
-              :coords="coords" 
-              marker-id="123" 
-              hint-content="some hint" 
-            />
-          </yandex-map>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <v-card outlined >
+      <v-card-title class="text-h5">
+        Map
+      </v-card-title>
+        <yandex-map 
+          :coords="coords"
+          :zoom="10" 
+          @click="onClick"
+        >
+          <ymap-marker 
+            :coords="coords" 
+            marker-id="123" 
+            hint-content="some hint" 
+          />
+        </yandex-map>
+    </v-card>
+  </div>
 </template>
 
 <script>
   export default {
     data: () => ({
+    
     coords: [
       54.82896654088406,
       39.831893822753904,

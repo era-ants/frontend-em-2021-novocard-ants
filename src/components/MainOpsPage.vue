@@ -37,7 +37,6 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        
       </v-app-bar>
       <!-- <v-toolbar color="primary" dark prominent>
         <v-spacer></v-spacer>
@@ -53,11 +52,8 @@
 
       <v-main>
         
-            <v-container>
-              <v-row dense>
-                <router-view></router-view>
-                <!-- <SettingsCard/> -->
-              </v-row>
+            <v-container class="d-flex flex-xl-row flex-lg-column pa-8">
+                <router-view style="width: 100%"></router-view>
             </v-container>
 
       </v-main>

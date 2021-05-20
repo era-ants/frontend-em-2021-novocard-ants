@@ -41,15 +41,15 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
-Vue.use(VueRouter)
-Vue.config.productionTip = false
-
 const settings = {
   apiKey: '',
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1'
 }
+
+Vue.use(VueRouter)
+Vue.config.productionTip = false
 
 Vue.use(YmapPlugin, settings)
 
