@@ -6,7 +6,7 @@ import vuetify from './plugins/vuetify'
 import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
 import SettingsCard from './components/SettingsCard.vue'
-
+import MapCard from './components/MapCard.vue'
 
 
 const routes = [
@@ -19,8 +19,8 @@ const routes = [
       {
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
-        path: 'profile',
-        component: SettingsCard
+        path: 'map',
+        component: MapCard
       },
       {
         // UserPosts will be rendered inside User's <router-view>

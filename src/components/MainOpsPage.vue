@@ -10,7 +10,7 @@
           <v-icon>mdi-human</v-icon>
         </v-btn>
 
-        <v-btn icon>
+        <v-btn icon href="#/main/map">
           <v-icon>mdi-help-circle-outline</v-icon>
         </v-btn>
 
