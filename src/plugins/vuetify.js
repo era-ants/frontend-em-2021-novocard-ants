@@ -17,12 +17,14 @@ export default new Vuetify({
             secondary: '#16385F',
             accent: '#27AAE1',
             accent2: '#00A59B',
+            text_color: '#000000',
         },
         dark: {
             primary: '#041A3A',
             secondary: '#16385F',
             accent: '#27AAE1',
             accent2: '#00A59B',
+            text_color: '#FFFFFF',
         },
       }
     }

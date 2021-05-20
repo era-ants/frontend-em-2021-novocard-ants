@@ -1,6 +1,12 @@
 <template>
-  <router-view>
-  </router-view> 
+  <div>
+    <router-view>
+    </router-view> 
+  
+    <!-- <v-btn id="testfab" color="red" elevation="2" large bottom left fixed rounded class="ma-12">
+        0
+    </v-btn> -->
+  </div>
 </template>
 
 <script>
@@ -10,9 +16,11 @@ export default {
   //  components: {
   //    MainOps,
   //  },
-  mounted() {
-    location.hash = "/info";
-  }
+  /* mounted() {
+    window.addEventListener('resize', function() {
+      document.getElementById("testfab").innerHTML = this.$vuetify.breakpoint.name;
+    }, true);
+  } */
 };
 </script>
 

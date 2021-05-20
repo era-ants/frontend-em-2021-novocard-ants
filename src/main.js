@@ -7,6 +7,7 @@ import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
 import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
+import LargeCard from './components/LargeCard.vue'
 
 
 const routes = [
@@ -23,10 +24,12 @@ const routes = [
         component: MapCard
       },
       {
-        // UserPosts will be rendered inside User's <router-view>
-        // when /user/:id/posts is matched
         path: 'settings',
         component: SettingsCard
+      },
+      {
+        path: 'lgcard',
+        component: LargeCard
       }
     ]
   }
