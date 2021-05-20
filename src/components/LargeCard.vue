@@ -3,14 +3,9 @@
     <v-card-title class="text-h5">
       LargeCard
     </v-card-title>
-    <v-img src="../assets/f1.jpg"></v-img>
-    <v-img src="../assets/f2.jpg"></v-img>
-    <v-img src="../assets/f3.jpg"></v-img>
-    <v-img src="../assets/f4.jpg"></v-img>
-    <v-img src="../assets/f1.jpg"></v-img>
-    <v-img src="../assets/f2.jpg"></v-img>
-    <v-img src="../assets/f3.jpg"></v-img>
-    <v-img src="../assets/f4.jpg"></v-img>
+    <v-carousel>
+      <v-carousel-item v-for="(item,i) in pics" :key="i" :src="item.src" reverse-transition="fade-transition" transition="fade-transition" ></v-carousel-item>
+    </v-carousel>
   </v-card>
 </template>
 
@@ -20,9 +15,14 @@
     name: 'LargeCard',
     data: function () {
       return {
-        notification_switch: true
+        pics: [
+          { src: require('../assets/f1.jpg'), },
+          { src: require('../assets/f2.jpg'), },
+          { src: require('../assets/f3.jpg'), },
+          { src: require('../assets/f4.jpg'), },
+        ],
       }
-    }
+    },
 
   }
 
