@@ -9,6 +9,8 @@ import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 
+import VueScrollReveal from 'vue-scroll-reveal'
+import YmapPlugin from 'vue-yandex-maps'
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -41,6 +43,23 @@ const router = new VueRouter({
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
+
+const settings = {
+  apiKey: '',
+  lang: 'ru_RU',
+  coordorder: 'latlong',
+  version: '2.1'
+}
+
+Vue.use(YmapPlugin, settings)
+
+Vue.use(VueScrollReveal, {
+  class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
+  duration: 800,
+  scale: 1,
+  distance: '10px',
+  mobile: false
+});
 
 new Vue({
   vuetify,
