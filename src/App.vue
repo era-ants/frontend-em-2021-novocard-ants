@@ -13,14 +13,27 @@
 
 export default {
   name: 'App',
+  data: () => ({
+    follow_system_theme: false,
+  }),
   //  components: {
   //    MainOps,
   //  },
-  /* mounted() {
-    window.addEventListener('resize', function() {
-      document.getElementById("testfab").innerHTML = this.$vuetify.breakpoint.name;
-    }, true);
-  } */
+  mounted() {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if(this.follow_system_theme) {
+        this.$vuetify.theme.dark = e.matches ? "dark" : "light";
+        console.log(e.matches ? "dark" : "light");
+      }
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        this.$vuetify.theme.dark = true;
+      }
+      else{
+        this.$vuetify.theme.dark = false;
+      }
+    });
+  } 
+
 };
 </script>
 

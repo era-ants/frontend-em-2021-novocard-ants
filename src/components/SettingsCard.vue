@@ -30,7 +30,7 @@
       </v-list-item> -->
       <v-divider></v-divider>
       <v-subheader inset>Appearance</v-subheader>
-      <v-list-item link @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+      <v-list-item link @click="$vuetify.theme.dark = !$vuetify.theme.dark" :disabled="local_theme">
         <v-list-item-icon>
           <v-icon>mdi-brightness-4</v-icon>
         </v-list-item-icon>
@@ -39,6 +39,17 @@
         </v-list-item-content>
         <v-list-item-action>
           <v-switch v-model="$vuetify.theme.dark" title="DarkMode" color="accent" inset readonly></v-switch>
+        </v-list-item-action>
+      </v-list-item>
+      <v-list-item link @click="SystemTheme()">
+        <v-list-item-icon>
+          <!-- <v-icon>mdi-brightness-4</v-icon> -->
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Follow System Theme</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-checkbox v-model="local_theme" color="accent" class="px-4" readonly></v-checkbox>
         </v-list-item-action>
       </v-list-item>
     </v-list>
@@ -51,10 +62,25 @@
     name: 'SettingsCard',
     data: function () {
       return {
-        notification_switch: true
+        notification_switch: true,
+        local_theme: true,
       }
+    },
+    methods: {
+      SystemTheme(){
+        this.$parent.follow_system_theme = !this.$parent.follow_system_theme;
+        this.local_theme = this.$parent.follow_system_theme;
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          this.$vuetify.theme.dark = true;
+        }
+        else{
+          this.$vuetify.theme.dark = false;
+        }
+      },    
+    },
+    mounted(){
+      this.local_theme = this.$parent.follow_system_theme;
     }
-
   }
 
 

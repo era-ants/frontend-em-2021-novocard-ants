@@ -6,10 +6,10 @@
         <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 14px;">Карта жителя Новороссийска</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn outlined color="white" class="ma-2">
+        <!-- <v-btn outlined color="white" class="ma-2">
           <v-icon>mdi-eye-outline</v-icon> 
           <p class="ml-2 mt-4 d-none d-lg-block">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
-        </v-btn>
+        </v-btn> -->
 
         <!-- <v-btn icon href="#/main/map">
           <v-icon>mdi-map-outline</v-icon>
