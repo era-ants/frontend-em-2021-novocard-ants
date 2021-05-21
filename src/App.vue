@@ -20,6 +20,11 @@ export default {
   //    MainOps,
   //  },
   mounted() {
+    if (typeof localStorage.logged_in == 'undefined') {
+      sessionStorage.setItem('logged_in', "");
+    }
+
+    //dark-theme
     if (typeof localStorage.key_darktheme == 'undefined') {
       localStorage.setItem('key_darktheme', false);
     }

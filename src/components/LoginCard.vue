@@ -59,8 +59,7 @@
               // localStorage.setItem('token', dataJson.access_token);
               this.snack_text = "Logged In!: " + dataJson.firstName + " " + dataJson.lastName;
               this.snackbar = true;
-
-
+              // sessionStorage.setItem("logged_in", clientGuid);
           })
         }else{
           // alert("пуста!!!ууу!");

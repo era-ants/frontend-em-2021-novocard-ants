@@ -35,6 +35,9 @@
             <v-list-item v-for="(item, index) in accmenu" :key="index" :href="item.link" link>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
+            <v-list-item @click="LogOut()" link>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-menu>
       </v-app-bar>
@@ -79,7 +82,6 @@ export default {
       { title: 'Login', link: '#/main/login' },
       { title: 'Change Photo', link: '#/main/login' },
       { title: 'Edit profile', link: '#/main/login' },
-      { title: 'Logout', link: '#/main/login' },
     ],
     tab: null,
     tab_items: [
@@ -95,6 +97,9 @@ export default {
   },
   
   methods: {
+    LogOut(){
+      sessionStorage.setItem("logged_in", "");
+    },   
     Test1: function(){
       alert("hello");
       this.mini = true;

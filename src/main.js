@@ -9,6 +9,7 @@ import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import LoginCard from './components/LoginCard.vue'
+import RegistrationCard from './components/RegistrationCard.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
@@ -25,6 +26,12 @@ const routes = [
         // when /user/:id/profile is matched
         path: 'login',
         component: LoginCard
+      },
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: 'register',
+        component: RegistrationCard
       },
       {
         // UserProfile will be rendered inside User's <router-view>
