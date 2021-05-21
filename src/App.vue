@@ -13,18 +13,25 @@
 
 export default {
   name: 'App',
-  data: () => ({
-    follow_system_theme: false,
-  }),
+  // data: () => ({
+    // follow_system_theme: false,
+  // }),
   //  components: {
   //    MainOps,
   //  },
   mounted() {
+    if (typeof localStorage.key_systheme == 'undefined') {
+      localStorage.setItem('key_systheme', false);
+    }
+    
+
+    //follow_system_theme
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if(this.follow_system_theme) {
+      if(localStorage.key_systheme == 'true') {
         this.$vuetify.theme.dark = e.matches ? "dark" : "light";
         console.log(e.matches ? "dark" : "light");
       }
+      
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.$vuetify.theme.dark = true;
       }
@@ -32,7 +39,17 @@ export default {
         this.$vuetify.theme.dark = false;
       }
     });
-  } 
+  },
+  updated(){
+    if(localStorage.key_systheme == 'true') {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          this.$vuetify.theme.dark = true;
+        }
+        else{
+          this.$vuetify.theme.dark = false;
+        }
+    }
+  }
 
 };
 </script>

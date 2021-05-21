@@ -63,23 +63,19 @@
     data: function () {
       return {
         notification_switch: true,
-        local_theme: true,
+        local_theme: false,
       }
     },
     methods: {
       SystemTheme(){
-        this.$parent.follow_system_theme = !this.$parent.follow_system_theme;
-        this.local_theme = this.$parent.follow_system_theme;
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          this.$vuetify.theme.dark = true;
-        }
-        else{
-          this.$vuetify.theme.dark = false;
-        }
+        localStorage.setItem('key_systheme', !(localStorage.key_systheme == 'true'));
+        console.log(localStorage.key_systheme);
+        this.local_theme = (localStorage.key_systheme == 'true');
       },    
     },
-    mounted(){
-      this.local_theme = this.$parent.follow_system_theme;
+    created(){
+      console.log(localStorage.key_systheme);
+      this.local_theme = (localStorage.key_systheme == 'true');
     }
   }
 
