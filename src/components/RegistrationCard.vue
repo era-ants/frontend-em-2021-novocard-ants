@@ -1,25 +1,49 @@
 <template>
   <v-card outlined>
-    <v-card-title class="text-h5">
-      Registration
-    </v-card-title>
-    <v-text-field id="first_name_field" class="ma-16" color="accent" label="First Name" placeholder=" " outlined single-line ></v-text-field>
-    <v-text-field id="last_name_field" class="ma-16" color="accent" label="Last Name" placeholder=" " outlined single-line ></v-text-field>
-    <v-checkbox v-model="hasParentName"></v-checkbox>
-    <v-text-field id="parent_name_field" class="ma-16" color="accent" label="Last Name" placeholder="Placeholder" outlined single-line :disabled="!hasParentName"></v-text-field>
-    <v-text-field id="passport_ser_field" class="ma-16" color="accent" label="Passport Serial" placeholder=" " outlined single-line ></v-text-field>
-    <v-text-field id="passport_num_field" class="ma-16" color="accent" label="Passport Number" placeholder=" " outlined single-line ></v-text-field>
-    <v-text-field id="passport_dep_field" class="ma-16" color="accent" label="Passport Department" placeholder=" " outlined single-line ></v-text-field>
-    <v-text-field id="passport_dcd_field" class="ma-16" color="accent" label="Passport Code" placeholder=" " outlined single-line ></v-text-field>
-    <v-card-actions>
-      <v-btn color="accent" class="ma-16" right elevation="0" @click="RegisterClient()" >
-        Register
-      </v-btn>
-    </v-card-actions>
+    <v-card color="accent2">
+      <v-card-title class="text-h5" dark>
+        Регистрация
+      </v-card-title>
+    </v-card>
+    <v-tabs grow class="mb-16" v-model="reg_tab" dark background-color="accent2">
+      <v-tab key="reg_guest"> Гость </v-tab>
+      <v-tab key="reg_citizen"> Житель </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="reg_tab">
+      <v-tab-item key="reg_guest" >
+        <v-text-field id="first_name_field" class="mx-16" color="accent" label="Имя" placeholder=" " outlined single-line ></v-text-field>
+        <v-text-field id="last_name_field" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined single-line ></v-text-field>
+
+        <v-checkbox class="ml-16" color="accent" v-model="hasParentName" label="Есть Отчество?"></v-checkbox>
+        <v-text-field id="parent_name_field" class="mx-16" color="accent" label="Отчество" placeholder=" " outlined single-line :disabled="!hasParentName"></v-text-field>
+
+        <v-text-field id="passport_ser_field" class="mx-16" color="accent" label="Серия Паспорта" placeholder="0000" outlined single-line ></v-text-field>
+        <v-text-field id="passport_num_field" class="mx-16" color="accent" label="Номер Паспорта" placeholder="000000" outlined single-line ></v-text-field>
+
+        <v-text-field id="passport_dep_field" class="mx-16" color="accent" label="Паспорт выдан" placeholder=" " outlined single-line ></v-text-field>
+        <v-text-field id="passport_dcd_field" class="mx-16" color="accent" label="Код подразделения" placeholder="000000" outlined single-line ></v-text-field>
+        <v-card-actions>
+          <v-btn color="accent" class="mx-16 mb-16" right elevation="0" @click="RegisterClient()" >
+            Зарегистрироваться
+          </v-btn>
+        </v-card-actions>
+      </v-tab-item>
+      <v-tab-item key="reg_citizen" >
+        <v-text-field id="first_name_field2" class="mx-16" color="accent" label="Имя" placeholder=" " outlined single-line ></v-text-field>
+        <v-text-field id="last_name_field2" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined single-line ></v-text-field>
+        <v-card-actions>
+          <v-btn color="accent" class="mx-16 mb-16" right elevation="0" @click="RegisterClient2()" >
+            Зарегистрироваться через систему
+          </v-btn>
+        </v-card-actions>
+      </v-tab-item>
+    </v-tabs-items>
+    
     <v-snackbar v-model="snackbar" :timeout="timeout" >
       {{snack_text}}
     </v-snackbar>
   </v-card>
+
 </template>
 
 <script>
@@ -28,6 +52,7 @@
     name: 'RegistrationCard',
     data: function () {
       return {
+        reg_tab: null,
         hasParentName: true,
         snackbar: false,
         snack_text: '',
@@ -76,18 +101,24 @@
                   return resp.json()
               } else {
                   return Promise.reject("server")
-
               }
               //console.log(resp);
           })
           .then(dataJson => {
-              this.snack_text = "Registred!: " + first_name + " " + last_name + " " + dataJson.clientGuid;
+              this.snack_text = "Зарегистрирован: " + first_name + " " + last_name + " " + dataJson.clientGuid;
               this.snackbar = true;
           })
         }else{
           // alert("пуста!!!ууу!");
         }
       },
+      
+      RegisterClient2(){
+        let first_name2 = document.getElementById("first_name_field2").value;
+        let last_name2 = document.getElementById("last_name_field2").value;
+        this.snack_text = "Зарегистрирован2: " + first_name2 + " " + last_name2;
+        this.snackbar = true;
+      }
     }
 
   }

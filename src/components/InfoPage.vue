@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app clipped-left color="transparent" fixed dark shrink-on-scroll flat src="../assets/dark_semitransparent_bg.png">
+    <v-app-bar app clipped-left color="transparent" fixed dark shrink-on-scroll scroll-threshold="700" flat src="../assets/dark_semitransparent_bg.png">
         
         <img class="mr-3" :src="require('../assets/app_icon_info.png')" height="48"/>
         <v-spacer></v-spacer>
@@ -105,6 +105,9 @@
                   <v-icon right dark > mdi-arrow-right </v-icon>
               </v-btn>
             </v-fade-transition>
+            <v-footer>
+              <!-- link to administration -->
+            </v-footer>
         </v-container>
   </v-app>
 </template>

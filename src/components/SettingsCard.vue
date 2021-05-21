@@ -69,7 +69,7 @@
     methods: {
       SystemTheme(){
         localStorage.setItem('key_systheme', !(localStorage.key_systheme == 'true'));
-        console.log(localStorage.key_systheme);
+        //console.log(localStorage.key_systheme);
         this.local_theme = (localStorage.key_systheme == 'true');
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           this.$vuetify.theme.dark = true;
@@ -80,7 +80,9 @@
       },    
       ChangeTheme(){
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+        console.log("$vuedark: " + this.$vuetify.theme.dark);
         localStorage.setItem('key_darktheme', this.$vuetify.theme.dark);
+        console.log("locstor: " + localStorage.key_darktheme);
       }, 
     },
     created(){

@@ -25,7 +25,7 @@
 
         <v-menu offset-y transition="slide-y-transition">
           <template v-slot:activator="{ on, attrs }">
-            <v-badge bordered bottom color="accent2" dot offset-x="16" offset-y="16" >
+            <v-badge bordered color="accent2" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
               <v-btn icon v-bind="attrs" v-on="on">
                 <v-avatar  color="accent" size="32">VJ</v-avatar>
               </v-btn>
@@ -75,6 +75,7 @@ export default {
   name: 'MainOps',
   data: () => ({
     bn_value: 1,
+    badge_avatar: 0,
     mini: false,
     navbar: true,
     group: null,
@@ -88,6 +89,7 @@ export default {
       { title: 'Map', link: '/main/map', icon: 'mdi-map-outline' },
       { title: 'Settings', link: '/main/settings', icon: 'mdi-cog-outline' },
       { title: 'LargeCard', link: '/main/lgcard', icon: 'mdi-apps-box' },
+      { title: 'Register', link: '/main/register', icon: 'mdi-android-debug-bridge' },
     ],
   }),
   watch: {
@@ -109,9 +111,10 @@ export default {
     colorbn () {
       switch (this.bn_value) {
         case 0: return 'green'
-        case 1: return 'grey'
+        case 1: return 'gray'
         case 2: return 'red'
-        default: return 'gray'
+        case 3: return 'teal'
+        default: return 'black'
       }
     },
   },
