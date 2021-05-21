@@ -52,7 +52,7 @@ export default {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
       if(localStorage.key_systheme == 'true') {
         this.$vuetify.theme.dark = e.matches ? "dark" : "light";
-        console.log(e.matches ? "dark" : "light");
+        // console.log(e.matches ? "dark" : "light");
 
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           this.$vuetify.theme.dark = true;
@@ -64,7 +64,7 @@ export default {
       }
     });
     
-    console.log("mounted-dark: "+(this.$vuetify.theme.dark == true));
+    // console.log("mounted-dark: "+(this.$vuetify.theme.dark == true));
   },
   updated(){
     if(localStorage.key_systheme == 'true') {
@@ -83,7 +83,7 @@ export default {
         this.$vuetify.theme.dark = false;
       }
     }
-    console.log("updated-dark: "+(this.$vuetify.theme.dark == true));
+    // console.log("updated-dark: "+(this.$vuetify.theme.dark == true));
   }
 
 };

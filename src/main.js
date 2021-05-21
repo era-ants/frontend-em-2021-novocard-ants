@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify'
 
 import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
+import DevDebugCard from './components/DevDebugCard.vue' //debug-card
 import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
@@ -46,6 +47,10 @@ const routes = [
       {
         path: 'lgcard',
         component: LargeCard
+      },
+      {
+        path: 'debug',
+        component: DevDebugCard
       }
     ]
   }

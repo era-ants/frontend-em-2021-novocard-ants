@@ -17,6 +17,7 @@ export default new Vuetify({
             secondary: '#16385F',
             accent: '#27AAE1',
             accent2: '#00A59B',
+            divider_color: '#DCDCDC',
             text_color: '#000000',
         },
         dark: {
@@ -24,6 +25,7 @@ export default new Vuetify({
             secondary: '#16385F',
             accent: '#27AAE1',
             accent2: '#00A59B',
+            divider_color: '#858585',
             text_color: '#FFFFFF',
         },
       }

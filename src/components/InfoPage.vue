@@ -90,17 +90,17 @@
             <div id="infobtn" style="width:100%; height: 1px;"> </div>
             <v-scroll-y-reverse-transition appear hide-on-leave>
               <div class="d-flex">
-                <v-btn block rounded elevation="0" color="accent" href="#/main" class="my-12" x-large>НАЧАТЬ</v-btn>
+                <v-btn block rounded elevation="0" color="accent" href="#/main/register" class="my-12" x-large>НАЧАТЬ</v-btn>
               </div>
             </v-scroll-y-reverse-transition>
             <v-scroll-y-reverse-transition appear hide-on-leave>
               <div class="d-flex">
-                <v-btn block outlined rounded elevation="0" color="text_color" href="#/main" class="my-12" x-large>Уже пользуетесь картой?</v-btn>
+                <v-btn block outlined rounded elevation="0" color="text_color" href="#/main/login" class="my-12" x-large>Уже пользуетесь картой?</v-btn>
               </div>
             </v-scroll-y-reverse-transition>
 
             <v-fade-transition>
-              <v-btn id="infofab" color="accent" elevation="2" x-large bottom right fixed rounded class="ma-12" v-show="infofab1" key="infofabx" href="#/main">
+              <v-btn id="infofab" color="accent" elevation="2" x-large bottom right fixed rounded class="ma-12" v-show="infofab1" key="infofabx" href="#/main/register">
                   НАЧАТЬ
                   <v-icon right dark > mdi-arrow-right </v-icon>
               </v-btn>
