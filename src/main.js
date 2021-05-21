@@ -30,7 +30,7 @@ const routes = [
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
         path: 'map',
-        component: MapCard
+        component: MapCard,
       },
       {
         path: 'settings',
@@ -65,7 +65,8 @@ Vue.use(VueScrollReveal, {
   duration: 800,
   scale: 1,
   distance: '10px',
-  mobile: false
+  mobile: false,
+  reset: false
 });
 
 new Vue({
