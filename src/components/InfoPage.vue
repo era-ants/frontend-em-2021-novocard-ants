@@ -15,7 +15,7 @@
         <v-img src="../assets/f2.jpg"></v-img>
         <v-container>
           <v-spacer></v-spacer>
-            <v-row dense class="my-12">
+            <v-row class="my-12">
               <v-col cols="6">
                 <v-card v-scroll-reveal.reset="{ delay: 50 }" elevation="0">
                   <!-- <v-card-title class="text-h5">
@@ -53,7 +53,7 @@
             </v-row>
 
           <v-spacer></v-spacer>
-          <v-row dense class="my-12">
+          <v-row class="my-12">
             <v-col cols="6">
               <v-card v-scroll-reveal.reset="{ delay: 50 }" elevation="0">
                 <!-- <v-card-title class="text-h5">
@@ -71,7 +71,7 @@
             </v-col>
           </v-row>
           <v-spacer></v-spacer>
-          <v-row dense class="my-12">
+          <v-row class="my-12">
             <v-col cols="6">
               <v-card v-scroll-reveal.reset="{ delay: 50 }" elevation="0">
                 <v-img  src="../assets/f4.jpg"></v-img>
@@ -89,7 +89,7 @@
             </v-col>
           </v-row>
 
-          <v-row dense transition="scroll-y-reverse-transition">
+          <v-row>
             <v-col cols="12">
               <v-btn block rounded elevation="0" color="accent" href="#/main" class="my-12" >begin!</v-btn>
             </v-col>
