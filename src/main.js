@@ -7,6 +7,9 @@ import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
 import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
+import LargeCard from './components/LargeCard.vue'
+import LoginCard from './components/LoginCard.vue'
+
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
 
@@ -20,14 +23,22 @@ const routes = [
       {
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
+        path: 'login',
+        component: LoginCard
+      },
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
         path: 'map',
         component: MapCard,
       },
       {
-        // UserPosts will be rendered inside User's <router-view>
-        // when /user/:id/posts is matched
         path: 'settings',
         component: SettingsCard
+      },
+      {
+        path: 'lgcard',
+        component: LargeCard
       }
     ]
   }
@@ -37,15 +48,15 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
-Vue.use(VueRouter)
-Vue.config.productionTip = false
-
 const settings = {
   apiKey: '',
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1'
 }
+
+Vue.use(VueRouter)
+Vue.config.productionTip = false
 
 Vue.use(YmapPlugin, settings)
 
