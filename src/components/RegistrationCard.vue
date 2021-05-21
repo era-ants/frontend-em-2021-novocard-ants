@@ -1,38 +1,44 @@
 <template>
   <v-card outlined>
-    <v-card color="accent2">
+    <v-card color="accent2" flat>
       <v-card-title class="text-h5" dark>
         Регистрация
       </v-card-title>
+      <v-tabs grow class="mb-16" v-model="reg_tab" dark background-color="transparent">
+        <v-tab key="reg_guest"><v-icon class="mr-4">mdi-account-circle-outline</v-icon>   Гость </v-tab>
+        <v-tab key="reg_citizen"><v-icon class="mr-4">mdi-account-circle</v-icon> Житель </v-tab>
+      </v-tabs>
     </v-card>
-    <v-tabs grow class="mb-16" v-model="reg_tab" dark background-color="accent2">
-      <v-tab key="reg_guest"><v-icon class="mr-4">mdi-account-circle-outline</v-icon>   Гость </v-tab>
-      <v-tab key="reg_citizen"><v-icon class="mr-4">mdi-account-circle</v-icon> Житель </v-tab>
-    </v-tabs>
     <v-tabs-items v-model="reg_tab">
       <v-tab-item key="reg_guest" >
-        <v-text-field id="first_name_field" class="mx-16" color="accent" label="Имя" placeholder=" " outlined single-line ></v-text-field>
-        <v-text-field id="last_name_field" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined single-line ></v-text-field>
+        <v-text-field id="first_name_field" class="mx-16 mt-1" color="accent" label="Имя" placeholder=" " outlined ></v-text-field>
+        <v-text-field id="last_name_field" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined ></v-text-field>
 
-        <v-checkbox class="ml-16" color="accent" v-model="hasParentName" label="Есть Отчество?"></v-checkbox>
-        <v-text-field id="parent_name_field" class="mx-16" color="accent" label="Отчество" placeholder=" " outlined single-line :disabled="!hasParentName"></v-text-field>
+        <div class="d-flex mx-16">
+          <v-checkbox color="accent" class="mr-4" v-model="hasParentName" label="Есть Отчество?"></v-checkbox>
+          <v-text-field id="parent_name_field" color="accent" label="Отчество" placeholder=" " outlined :disabled="!hasParentName"></v-text-field>
+        </div>
 
-        <v-text-field id="passport_ser_field" class="mx-16" color="accent" label="Серия Паспорта" placeholder="0000" outlined single-line ></v-text-field>
-        <v-text-field id="passport_num_field" class="mx-16" color="accent" label="Номер Паспорта" placeholder="000000" outlined single-line ></v-text-field>
+        <div class="d-flex mx-16">
+          <v-text-field id="passport_ser_field" class="mr-4" color="accent" label="Серия Паспорта" placeholder="0000" outlined ></v-text-field>
+          <v-text-field id="passport_num_field" class="ml-4" color="accent" label="Номер Паспорта" placeholder="000000" outlined ></v-text-field>
+        </div>
 
-        <v-text-field id="passport_dep_field" class="mx-16" color="accent" label="Паспорт выдан" placeholder=" " outlined single-line ></v-text-field>
-        <v-text-field id="passport_dcd_field" class="mx-16" color="accent" label="Код подразделения" placeholder="000000" outlined single-line ></v-text-field>
+        <div class="d-flex mx-16">
+          <v-text-field id="passport_dep_field" class="mr-4" color="accent" label="Паспорт выдан" placeholder=" " outlined style="width: 80%;" ></v-text-field>
+          <v-text-field id="passport_dcd_field" class="ml-4" color="accent" label="Код подразделения" placeholder="000000" outlined style="width: 20%;"></v-text-field>
+        </div>
         <v-card-actions>
-          <v-btn color="accent" class="mx-16 mb-16" right elevation="0" @click="RegisterClient()" >
+          <v-btn color="accent" class="mx-16 mb-16 px-8" x-large right elevation="0" @click="RegisterClient()" >
             Зарегистрироваться
           </v-btn>
         </v-card-actions>
       </v-tab-item>
       <v-tab-item key="reg_citizen" >
-        <v-text-field id="first_name_field2" class="mx-16" color="accent" label="Имя" placeholder=" " outlined single-line ></v-text-field>
-        <v-text-field id="last_name_field2" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined single-line ></v-text-field>
+        <v-text-field id="first_name_field2" class="mx-16 mt-1" color="accent" label="Имя" placeholder=" " outlined ></v-text-field>
+        <v-text-field id="last_name_field2" class="mx-16" color="accent" label="Фамилия" placeholder=" " outlined ></v-text-field>
         <v-card-actions>
-          <v-btn color="accent" class="mx-16 mb-16" right elevation="0" @click="RegisterClient2()" >
+          <v-btn color="accent" class="mx-16 mb-16 px-8" right elevation="0" @click="RegisterClient2()" >
             Зарегистрироваться через систему
           </v-btn>
         </v-card-actions>

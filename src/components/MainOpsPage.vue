@@ -20,7 +20,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-badge bordered color="accent2" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
               <v-btn icon v-bind="attrs" v-on="on">
-                <v-avatar  color="accent" size="32">VJ</v-avatar>
+                <v-avatar  color="accent" size="32">A</v-avatar>
               </v-btn>
             </v-badge>
           </template>
