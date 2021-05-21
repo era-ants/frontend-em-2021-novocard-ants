@@ -20,8 +20,26 @@ export default {
   //    MainOps,
   //  },
   mounted() {
+    if (typeof localStorage.key_darktheme == 'undefined') {
+      localStorage.setItem('key_darktheme', false);
+    }
     if (typeof localStorage.key_systheme == 'undefined') {
       localStorage.setItem('key_systheme', false);
+    }
+    else{
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        this.$vuetify.theme.dark = true;
+      }
+      else{
+        this.$vuetify.theme.dark = false;
+      }
+      localStorage.setItem('key_darktheme', this.$vuetify.theme.dark);
+    }
+
+    if(localStorage.key_darktheme == 'true') {
+      this.$vuetify.theme.dark = true;
+    }else{
+      this.$vuetify.theme.dark = false;
     }
     
 
@@ -30,25 +48,37 @@ export default {
       if(localStorage.key_systheme == 'true') {
         this.$vuetify.theme.dark = e.matches ? "dark" : "light";
         console.log(e.matches ? "dark" : "light");
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          this.$vuetify.theme.dark = true;
+        }
+        else{
+          this.$vuetify.theme.dark = false;
+        }
+        localStorage.setItem('key_darktheme', this.$vuetify.theme.dark);
       }
-      
+    });
+    
+    console.log("mounted-dark: "+(this.$vuetify.theme.dark == true));
+  },
+  updated(){
+    if(localStorage.key_systheme == 'true') {
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         this.$vuetify.theme.dark = true;
       }
       else{
         this.$vuetify.theme.dark = false;
       }
-    });
-  },
-  updated(){
-    if(localStorage.key_systheme == 'true') {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          this.$vuetify.theme.dark = true;
-        }
-        else{
-          this.$vuetify.theme.dark = false;
-        }
     }
+    else{
+      if(localStorage.key_darktheme == 'true') {
+        this.$vuetify.theme.dark = true;
+      }
+      else{
+        this.$vuetify.theme.dark = false;
+      }
+    }
+    console.log("updated-dark: "+(this.$vuetify.theme.dark == true));
   }
 
 };

@@ -12,6 +12,9 @@
         Get Clients
       </v-btn>
     </v-card-actions>
+    <v-snackbar v-model="snackbar" :timeout="timeout" >
+      {{snack_text}}
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -19,20 +22,22 @@
 
   export default {
     name: 'LoginCard',
-    /* data: function () {
+    data: function () {
       return {
-        pics: [
-        ],
+        snackbar: false,
+        snack_text: '',
+        timeout: 2000,
       }
-    }, */
+    },
     methods:{
       LogInByCardNumber(){
-        let login_allowed = true;
-        let card_number = document.getElementById("card_number_field").outerHTML;
+        let card_number = document.getElementById("card_number_field").value;
         console.log(card_number);
         
-        if (login_allowed){
-          fetch('http://178.154.254.162:8000/Clients/'+ card_number, {
+
+
+        if (card_number != ''){
+          fetch('http://178.154.254.162:8002/Clients/'+ card_number, {
               method: 'GET',
               // mode: 'no-cors',
               headers: {
@@ -51,16 +56,19 @@
           .then(dataJson => {
               //console.log(dataJson.access_token);
               //saving token
-              localStorage.setItem('token', dataJson.access_token);
+              // localStorage.setItem('token', dataJson.access_token);
+              this.snack_text = "Logged In!: " + dataJson.firstName + " " + dataJson.lastName;
+              this.snackbar = true;
+
 
           })
         }else{
-          alert("пуста!!!ууу!");
+          // alert("пуста!!!ууу!");
         }
       },
 
       GetClients(){
-        fetch('http://178.154.254.162:8000/Clients', {
+        fetch('http://178.154.254.162:8002/Clients', {
             method: 'GET',
             // mode: 'no-cors',
             headers: {
