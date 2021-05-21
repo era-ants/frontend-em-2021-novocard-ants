@@ -1,31 +1,24 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <v-card outlined >
-          <v-card-title class="text-h5">
-            Map
-          </v-card-title>
-            <yandex-map 
-              :coords="coorLocation"
-              :zoom="zoom_val" 
-              @click="onClick"
-              @boundschange="boundsMaps"
-              @actionend="moveMapsEnded"
-            >
-                <ymap-marker 
-                  :coords="coordsShow" 
-                  marker-id="1" 
-                  hint-content="Hi Piple" 
-                  :balloon-template="balloonTemplate"
-                  :icon="markerIcon"
-                >
-                </ymap-marker>
-            </yandex-map>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-card elevation="0">
+  <v-card outlined>
+        <v-card-title class="text-h5">
+          Map
+        </v-card-title>
+          <yandex-map 
+            :coords="coorLocation"
+            :zoom="zoom_val" 
+            @click="onClick"
+            @boundschange="boundsMaps"
+            @actionend="moveMapsEnded"
+          >
+              <ymap-marker 
+                :coords="coordsShow" 
+                marker-id="1" 
+                hint-content="Hi Piple" 
+                :balloon-template="balloonTemplate"
+                :icon="markerIcon"
+              >
+              </ymap-marker>
+          </yandex-map>
       <v-card-title class="text-h5">
         Рекуомендуем Вам:
       </v-card-title>
@@ -46,8 +39,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-card>
-  </v-container>
+  </v-card>
 </template>
 
 <script>

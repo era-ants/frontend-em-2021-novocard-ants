@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import VueQrcodeReader from "vue-qrcode-reader";
 
 import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
@@ -11,6 +12,7 @@ import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import LoginCard from './components/LoginCard.vue'
 import RegistrationCard from './components/RegistrationCard.vue'
+import QRScanCard from './components/QRScanCard.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
@@ -51,7 +53,11 @@ const routes = [
       {
         path: 'debug',
         component: DevDebugCard
-      }
+      },
+      {
+        path: 'scan',
+        component: QRScanCard
+      },
     ]
   }
 ]
@@ -71,6 +77,8 @@ Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 Vue.use(YmapPlugin, settings)
+
+Vue.use(VueQrcodeReader);
 
 Vue.use(VueScrollReveal, {
   class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.

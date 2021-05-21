@@ -6,8 +6,8 @@
       </v-card-title>
     </v-card>
     <v-tabs grow class="mb-16" v-model="reg_tab" dark background-color="accent2">
-      <v-tab key="reg_guest"> Гость </v-tab>
-      <v-tab key="reg_citizen"> Житель </v-tab>
+      <v-tab key="reg_guest"><v-icon class="mr-4">mdi-account-circle-outline</v-icon>   Гость </v-tab>
+      <v-tab key="reg_citizen"><v-icon class="mr-4">mdi-account-circle</v-icon> Житель </v-tab>
     </v-tabs>
     <v-tabs-items v-model="reg_tab">
       <v-tab-item key="reg_guest" >
