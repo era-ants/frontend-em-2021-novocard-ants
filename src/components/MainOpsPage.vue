@@ -32,7 +32,7 @@
             </v-badge>
           </template>
           <v-list>
-            <v-list-item v-for="(item, index) in accmenu" :key="index" link>
+            <v-list-item v-for="(item, index) in accmenu" :key="index" :href="item.link" link>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -76,9 +76,10 @@ export default {
     navbar: true,
     group: null,
     accmenu:[
-      { title: 'Change Photo' },
-      { title: 'Edit profile' },
-      { title: 'Logout' },
+      { title: 'Login', link: '#/main/login' },
+      { title: 'Change Photo', link: '#/main/login' },
+      { title: 'Edit profile', link: '#/main/login' },
+      { title: 'Logout', link: '#/main/login' },
     ],
     tab: null,
     tab_items: [
