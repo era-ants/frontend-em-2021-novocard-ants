@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app clipped-left color="transparent" fixed dark shrink-on-scroll scroll-threshold="700" flat src="../assets/dark_semitransparent_bg.png">
+    <v-app-bar app clipped-left color="transparent" dark flat src="../assets/dark_semitransparent_bg.png">
         
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon_info.png')" height="48"/>
         <v-spacer></v-spacer>
@@ -14,12 +14,12 @@
           <p class="ml-2 mt-2">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn>
 
-        <v-btn icon color="white" class="ma-lg-1 d-lg-none">
+        <v-btn icon color="white" @click="accessibility_eyes()" class="ma-lg-1 d-lg-none">
           <v-icon>mdi-eye-outline</v-icon> 
         </v-btn>
 
     </v-app-bar>
-          <v-img src="../assets/f2.jpg" style="width: 100vw; height: 100vh; filter: blur(2px);"></v-img>
+          <v-img src="../assets/preview.jpg" min-width="100vw" max-height="100vh"></v-img>
 
           <v-container>
 
@@ -97,45 +97,48 @@
                </div>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="/register" class="my-md-6 my-3">НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-lg-none my-md-6 my-3">НАЧАТЬ</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
-              <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
+              <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="d-none d-lg-block my-lg-16" x-large>НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-none d-lg-flex my-lg-16" x-large>НАЧАТЬ</v-btn>
                 </div>
-              </v-scroll-y-reverse-transition> -->
+              </v-scroll-y-reverse-transition>
               <v-spacer></v-spacer>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="my-md-6 my-3">Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-lg-none my-md-6 my-3">Уже пользуетесь картой?</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
-              <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
+              <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="d-none d-lg-block my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-none d-lg-flex my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
                 </div>
-              </v-scroll-y-reverse-transition> -->
+              </v-scroll-y-reverse-transition>
               <v-spacer></v-spacer>
             <!-- </div> -->
 
               <v-fade-transition>
-                <v-btn id="infofab" color="accent" elevation="2" bottom right fixed rounded class="ma-md-6 ma-3" v-show="infofab1" key="infofabx" href="/register">
+                <v-btn color="accent" elevation="2" bottom right fixed rounded class="d-lg-none ma-md-6 ma-3" v-show="infofab" href="/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>
-              <!-- <v-fade-transition>
-                <v-btn id="infofab2" color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-block ma-lg-12" v-show="infofab2" key="infofabx2" href="#/register">
+              <v-fade-transition>
+                <v-btn color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-flex ma-lg-12" v-show="infofab" href="/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
-              </v-fade-transition> -->
+              </v-fade-transition>
         </v-container>
       <v-footer padless>
         <!-- link to administration -->
         <v-col class="text-center" cols="12" >
-          {{ new Date().getFullYear() }} — <strong>Карта жителя Новороссийска</strong>
+          <a href="https://admnvrsk.ru/" style="font-weight: 500;" class="text-decoration-underline" >Официальный сайт администрации и городской Думы Муниципального Образования "Город-Герой Новороссийск" </a>
+        </v-col>
+        <v-col class="text-center" cols="12" >
+          <strong>Карта жителя Новороссийска</strong> — {{ new Date().getFullYear() }}
         </v-col>
       </v-footer>
       <v-snackbar v-model="snackbar_info" :timeout="timeout" >
@@ -153,24 +156,22 @@
   export default {
     name: 'InfoPage',
     data: () => ({
-        infofab1: true,
-        infofab2: true,
+        infofab: true,
         snackbar_info: false,
         snack_text: '',
         timeout: 2000,
     }), 
     methods:{
       updateDataX(bool) {
-        this.infofab1 = bool ;
-        this.infofab2 = bool ;
+        this.infofab = bool ;
       },
       accessibility_eyes() {
         sessionStorage.setItem('acc_eye', (sessionStorage.acc_eye == "false"));
         if(sessionStorage.acc_eye == "true"){
-          this.snack_text = "Включен режим ";
+          this.snack_text = "Включен режим для слабовидящих";
         }
         else{
-          this.snack_text = "Выключен режим ";
+          this.snack_text = "Выключен режим для слабовидящих";
         }
         // console.log("acc_eye: "+sessionStorage.acc_eye);
         this.snackbar_info = true;
