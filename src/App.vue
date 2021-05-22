@@ -1,11 +1,8 @@
 <template>
   <div>
+      <!-- <router-link to="/info"> START </router-link>   -->
     <router-view>
     </router-view> 
-  
-    <!-- <v-btn id="testfab" color="red" elevation="2" large bottom left fixed rounded class="ma-12">
-        0
-    </v-btn> -->
   </div>
 </template>
 
@@ -20,13 +17,14 @@ export default {
   //    MainOps,
   //  },
   created(){
-    if(location.href == "http://localhost:8080/#/"){
-      location.href = "#/info/";
-    }
-
+    // location.href = "/info";
   },
   mounted() {
-    if (typeof localStorage.logged_in == 'undefined') {
+    if (typeof sessionStorage.acc_eye == 'undefined') {
+      sessionStorage.setItem('acc_eye', false);
+    }
+
+    if (typeof sessionStorage.logged_in == 'undefined') {
       sessionStorage.setItem('logged_in', "");
     }
 

@@ -1,13 +1,13 @@
 <template>
   <v-app>
-      <v-app-bar color="primary" dark absolute flat app>
+      <v-app-bar color="primary" dark absolute app>
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon.png')" height="48"/>
-        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Вход в систему</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Вход в систему</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя Новороссийска</v-toolbar-title>
         <v-spacer></v-spacer>
 
 
-        <v-btn icon href="#/info">
+        <v-btn icon href="/info">
           <v-icon>mdi-help-circle-outline</v-icon>
         </v-btn>
 
@@ -17,13 +17,20 @@
         <v-container class="d-flex flex-xl-row flex-lg-column pa-2">
           <div style="width: 100%">
             <v-card outlined>
+              <v-card-title class="justify-center">
+                Вход в систему
+              </v-card-title>
               <v-text-field id="card_number_field" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-16" color="accent" label="Card Number" placeholder="0000-0000-0000-0000" outlined single-line ></v-text-field>
               <v-card-actions>
-                <v-btn color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="LogInByCardNumber()" >
-                  Вход
-                </v-btn>
-                <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="#/main/personal" >
+                <!-- <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/main/personal" >
                   Аккаунт
+                </v-btn> -->
+                <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/register" >
+                  Создать аккаунт
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="LogInByCardNumber()" >
+                  Вход
                 </v-btn>
               </v-card-actions>
             </v-card>

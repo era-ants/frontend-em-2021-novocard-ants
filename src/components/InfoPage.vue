@@ -9,7 +9,7 @@
         <v-spacer></v-spacer>
 
 
-        <v-btn outlined color="white" class="ma-lg-1 d-none d-lg-block">
+        <v-btn outlined color="white" @click="accessibility_eyes()" class="ma-lg-1 d-none d-lg-block">
           <v-icon class="mt-n2">mdi-eye-outline</v-icon> 
           <p class="ml-2 mt-2">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn>
@@ -97,7 +97,7 @@
                </div>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="my-md-6 my-3">НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" color="accent" href="/register" class="my-md-6 my-3">НАЧАТЬ</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
               <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
@@ -108,7 +108,7 @@
               <v-spacer></v-spacer>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="my-md-6 my-3">Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="my-md-6 my-3">Уже пользуетесь картой?</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
               <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
@@ -120,7 +120,7 @@
             <!-- </div> -->
 
               <v-fade-transition>
-                <v-btn id="infofab" color="accent" elevation="2" bottom right fixed rounded class="ma-md-6 ma-3" v-show="infofab1" key="infofabx" href="#/register">
+                <v-btn id="infofab" color="accent" elevation="2" bottom right fixed rounded class="ma-md-6 ma-3" v-show="infofab1" key="infofabx" href="/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
@@ -138,6 +138,14 @@
           {{ new Date().getFullYear() }} — <strong>Карта жителя Новороссийска</strong>
         </v-col>
       </v-footer>
+      <v-snackbar v-model="snackbar_info" :timeout="timeout" >
+        {{snack_text}}
+        <!-- <template v-slot:action="{ attrs }">
+          <v-btn color="accent2" text v-bind="attrs" @click="accessibility_eyes()">
+            Отмена
+          </v-btn>
+        </template> -->
+      </v-snackbar>
   </v-app>
 </template>
 
@@ -147,12 +155,31 @@
     data: () => ({
         infofab1: true,
         infofab2: true,
+        snackbar_info: false,
+        snack_text: '',
+        timeout: 2000,
     }), 
     methods:{
       updateDataX(bool) {
         this.infofab1 = bool ;
         this.infofab2 = bool ;
       },
+      accessibility_eyes() {
+        sessionStorage.setItem('acc_eye', (sessionStorage.acc_eye == "false"));
+        if(sessionStorage.acc_eye == "true"){
+          this.snack_text = "Включен режим ";
+        }
+        else{
+          this.snack_text = "Выключен режим ";
+        }
+        // console.log("acc_eye: "+sessionStorage.acc_eye);
+        this.snackbar_info = true;
+      },
+    },
+    updated(){
+      if ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != "")) {
+        location.href = "/main/map";
+      }
     },
     mounted(){
       var vm = this;

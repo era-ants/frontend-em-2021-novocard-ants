@@ -36,16 +36,16 @@
 				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
 				</v-card>
 				<v-card width=25% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
-					<a class="my-0" href="#/main/paycard"> Как пополнить </a>
+					<a class="my-0" href="/main/paycard"> Как пополнить </a>
 				</v-card>
 				<v-card width=40% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
-					<a class="my-0" href="URL"> Как получать баллы </a>
+					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
 				</v-card>
 				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
-					<a class="my-0" href="#/main/paycard"> Как пополнить </a>
+					<a class="my-0" href="/main/paycard"> Как пополнить </a>
 				</v-card>
 				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
-					<a class="my-0" href="URL"> Как получать баллы </a>
+					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
 				</v-card>
 			</div>
 	</v-container>

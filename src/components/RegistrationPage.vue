@@ -1,13 +1,13 @@
 <template>
   <v-app>
-      <v-app-bar color="primary" dark absolute flat app>
+      <v-app-bar color="primary" dark absolute app>
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon.png')" height="48"/>
-        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Регистрация</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Регистрация</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя Новороссийска</v-toolbar-title>
         <v-spacer></v-spacer>
 
 
-        <v-btn icon href="#/info">
+        <v-btn icon href="/info">
           <v-icon>mdi-help-circle-outline</v-icon>
         </v-btn>
 
@@ -29,6 +29,9 @@
               <v-tabs-items v-model="reg_tab">
                 <v-tab-item key="reg_guest" >
                   <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                    <v-card-title class="text-h5 justify-center">
+                      Зарегистрировать карту гостя
+                    </v-card-title> 
                     
                     <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
                       <v-text-field type="number" id="phone_number_field" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="8(800)-555-35-35" maxlength="11" :rules="chars11"></v-text-field>
@@ -52,27 +55,34 @@
                       <v-text-field id="passport_dcd_field" type="number" class="ml-lg-4 ml-md-2 ml-sm-1" color="accent" label="Код подразделения" placeholder="000000" maxlength="6" outlined :rules="chars6" style="width: 20%;"></v-text-field>
                     </div> -->
                     <v-card-actions>
-                      <v-btn outlined color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="#/info" >
-                        Назад
+                      <v-btn text color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" >
+                        Войти
                       </v-btn>
+                      <v-spacer></v-spacer>
                       <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="RegisterClient()" >
                         Зарегистрироваться
                       </v-btn>
                     </v-card-actions>
+
                   </v-card>
                 </v-tab-item>
                 <v-tab-item key="reg_citizen" >
                   <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                    <v-card-title class="text-h5 justify-center">
+                      Зарегистрировать карту жителя
+                    </v-card-title> 
                     <v-text-field id="first_name_field2" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-lg-16 mt-md-8 mt-sm-4 mt-2" color="accent" label="Имя" placeholder=" " :rules="not_empty" ></v-text-field>
                     <v-text-field id="last_name_field2" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2" color="accent" label="Фамилия" placeholder=" " :rules="not_empty" ></v-text-field>
                     <v-card-actions>
+                      <v-btn text color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" >
+                        Войти
+                      </v-btn>
+                      <v-spacer></v-spacer>
                       <v-btn color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="RegisterClient2()" >
-                        Зарегистрироваться через систему
+                        Гос. услуги
                       </v-btn>
                     </v-card-actions>
-                      <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="#/info" >
-                        Назад
-                      </v-btn>
+
                   </v-card>
                 </v-tab-item>
               </v-tabs-items>
@@ -81,7 +91,7 @@
         <v-snackbar v-model="snackbar" :timeout="timeout" >
           {{snack_text}}
           <template v-slot:action="{ attrs }">
-            <v-btn color="accent2" text v-bind="attrs" href="#/login" >
+            <v-btn color="accent2" text v-bind="attrs" href="/login" >
               Логин
             </v-btn>
           </template>
@@ -160,6 +170,7 @@ export default {
         this.snack_text = "Не Зарегистрирован";
         this.snackbar = true;
       }
+
     },
     
     RegisterClient2(){
@@ -167,6 +178,7 @@ export default {
       let last_name2 = document.getElementById("last_name_field2").value;
       this.snack_text = "Зарегистрирован2: " + first_name2 + " " + last_name2;
       this.snackbar = true;
+
     }  
   },
 }

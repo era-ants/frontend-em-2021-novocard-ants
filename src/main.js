@@ -14,6 +14,7 @@ import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import QRScanCard from './components/QRScanCard.vue'
+import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
 
@@ -52,6 +53,10 @@ const routes = [
         component: QRScanCard,
       },
       {
+        path: 'access',
+        component: AccessIDCard,
+      },
+      {
         path: 'personal',
         component: PersonalArea
       },
@@ -60,10 +65,13 @@ const routes = [
         component: PaymentsCard
       },
     ]
-  }
+  },
+  { path: '', redirect: '/info'},
+  { path: '/', redirect: '/info'}
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes // short for `routes: routes`
 })
 
