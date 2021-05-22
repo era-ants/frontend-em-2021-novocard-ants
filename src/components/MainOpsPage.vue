@@ -12,10 +12,14 @@
           <p class="ml-2 mt-4 d-none d-lg-block">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn> -->
 
-        <v-btn icon href="/info">
-          <v-icon>mdi-help-circle-outline</v-icon>
-        </v-btn>
-
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on2, attrs2 }">
+            <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
+              <v-icon>mdi-help-circle-outline</v-icon>
+            </v-btn>
+          </template>
+          <span>О карте</span>
+        </v-tooltip>
         <!-- <v-btn icon href="#/main/settings">
           <v-icon>mdi-cog-outline</v-icon>
         </v-btn> -->
@@ -24,7 +28,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-badge bordered color="red" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
               <v-btn icon v-bind="attrs" v-on="on">
-                <v-avatar  color="accent2" size="32">A</v-avatar>
+                <v-avatar color="accent2" size="32">A</v-avatar>
               </v-btn>
             </v-badge>
           </template>
@@ -100,6 +104,8 @@ export default {
     mini: false,
     navbar: true,
     group: null,
+    on2: null,
+    attr2: null,
     accmenu:[
       { title: 'Сменить Фото', link: '/login' },
       // { title: 'Ред. профиль', link: '/login' },

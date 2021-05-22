@@ -9,7 +9,7 @@
         <v-spacer></v-spacer>
 
 
-        <v-btn :outlined="$vuetify.breakpoint.lg" :icon="!($vuetify.breakpoint.lg)" color="white" @click="accessibility_eyes()" class="ma-lg-1">
+        <v-btn :outlined="(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))" :icon="!(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))" color="white" @click="accessibility_eyes()" class="ma-lg-1">
           <v-icon >mdi-eye-outline</v-icon> 
           <p class="d-none d-lg-block ml-2 mt-4">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn>

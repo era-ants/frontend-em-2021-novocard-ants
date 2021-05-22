@@ -6,10 +6,14 @@
         <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя и гостя</v-toolbar-title>
         <v-spacer></v-spacer>
 
-
-        <v-btn icon href="/info">
-          <v-icon>mdi-help-circle-outline</v-icon>
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on2, attrs2 }">
+            <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
+              <v-icon>mdi-help-circle-outline</v-icon>
+            </v-btn>
+          </template>
+          <span>О карте</span>
+        </v-tooltip>
 
         <template v-slot:extension>
           <v-tabs :align-with-title="$vuetify.breakpoint.lg" class="mx-lg-16 mx-md-8" slider-color="yellow" :fixed-tabs="$vuetify.breakpoint.lg" v-model="reg_tab">
@@ -140,6 +144,8 @@ export default {
     chars6: [v => !!v || 'Поле не пустое', v => v.length == 6 || '6 sym'],
     chars4: [v => !!v || 'Поле не пустое', v => v.length == 4 || '4 sym'],
     chars12: [v => !!v || 'Поле не пустое', v => v.length == 12 || 'недостаточно'],
+    on2: null,
+    attr2: null,
   }),
 
   methods: {

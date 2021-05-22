@@ -7,9 +7,14 @@
         <v-spacer></v-spacer>
 
 
-        <v-btn icon href="/info">
-          <v-icon>mdi-help-circle-outline</v-icon>
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on2, attrs2 }">
+            <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
+              <v-icon>mdi-help-circle-outline</v-icon>
+            </v-btn>
+          </template>
+          <span>О карте</span>
+        </v-tooltip>
 
       </v-app-bar>
 
@@ -102,6 +107,8 @@
         timeout: 2000,
         not_empty: [v => v.length != 0 || 'Поле не пустое'],
         chars11: [v => !!v || 'Поле не пустое', v => v.length == 11 || 'недостаточно'],
+        on2: null,
+        attr2: null,
       }
     },
     methods:{

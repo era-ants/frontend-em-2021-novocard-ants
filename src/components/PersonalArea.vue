@@ -3,31 +3,47 @@
     <v-card-title class="justify-center">
       Личный кабинет
     </v-card-title>
+	<div class="d-flex flex-column">	
+				<!--  style="background: red;" -->
 
-			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
-				<v-card elevation="0" class="d-lg-none" color="transparent">
-					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
-				</v-card>
-				<v-card elevation="0" class="d-none d-lg-block" max-width="20%" color="transparent">
-					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
+			<div class=" d-lg-none d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
+				<v-card class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 rounded-xl" width="95%" elevation="6" color="red">
+					<v-img :src="require('../assets/card-example.png')" :aspect-ratio="3.37/2.125" contain >
+					</v-img>
 				</v-card>
 			</div>
+			
+			<div class="d-flex flex-column justify-center">
+				<v-avatar class="ma-8" size="128" color="accent2" v-show="(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))">
+					<img :src="require('../assets/avatar.png')" />
+				</v-avatar>
+			</div>
 
-			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
+			<div class="d-none d-lg-flex flex-row mb-lg-12 mb-md-6 mb-sm-3 mb-1">
+				<v-card class="mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl" width="45%" elevation="6" color="red">
+					<v-img :src="require('../assets/card-example.png')" :aspect-ratio="3.37/2.125" contain >
+					</v-img>
+				</v-card>
+				<v-spacer></v-spacer>
+				<v-card class="mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl" width="50%" outlined> 
+
+				</v-card>
+			</div>
+			<!-- <div class="d-flex flex-column flex-lg-row justify-center">
 				<v-card elevation="0" class="ma-2 text-center" color="transparent">
 					<h1 class=" my-2">Иванов Иван Иванович</h1>
 				</v-card>
-			</div>
+			</div> -->
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
+			<!-- <div class="d-flex flex-column flex-lg-row justify-left">
 				<v-card width=30% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
 				</v-card>
 				<v-card width=50% elevation="0" class="ma-2" color="transparent">
 					<h2 class="my-0"> Ваш баланс: </h2>
 				</v-card>
-			</div>
+			</div> -->
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
+			<!-- <div class="d-flex flex-column flex-lg-row justify-left">
 				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
 				</v-card>
 				<v-card width=25% elevation="0" class="ma-2" color="transparent">
@@ -36,9 +52,9 @@
 				<v-card width=40% elevation="0" class="ma-2" color="transparent">
 					<h2 class="my-0"> 0баллов </h2>
 				</v-card>
-			</div>
+			</div> -->
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
+			<!-- <div class="d-flex flex-column flex-lg-row justify-left">
 				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
 				</v-card>
 				<v-card width=25% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
@@ -53,8 +69,9 @@
 				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
 					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
 				</v-card>
-			</div>
+			</div> -->
 
+		</div>
 	</v-card>
 </template>
 

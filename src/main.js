@@ -11,6 +11,7 @@ import RegistrationPage from './components/RegistrationPage.vue'
 
 import DevDebugCard from './components/DevDebugCard.vue' //debug-card
 import SettingsCard from './components/SettingsCard.vue'
+
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import QRScanCard from './components/QRScanCard.vue'
