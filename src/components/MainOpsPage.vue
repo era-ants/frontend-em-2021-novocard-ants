@@ -16,7 +16,11 @@
           <v-icon>mdi-help-circle-outline</v-icon>
         </v-btn>
 
-        <v-menu offset-y transition="slide-y-transition">
+        <!-- <v-btn icon href="#/main/settings">
+          <v-icon>mdi-cog-outline</v-icon>
+        </v-btn> -->
+
+        <v-menu style="z-index: 1000" offset-y transition="slide-y-transition">
           <template v-slot:activator="{ on, attrs }">
             <v-badge bordered color="red" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
               <v-btn icon v-bind="attrs" v-on="on">

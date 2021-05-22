@@ -14,10 +14,13 @@ import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import QRScanCard from './components/QRScanCard.vue'
+import PersonalArea from './components/PersonalArea.vue'
+import PaymentsCard from './components/PaymentsCard.vue'
 
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
+import VueMask from 'v-mask'
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -46,7 +49,15 @@ const routes = [
       },
       {
         path: 'scan',
-        component: QRScanCard
+        component: QRScanCard,
+      },
+      {
+        path: 'personal',
+        component: PersonalArea
+      },
+      {
+        path: 'paycard',
+        component: PaymentsCard
       },
     ]
   }
@@ -79,8 +90,13 @@ Vue.use(VueScrollReveal, {
   reset: false
 });
 
+Vue.use(VueMask);
+
 new Vue({
   vuetify,
   router: router,
   render: h => h(App)
 }).$mount('#app')
+
+
+
