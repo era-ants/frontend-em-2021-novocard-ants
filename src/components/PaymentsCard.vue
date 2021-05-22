@@ -1,6 +1,8 @@
 <template>
-
-	<v-container>
+  <v-card outlined>
+    <v-card-title class="justify-center">
+      Настройки
+    </v-card-title>
 		<creditCard></creditCard>
 		<div style="height: 10%" class="d-none d-lg-block d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 		</div>
@@ -110,7 +112,7 @@
 				</v-btn>
 			</template>
 		</v-snackbar>
-	</v-container>
+	</v-card>
 </template>
 
 <script>

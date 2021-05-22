@@ -67,6 +67,9 @@
                 <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="chars11"></v-text-field>
               </div>
               
+                <v-card outlined color="text_color" class="mx-lg-16 mx-md-8 mx-sm-2 mx-1 my-lg-8 my-md-4 my-sm-2 my-1 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" @click="LogInESIA()" >
+                  <v-img class="my-lg-2 my-md-1 my-sm-1 my-1" :src="require('../assets/meth-esia-logo.png')" max-height="30" contain />
+                </v-card>
               
               <v-card-actions>
                 <!-- <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/main/personal" >
@@ -106,7 +109,7 @@
         snack_text: '',
         timeout: 2000,
         not_empty: [v => v.length != 0 || 'Поле не пустое'],
-        chars11: [v => !!v || 'Поле не пустое', v => v.length == 11 || 'недостаточно'],
+        chars11: [v => !!v || 'Поле не пустое', v => v.length < 7 || 'недостаточно', v => v.length > 11 || 'перебор'],
         on2: null,
         attr2: null,
       }

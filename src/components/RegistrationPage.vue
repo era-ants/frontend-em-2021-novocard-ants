@@ -2,8 +2,8 @@
   <v-app>
       <v-app-bar color="primary" dark absolute app>
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon.png')" height="48"/>
-        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя и гостя</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя и гостя</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Регистрация</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Регистрация</v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-tooltip bottom>
@@ -16,9 +16,9 @@
         </v-tooltip>
 
         <template v-slot:extension>
-          <v-tabs :align-with-title="$vuetify.breakpoint.lg" class="mx-lg-16 mx-md-8" slider-color="yellow" :fixed-tabs="$vuetify.breakpoint.lg" v-model="reg_tab">
-            <v-tab key="reg_guest"><v-icon class="mr-lg-4 mr-2">mdi-account-circle-outline</v-icon>  Карта гостя </v-tab>
-            <v-tab key="reg_citizen"><v-icon class="mr-lg-4 mr-2">mdi-account-circle</v-icon> Карта жителя </v-tab>
+          <v-tabs  :align-with-title="$vuetify.breakpoint.lg" class="mx-lg-16 mx-md-8" slider-color="yellow" :fixed-tabs="$vuetify.breakpoint.lg" v-model="reg_tab">
+            <v-tab dark key="reg_guest"> Карта гостя </v-tab> <!-- <v-icon class="mr-lg-4 mr-2">mdi-account-circle-outline</v-icon> -->
+            <v-tab dark key="reg_citizen"> Карта жителя </v-tab> <!-- <v-icon class="mr-lg-4 mr-2">mdi-account-circle</v-icon> -->
           </v-tabs>
         </template>
       </v-app-bar>
@@ -28,7 +28,7 @@
           <div class="my-auto" style="width: 100%" >
               <v-tabs-items v-model="reg_tab">
                 <v-tab-item key="reg_guest" >
-                  <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                  <v-card outlined class="px-lg-16 px-md-8 px-sm-4 px-2">
                     <!-- <v-img :src="require('../assets/card-bg.png')" contain> -->
                       <v-card-title class="justify-center">
                         Зарегистрировать карту гостя
@@ -65,7 +65,7 @@
                   </v-card>
                 </v-tab-item>
                 <v-tab-item key="reg_citizen" >
-                  <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                  <v-card outlined class="px-lg-16 px-md-8 px-sm-4 px-2">
                     <v-card-title class="justify-center">
                       Зарегистрировать карту жителя
                     </v-card-title> 

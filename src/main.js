@@ -18,7 +18,6 @@ import QRScanCard from './components/QRScanCard.vue'
 import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
-import RegistrationCard from './components/RegistrationCard.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
@@ -32,18 +31,6 @@ const routes = [
     path: '/main/',
     component: MainOps,
     children: [
-      {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: 'login',
-        component: LoginPage
-      },
-      {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: 'register',
-        component: RegistrationCard
-      },
       {
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
