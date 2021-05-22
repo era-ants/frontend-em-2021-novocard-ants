@@ -21,7 +21,16 @@ import PaymentsCard from './components/PaymentsCard.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
+
+import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
+
+const settings = {
+  apiKey: '',
+  lang: 'ru_RU',
+  coordorder: 'latlong',
+  version: '2.1'
+}
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -33,6 +42,20 @@ const routes = [
     component: MainOps,
     children: [
       {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: 'login',
+        component: LoginCard
+      },
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: 'register',
+        component: RegistrationCard
+      },
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
         path: 'map',
         component: MapCard,
       },
@@ -75,17 +98,10 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
-const settings = {
-  apiKey: '',
-  lang: 'ru_RU',
-  coordorder: 'latlong',
-  version: '2.1'
-}
-
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-Vue.use(YmapPlugin, settings)
+Vue.use(VueQrcodeReader);
 
 Vue.use(VueQrcodeReader);
 
@@ -99,6 +115,8 @@ Vue.use(VueScrollReveal, {
 });
 
 Vue.use(VueMask);
+
+Vue.use(YmapPlugin, settings)
 
 new Vue({
   vuetify,

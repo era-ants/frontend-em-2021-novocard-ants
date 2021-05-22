@@ -1,51 +1,84 @@
 <template>
-    <v-card outlined>
+  <v-container>
+      <div class="d-none d-lg-block flex-column flex-lg-row" v-scroll-reveal>
         <v-card-title class="text-h5">
-          Карта
+          Map
         </v-card-title>
-          <yandex-map 
-            :coords="coorLocation"
-            :zoom="zoom_val" 
-            @click="onClick"
-            @boundschange="boundsMaps"
-            @actionend="moveMapsEnded"
-          >
-              <ymap-marker 
-                :coords="coordsShow" 
-                marker-id="1" 
-                hint-content="Hi Piple" 
-                :balloon-template="balloonTemplate"
-                :icon="markerIcon"
-              >
-              </ymap-marker>
-          </yandex-map>
+        <yandex-map 
+          :coords="coorLocation"
+          :zoom="zoom_val" 
+          @click="onClick"
+          @boundschange="boundsMaps"
+          @actionend="moveMapsEnded"
+          @map-was-initialized="MapsInit"
+        >
+            <ymap-marker 
+              :coords="coordsShow" 
+              marker-id="1" 
+              hint-content="Hi Piple" 
+              :icon="markerIcon"
+            >
+            </ymap-marker>
+        </yandex-map>
+      </div>
       <v-card-title class="text-h5">
-        Рекуомендуем Вам:
-      </v-card-title>
-      <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+        <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn> Туризм </v-btn> 
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn> Досуг </v-btn> 
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn> События </v-btn>
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn @click="routesMaps = true"> Маршруты </v-btn>
+            <v-spacer></v-spacer>
+          </v-card>
+        </div>
+      </v-card-title>
+      <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
+          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-8" color="transparent">
             <!-- <v-card-title class="text-h5">
               Settings
             </v-card-title> -->
-            <h1>About Title 1</h1>
-            <h3>About Subtitle 1</h3>
-            <p class=".text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </v-card>
-          <v-card v-on:click="selectRecommended(0)" elevation="0" class="d-lg-none" color="transparent">
-            <v-img class="ma-8" src="../assets/m1.jpg"></v-img>
-          </v-card>
-          <v-card v-on:click="selectRecommended(0)" elevation="0" class="d-none d-lg-block" max-width="50%" color="transparent">
-            <v-img class="ma-8" src="../assets/m1.jpg"></v-img>
+            <h1>{{ item.name }} </h1>
+            <h3>{{ item.typeName }} </h3>
+            <p class=".text-body-1"> {{ item.text }} </p>
+            <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
-    </v-card>
+      <div v-if="routesMaps" class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <!-- <v-card-title class="text-h5">
+              Settings
+            </v-card-title> -->
+            <h1>{{ item.name }} </h1>
+            <h3>{{ item.typeName }} </h3>
+            <p class=".text-body-1"> {{ item.text }} </p>
+            <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
+          </v-card>
+      </div>
+  </v-container>
 </template>
 
 <script>
-
+//import { loadYmap } from 'vue-yandex-maps'
 import img from "../assets/m1.jpg"
 import musei from "../assets/musei_1.png"
-  //import JSONData from './data.json'
+import load from 'ymaps-loader'
+	console.log(load);
+  let ymaps___;
+  let myMap___;
+  load({ apiKey: '1222afeb-4692-4bab-b000-5ce5f9027daa'}).then((ymaps) => {
+        // The global variable `ymaps` is available now
+        ymaps___ = ymaps;
+        console.log(ymaps);
+  });
 
   export default {
     data: () => ({
@@ -58,6 +91,43 @@ import musei from "../assets/musei_1.png"
       contentOffset: [0, 15],
       //contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
     },
+    routesMaps: false,
+    itemsRoutes: 
+      [
+        {
+          coords: [
+                    [44.723774, 37.768809],
+                    [44.714750723651605,37.777651387298654],
+                    [44.714968749806765,37.777651387298654],
+                  ],
+          name: "Хутор Камчатка – Южная Озереевка, 8 км", 
+          text: "Старт из села Мысхако от памятного места Долина смерти. Посещаем памятник-блиндаж на месте дислокации 108-й гвардейской бригады, памятник «Взрыв», дерево, высаженное генсеком Леонидом Ильичом Брежневым в 1974 году. Затем выходим на лесную тропу. По пути знакомимся с местными достопримечательностями: кормим белок у домика для белок, фотографируемся у дерева, получившего зловещее название «Колдун», умываемся родниковой водой. Поднимемся на поляну, распложенную у подножия горы Колдун, откуда открывается потрясающий вид на город, фотографируемся, отдыхаем. Спускаемся вниз к комплексу «Колодец жизни».",
+          typeName: "Пеший",
+          type: 1, 
+        },
+        {
+          coords: [
+                    [44.723774, 37.768809],
+                    [44.714750723651605,37.777651387298654],
+                    [44.714968749806765,37.777651387298654],
+                  ],
+          name: "Маршрут №2: гора Колдун – Колодец жизни, 5 км", 
+          text: "Старт из села Мысхако от памятного места Долина смерти. Посещаем памятник-блиндаж на месте дислокации 108-й гвардейской бригады, памятник «Взрыв», дерево, высаженное генсеком Леонидом Ильичом Брежневым в 1974 году. Затем выходим на лесную тропу. По пути знакомимся с местными достопримечательностями: кормим белок у домика для белок, фотографируемся у дерева, получившего зловещее название «Колдун», умываемся родниковой водой. Поднимемся на поляну, распложенную у подножия горы Колдун, откуда открывается потрясающий вид на город, фотографируемся, отдыхаем. Спускаемся вниз к комплексу «Колодец жизни». Плюсы: маршрут особенно полезен для школьников, которые ознакомятся с памятниками Великой Отечественной войны и узнают малоизвестные факты из военной истории города-героя Новороссийска. Чем удивит: прекрасной новороссийской природой. В щелях лес уже разнообразный, есть полный набор наших эндемиков – краснокнижные можжевельники, пицундская сосна, дубы. Самые яркие впечатления останутся от вида города с высоты птичьего полета.",
+          typeName: "Пеший",
+          type: 2, 
+        },
+        {
+          coords: [
+                    [44.723774, 37.768809],
+                    [44.714750723651605,37.777651387298654],
+                    [44.714968749806765,37.777651387298654],
+                  ],
+          name: "Маршрут №3: Южная Озереевка – Беседка йогов — Лиманчик – Южная Озереевка, 10 км", 
+          text: "Старт из села Южной Озереевки. По сухому руслу горной реки поднимаемся в гору по «черепаховой тропе», о которой двадцать пять лет назад Дроздов снял документарный фильм. В нем он рассказывает о нашей краснокнижной черепахе Никольского, которой тут полно особенно в мае. До Беседки йогов, откуда открывается потрясающий вид на море, час пути. Любуемся местными можжевельниками, фотографируем виды на долину реки Озерейки. У Беседки йогов отдыхаем, фотографируемся, восхищаемся Черным морем с высоты птичьего полета. Спускаемся к памятнику природы озеру Лиманчик. Отдыхаем на берегу моря или рядом с озером. Летом можно понырять с пирса в море, зимой отдохнуть у озера, восхититься его необыкновенным цветом. Обратный путь по берегу моря. Летом можно сделать остановку на диком пляже между Озереевкой и Лиманчиком и поплавать в самом чистом на побережье море. Плюсы: один из самых живописных маршрутов. Вид на море с Беседки йогов запомнится на всю жизнь и будет сниться. Есть небольшой перепад высот и затяжной подъем на гору, можно прокачать ноги. Чем удивит: весной – обилием живности. Можно встретить до десяти особей краснокнижных черепах, от малышей до взрослых, сделать множество фотографий.",
+          typeName: "Пеший",
+          type: 3, 
+        },
+      ],
     img_src: img,
     cutChLoc: false,
     chZoom: false,
@@ -78,60 +148,32 @@ import musei from "../assets/musei_1.png"
       }
     }
     }),
-    computed: {
-      balloonTemplate() {
-        let str ="<img style=\"height: 100px\" src=\"" + this.img_src + "\">" +
-        "<h1>Городской парк им. Ленина </h1>" +
-        "<p>Адрес: ул. Твардовского <br/>" +
-        " Сайт: mail.ru <br/>" +
-        " Телефон: 8-920-320-1637" +
-        "</p>";
-        return str;
-      }
-    },
     methods: {
+      beginRoutes(item){
+
+        console.log(item);
+        console.log(ymaps___);
+        console.log(myMap___);
+
+        let multiRoute = new ymaps___.multiRouter.MultiRoute({   
+              // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+              referencePoints: item.coords,
+          params: {
+            // Тип маршрута: на общественном транспорте.
+            routingMode: "pedestrian"  
+          }
+        }, {
+          // Автоматически устанавливать границы карты так,
+          // чтобы маршрут был виден целиком.
+          boundsAutoApply: true
+        });
+        // Добавление маршрута на карту.
+        myMap___.geoObjects.add(multiRoute);
+      },
+      MapsInit(myMap){
+        myMap___ = myMap;
+      },
       moveMapsEnded(){
-        if (this.chZoom)
-        {
-          this.chZoom = false;
-          this.chLoc = true;
-          this.coorLocation = this.listMarker[this.chEl].coordsLabel;
-        }
-        else if (this.chLoc)
-        {
-          this.cutChLoc = true;
-          this.chLoc = false;
-          this.zoom_val = 17;
-        }
-      },
-      selectRecommended(el){
-        this.chEl = el;
-        this.chZoom = true;
-        this.cutChLoc = false;
-        if (this.zoom_val > 5)
-          this.zoom_val = 5;
-        else
-          this.zoom_val = this.zoom_val - 1;
-        this.coordsShow = this.listMarker[this.chEl].coordsLabel;
-
-        /*let str = JSONData[0].coords.split(" ");
-        this.listMarker[0].coords[0] = Number(str[0]);
-        this.listMarker[0].coords[1] = Number(str[1]);
-
-        for (let i = 1; i < JSONData.length; i++)
-        {
-          str = JSONData[i].coords.split(" ");
-          this.listMarker.push({ coords: [ Number(str[0]), Number(str[1]) ]});
-        }*/
-      },
-      onClick(e) {
-        this.coordsClick = e.get('coords');
-      },
-      boundsMaps(event) {
-        if (!this.chZoom)
-          this.zoom_val = event.get("newZoom");
-        if (this.cutChLoc)
-          this.coorLocation = event.get("newCenter");
       },
     },
     name: 'MapCard',
