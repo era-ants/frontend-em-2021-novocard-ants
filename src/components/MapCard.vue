@@ -22,7 +22,7 @@
       <v-card-title class="text-h5">
         Рекуомендуем Вам:
       </v-card-title>
-      <v-row dense class="my-12">
+      <v-row dense class="my-lg-12 my-md-6 my-3">
         <v-col cols="6">
           <v-card elevation="0">
             <!-- <v-card-title class="text-h5">

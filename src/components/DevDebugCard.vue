@@ -3,12 +3,12 @@
     <v-card-title class="text-h5">
       D E B U G
     </v-card-title>
-    <v-text-field id="card_number_field" class="ma-16" color="accent" label="Card Number" placeholder="Placeholder" outlined single-line ></v-text-field>
+    <v-text-field id="card_number_field" class="ma-lg-16 ma-md-8 ma-sm-4 ma-2" color="accent" label="Card Number" placeholder="Placeholder" outlined single-line ></v-text-field>
     <v-card-actions>
-      <v-btn color="accent" class="ma-16" right elevation="0" @click="GetClients()" >
+      <v-btn color="accent" class="ma-lg-16 ma-md-8 ma-sm-4 ma-2" right elevation="0" @click="GetClients()" >
         Get Clients
       </v-btn>
-      <v-btn color="accent" class="ma-16" right elevation="0" @click="GetStatistics()" >
+      <v-btn color="accent" class="ma-lg-16 ma-md-8 ma-sm-4 ma-2" right elevation="0" @click="GetStatistics()" >
         Get Statistics
       </v-btn>
     </v-card-actions>

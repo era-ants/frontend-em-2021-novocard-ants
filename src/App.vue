@@ -19,6 +19,12 @@ export default {
   //  components: {
   //    MainOps,
   //  },
+  created(){
+    if(location.href == "http://localhost:8080/#/"){
+      location.href = "#/info/";
+    }
+
+  },
   mounted() {
     if (typeof localStorage.logged_in == 'undefined') {
       sessionStorage.setItem('logged_in', "");

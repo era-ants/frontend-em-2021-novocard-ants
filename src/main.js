@@ -6,13 +6,15 @@ import VueQrcodeReader from "vue-qrcode-reader";
 
 import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
+import LoginPage from './components/LoginPage.vue'
+import RegistrationPage from './components/RegistrationPage.vue'
+
 import DevDebugCard from './components/DevDebugCard.vue' //debug-card
 import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
-import LoginCard from './components/LoginCard.vue'
-import RegistrationCard from './components/RegistrationCard.vue'
 import QRScanCard from './components/QRScanCard.vue'
+
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
@@ -20,25 +22,13 @@ import YmapPlugin from 'vue-yandex-maps'
 const routes = [
   // { path: '/settings', component: SettingsCard },
   { path: '/info', component: InfoPage },
+  { path: '/register', component: RegistrationPage },
+  { path: '/login', component: LoginPage },
   {
     path: '/main/',
     component: MainOps,
     children: [
       {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: 'login',
-        component: LoginCard
-      },
-      {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        path: 'register',
-        component: RegistrationCard
-      },
-      {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
         path: 'map',
         component: MapCard,
       },

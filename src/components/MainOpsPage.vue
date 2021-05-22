@@ -2,9 +2,9 @@
   <v-app>
       <v-app-bar app clipped-left color="primary" dark elevate-on-scroll>
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-        <img class="mr-3" :src="require('../assets/app_icon.png')" height="48"/>
+        <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon.png')" height="48"/>
         <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 14px;">Карта жителя Новороссийска</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя Новороссийска</v-toolbar-title>
         <v-spacer></v-spacer>
 
         <!-- <v-btn outlined color="white" class="ma-2">
@@ -18,9 +18,9 @@
 
         <v-menu offset-y transition="slide-y-transition">
           <template v-slot:activator="{ on, attrs }">
-            <v-badge bordered color="accent2" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
+            <v-badge bordered color="red" dot offset-x="16" offset-y="16" :content="badge_avatar" :value="badge_avatar" >
               <v-btn icon v-bind="attrs" v-on="on">
-                <v-avatar  color="accent" size="32">A</v-avatar>
+                <v-avatar  color="accent2" size="32">A</v-avatar>
               </v-btn>
             </v-badge>
           </template>
@@ -81,17 +81,17 @@ export default {
     navbar: true,
     group: null,
     accmenu:[
-      { title: 'Login', link: '#/main/login' },
-      { title: 'Change Photo', link: '#/main/login' },
-      { title: 'Edit profile', link: '#/main/login' },
+      { title: 'Login', link: '#/login' },
+      { title: 'Change Photo', link: '#/login' },
+      { title: 'Edit profile', link: '#/login' },
     ],
     tab: null,
     tab_items: [
+      { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
       { title: 'Map', link: '/main/map', icon: 'mdi-map-outline' },
-      { title: 'Settings', link: '/main/settings', icon: 'mdi-cog-outline' },
       { title: 'LargeCard', link: '/main/lgcard', icon: 'mdi-apps-box' },
-      { title: 'Register', link: '/main/register', icon: 'mdi-android-debug-bridge' },
       { title: 'Scanner', link: '/main/scan', icon: 'mdi-qrcode-scan' },
+      { title: 'Settings', link: '/main/settings', icon: 'mdi-cog-outline' },
     ],
   }),
   watch: {

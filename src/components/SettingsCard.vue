@@ -49,7 +49,7 @@
           <v-list-item-title>Follow System Theme</v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
-          <v-checkbox v-model="local_theme" color="accent" class="px-4" readonly></v-checkbox>
+          <v-checkbox v-model="local_theme" color="accent" class="px-lg-4 px-md-2 px-1" readonly></v-checkbox>
         </v-list-item-action>
       </v-list-item>
     </v-list>
