@@ -1,15 +1,12 @@
 <template>
   <v-container>
-      <div class="d-none d-lg-block flex-column flex-lg-row" v-scroll-reveal>
+      <div class="flex-column flex-lg-row" v-scroll-reveal>
         <v-card-title class="text-h5">
           Map
         </v-card-title>
         <yandex-map 
           :coords="coorLocation"
           :zoom="zoom_val" 
-          @click="onClick"
-          @boundschange="boundsMaps"
-          @actionend="moveMapsEnded"
           @map-was-initialized="MapsInit"
         >
             <ymap-marker 
@@ -42,7 +39,7 @@
         </div>
       </v-card-title>
       <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-8" color="transparent">
+          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-8" color="transparent">
             <!-- <v-card-title class="text-h5">
               Settings
             </v-card-title> -->

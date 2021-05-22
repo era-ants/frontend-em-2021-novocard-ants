@@ -17,16 +17,15 @@ import QRScanCard from './components/QRScanCard.vue'
 import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
-
+import RegistrationCard from './components/RegistrationCard.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
 
-import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
 
 const settings = {
-  apiKey: '',
+  apiKey: '1222afeb-4692-4bab-b000-5ce5f9027daa',
   lang: 'ru_RU',
   coordorder: 'latlong',
   version: '2.1'
@@ -45,7 +44,7 @@ const routes = [
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
         path: 'login',
-        component: LoginCard
+        component: LoginPage
       },
       {
         // UserProfile will be rendered inside User's <router-view>

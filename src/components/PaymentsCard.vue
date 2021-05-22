@@ -110,7 +110,7 @@
 				</v-btn>
 			</template>
 		</v-snackbar>
-	</v-card>
+	</v-container>
 </template>
 
 <script>
