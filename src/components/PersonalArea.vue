@@ -1,17 +1,21 @@
 <template>
-	<v-container>
-		<v-spacer></v-spacer>
+  <v-card outlined>
+    <v-card-title class="justify-center">
+      Личный кабинет
+    </v-card-title>
+
 			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 				<v-card elevation="0" class="d-lg-none" color="transparent">
-					<v-img class="ma-8" src="../assets/avatar.png"></v-img>
+					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
 				</v-card>
 				<v-card elevation="0" class="d-none d-lg-block" max-width="20%" color="transparent">
-					<v-img class="ma-8" src="../assets/avatar.png"></v-img>
+					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
 				</v-card>
 			</div>
+
 			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 				<v-card elevation="0" class="ma-2 text-center" color="transparent">
-					<h1 class="my-2">Иванов Иван Иванович</h1>
+					<h1 class=" my-2">Иванов Иван Иванович</h1>
 				</v-card>
 			</div>
 
@@ -22,6 +26,7 @@
 					<h2 class="my-0"> Ваш баланс: </h2>
 				</v-card>
 			</div>
+
 			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
 				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
 				</v-card>
@@ -32,6 +37,7 @@
 					<h2 class="my-0"> 0баллов </h2>
 				</v-card>
 			</div>
+
 			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
 				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
 				</v-card>
@@ -48,7 +54,8 @@
 					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
 				</v-card>
 			</div>
-	</v-container>
+
+	</v-card>
 </template>
 
 <script>

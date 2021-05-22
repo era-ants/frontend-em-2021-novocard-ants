@@ -1,8 +1,7 @@
 <template>
-  <v-container>
-      <div class="flex-column flex-lg-row" v-scroll-reveal>
-        <v-card-title class="text-h5">
-          Map
+    <v-card outlined>
+        <v-card-title class="justify-center">
+          Места
         </v-card-title>
         <yandex-map 
           :coords="coorLocation"

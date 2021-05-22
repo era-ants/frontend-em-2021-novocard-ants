@@ -9,13 +9,9 @@
         <v-spacer></v-spacer>
 
 
-        <v-btn outlined color="white" @click="accessibility_eyes()" class="ma-lg-1 d-none d-lg-block">
-          <v-icon class="mt-n2">mdi-eye-outline</v-icon> 
-          <p class="ml-2 mt-2">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
-        </v-btn>
-
-        <v-btn icon color="white" @click="accessibility_eyes()" class="ma-lg-1 d-lg-none">
-          <v-icon>mdi-eye-outline</v-icon> 
+        <v-btn :outlined="$vuetify.breakpoint.lg" :icon="!($vuetify.breakpoint.lg)" color="white" @click="accessibility_eyes()" class="ma-lg-1">
+          <v-icon >mdi-eye-outline</v-icon> 
+          <p class="d-none d-lg-block ml-2 mt-4">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn>
 
     </v-app-bar>
@@ -28,7 +24,7 @@
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="my-8">Оплата проезда</h1>
-                <p class="text-body-1">Используя данные карты «ИМЯ_КАРТЫ», пассажиры могут быстро оплачивать проезд на общественном транспорте, получая скидку согласно выбранному тарифному плану.</p>
+                <p class="text-body-1">Используя данные карты «НовоКарта», пассажиры могут быстро оплачивать проезд на общественном транспорте, получая скидку согласно выбранному тарифному плану.</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -48,7 +44,7 @@
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="text-right my-8">Туризм</h1>
-                <p class="text-right text-body-1">Сервис «ИМЯ_СЕРВИСА» предоставляет возможность подробнее узнать о культурно-досуговых возможностях города, а также выбрать один из подготовленных туристических маршрутов для приятной прогулки. </p>
+                <p class="text-right text-body-1">Сервис «Места» НовоКарты предоставляет возможность подробнее узнать о культурно-досуговых возможностях города, а также выбрать один из подготовленных туристических маршрутов для приятной прогулки. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -61,7 +57,7 @@
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="my-8">Бонусная система</h1>
-                <p class="text-body-1">Оплачивая расходы картой «ИМЯ_КАРТЫ» и выполняя различные задания, Вы накапливаете бонусные баллы, которые в дальнейшем сможете потратить на скидки в магазинах, музеях и театрах, оплату проезда в общественном транспорте. </p>
+                <p class="text-body-1">Оплачивая расходы картой «НовоКарта» и выполняя различные задания, Вы накапливаете бонусные баллы, которые в дальнейшем сможете потратить на скидки в магазинах, музеях и театрах, оплату проезда в общественном транспорте. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -81,7 +77,7 @@
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="text-right my-8">Пополнение карты</h1>
-                <p class="text-right text-body-1">Используйте наш сервис для быстрого и удобного пополнения карты «ИМЯ_КАРТЫ» через любой удобный для Вас банк</p>
+                <p class="text-right text-body-1">Используйте наш сервис для быстрого и удобного пополнения карты «НовоКарта» через любой удобный для Вас банк</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -97,37 +93,30 @@
                </div>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-lg-none my-md-6 my-3">НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" v-show="!logged" color="accent" href="/register" class="my-lg-16 my-md-6 my-3" :x-large="$vuetify.breakpoint.lg" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs">НАЧАТЬ</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
-              <v-scroll-y-reverse-transition appear hide-on-leave>
-                <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-none d-lg-flex my-lg-16" x-large>НАЧАТЬ</v-btn>
-                </div>
-              </v-scroll-y-reverse-transition>
+
               <v-spacer></v-spacer>
+
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-lg-none my-md-6 my-3">Уже пользуетесь картой?</v-btn>
-                </div>
-              </v-scroll-y-reverse-transition>
-              <v-scroll-y-reverse-transition appear hide-on-leave>
-                <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-none d-lg-flex my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" v-show="!logged" color="text_color" href="/login" class="my-lg-16 my-md-6 my-3" :x-large="$vuetify.breakpoint.lg" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs">Уже пользуетесь картой?</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
               <v-spacer></v-spacer>
             <!-- </div> -->
 
               <v-fade-transition>
-                <v-btn color="accent" elevation="2" bottom right fixed rounded class="d-lg-none ma-md-6 ma-3" v-show="infofab" href="/register">
+                <v-btn color="accent" elevation="3" :x-large="($vuetify.breakpoint.lg || $vuetify.breakpoint.xl)" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs" bottom right fixed rounded class="ma-lg-12 ma-md-6 ma-3" v-show="infofab" href="/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>
+
               <v-fade-transition>
-                <v-btn color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-flex ma-lg-12" v-show="infofab" href="/register">
-                    {{infofab}}
+                <v-btn color="accent" elevation="3" style="z-index: 50;" :x-large="($vuetify.breakpoint.lg || $vuetify.breakpoint.xl)" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs" bottom right fixed rounded class="ma-lg-12 ma-md-6 ma-3" v-show="logged" href="/main/map">
+                    СЕРВИСЫ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>
@@ -156,7 +145,8 @@
   export default {
     name: 'InfoPage',
     data: () => ({
-        infofab: true,
+        infofab: false,
+        logged: false,
         snackbar_info: false,
         snack_text: '',
         timeout: 2000,
@@ -164,6 +154,9 @@
     methods:{
       updateDataX(bool) {
         this.infofab = bool ;
+        if(this.logged){
+          this.infofab = false;
+        }
       },
       accessibility_eyes() {
         sessionStorage.setItem('acc_eye', (sessionStorage.acc_eye == "false"));
@@ -178,28 +171,31 @@
       },
     },
     updated(){
-      if ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != "")) {
-        location.href = "/main/map";
-      }
+      this.logged = ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != ""));
+      // if ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != "")) {
+        // location.href = "/main/map";
+      // }
     },
     mounted(){
       var vm = this;
-      window.addEventListener('scroll', function() {
-        
-        var rectx = this.document.getElementById("infobtn").getBoundingClientRect();
-        var htmlx = this.document.documentElement;
-        if (
-          rectx.top >= 0 &&
-          rectx.left >= 0 &&
-          rectx.bottom <= (window.innerHeight || htmlx.clientHeight) &&
-          rectx.right <= (window.innerWidth || htmlx.clientWidth)
-        ){
-          vm.updateDataX(false);
-        }else{
-          vm.updateDataX(true);
-        }
-        
-      });
+      if(!this.logged){
+        window.addEventListener('scroll', function() {
+          
+          var rectx = this.document.getElementById("infobtn").getBoundingClientRect();
+          var htmlx = this.document.documentElement;
+          if (
+            rectx.top >= 0 &&
+            rectx.left >= 0 &&
+            rectx.bottom <= (window.innerHeight || htmlx.clientHeight) &&
+            rectx.right <= (window.innerWidth || htmlx.clientWidth)
+          ){
+            vm.updateDataX(false);
+          }else{
+            vm.updateDataX(true);
+          }
+          
+        });
+      }
     }
 
   }
