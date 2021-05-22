@@ -1,37 +1,25 @@
 <template>
-
-  <v-container>
-      <div class="flex-column flex-lg-row" v-scroll-reveal>
-        <v-card-title class="text-h5">
-          Map
-        </v-card-title>
-			<div style="height: 50vh; width: 80vw" id="myMap"></div>
-      </div>
-      <v-card-title class="text-h5">
-        <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-            <v-btn> Туризм </v-btn> 
-            <v-spacer></v-spacer>
-          </v-card>
-          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-            <v-btn> Досуг </v-btn> 
-            <v-spacer></v-spacer>
-          </v-card>
-          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-            <v-btn @click="eventsMaps = true"> События </v-btn>
-            <v-spacer></v-spacer>
-          </v-card>
-          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-            <v-btn @click="routesMaps = true"> Маршруты </v-btn>
-            <v-spacer></v-spacer>
-          </v-card>
-        </div>
+  <v-card outlined>
+      <v-card-title class="justify-center">
+        Места
       </v-card-title>
+
+			<div style="height: 50vh;" id="myMap"></div>
+      
+      <div class="d-flex flex-row my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
+          <v-spacer></v-spacer>
+          <v-btn> Туризм </v-btn> 
+          <v-spacer></v-spacer>
+          <v-btn> Досуг </v-btn> 
+          <v-spacer></v-spacer>
+          <v-btn @click="eventsMaps = true"> События </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn @click="routesMaps = true"> Маршруты </v-btn>
+          <v-spacer></v-spacer>
+      </div>
+
       <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-0" color="transparent">
-            <!-- <v-card-title class="text-h5">
-              Settings
-            </v-card-title> -->
             <h1>{{ item.name }} </h1>
             <h3>{{ item.typeName }} </h3>
             <p class=".text-body-1"> {{ item.text }} </p>
@@ -40,9 +28,6 @@
       </div>
       <div v-if="routesMaps" class="d-none d-lg-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column ma-0" color="transparent">
-            <!-- <v-card-title class="text-h5">
-              Settings
-            </v-card-title> -->
             <h1>{{ item.name }} </h1>
             <h3>{{ item.typeName }} </h3>
             <p class=".text-body-1"> {{ item.text }} </p>
@@ -50,21 +35,21 @@
           </v-card>
       </div>
 
-		<div v-if="eventsMaps" class="d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-            <h1 class="my-8">Концерт </h1>
-            <p class="text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </v-card>
-          <v-spacer></v-spacer>
-          <v-card elevation="0" class="d-lg-none" color="transparent">
-            <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
-          </v-card>
-          <v-card elevation="0" class="d-none d-lg-block" max-width="50%" color="transparent">
-            <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
-          </v-card>
-        </div>
+      <div v-if="eventsMaps" class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+        <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+          <h1 class="my-8">Концерт </h1>
+          <p class="text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </v-card>
+        <v-spacer></v-spacer>
+        <v-card elevation="0" class="d-lg-none" color="transparent">
+          <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
+        </v-card>
+        <v-card elevation="0" class="d-none d-lg-block" max-width="50%" color="transparent">
+          <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
+        </v-card>
+      </div>
 
-  </v-container>
+  </v-card>
 </template>
 
 <script>
