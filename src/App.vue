@@ -24,16 +24,19 @@ export default {
       sessionStorage.setItem('acc_eye', false);
     }
 
-    if (typeof sessionStorage.logged_in == 'undefined') {
+    if ((typeof sessionStorage.logged_in == 'undefined')||(sessionStorage.logged_in == '')) {
       sessionStorage.setItem('logged_in', "");
 
-      sessionStorage.setItem('logged_name', "");
-      sessionStorage.setItem('logged_fam', "");
-      sessionStorage.setItem('logged_otch', "");
+      sessionStorage.setItem('logged_name', "tst");
+      sessionStorage.setItem('logged_fam', "tst");
+      sessionStorage.setItem('logged_otch', "tst");
       sessionStorage.setItem('logged_type', false);
 
       sessionStorage.setItem('logged_email', "");
       sessionStorage.setItem('logged_phone', "");
+
+      sessionStorage.setItem('logged_money', 0);
+      sessionStorage.setItem('logged_bonus', 0);
     }
 
     //dark-theme
