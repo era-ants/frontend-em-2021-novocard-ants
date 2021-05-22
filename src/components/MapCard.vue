@@ -6,7 +6,7 @@
 
 			<div style="height: 50vh;" id="myMap"></div>
       
-      <div class="d-flex flex-row my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
+      <div class="d-flex flex-md-row flex-column my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
           <v-spacer></v-spacer>
           <v-btn> Туризм </v-btn> 
           <v-spacer></v-spacer>
