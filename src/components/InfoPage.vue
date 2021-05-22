@@ -24,7 +24,7 @@
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="my-8">Оплата проезда</h1>
-                <p class="text-body-1">Используя данные карты «НовоКарта», пассажиры могут быстро оплачивать проезд на общественном транспорте, получая скидку согласно выбранному тарифному плану.</p>
+                <p class="text-body-1 text-justify">Используя данные карты «НовоКарта», пассажиры могут быстро оплачивать проезд на общественном транспорте, получая скидку согласно выбранному тарифному плану.</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -44,7 +44,7 @@
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="text-right my-8">Туризм</h1>
-                <p class="text-right text-body-1">Сервис «Места» НовоКарты предоставляет возможность подробнее узнать о культурно-досуговых возможностях города, а также выбрать один из подготовленных туристических маршрутов для приятной прогулки. </p>
+                <p class="text-right text-justify text-body-1">Сервис «Места» НовоКарты предоставляет возможность подробнее узнать о культурно-досуговых возможностях города, а также выбрать один из подготовленных туристических маршрутов для приятной прогулки. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -57,7 +57,7 @@
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="my-8">Бонусная система</h1>
-                <p class="text-body-1">Оплачивая расходы картой «НовоКарта» и выполняя различные задания, Вы накапливаете бонусные баллы, которые в дальнейшем сможете потратить на скидки в магазинах, музеях и театрах, оплату проезда в общественном транспорте. </p>
+                <p class="text-body-1 text-justify">Оплачивая расходы картой «НовоКарта» и выполняя различные задания, Вы накапливаете бонусные баллы, которые в дальнейшем сможете потратить на скидки в магазинах, музеях и театрах, оплату проезда в общественном транспорте. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -77,7 +77,7 @@
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
                 <h1 class="text-right my-8">Пополнение карты</h1>
-                <p class="text-right text-body-1">Используйте наш сервис для быстрого и удобного пополнения карты «НовоКарта» через любой удобный для Вас банк</p>
+                <p class="text-right text-body-1 text-justify">Используйте наш сервис для быстрого и удобного пополнения карты «НовоКарта» через любой удобный для Вас банк</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -124,7 +124,7 @@
       <v-footer padless>
         <!-- link to administration -->
         <v-col class="text-center" cols="12" >
-          <a href="https://admnvrsk.ru/" style="font-weight: 500;" class="text-decoration-underline" >Официальный сайт администрации и городской Думы Муниципального Образования "Город-Герой Новороссийск" </a>
+          <a href="https://admnvrsk.ru/" class="light-blue--text text-decoration-underline" style="font-weight: 500;" >Официальный сайт администрации и городской Думы Муниципального Образования "Город-Герой Новороссийск" </a>
         </v-col>
         <v-col class="text-center" cols="12" >
           <strong>Карта жителя Новороссийска</strong> — {{ new Date().getFullYear() }}
