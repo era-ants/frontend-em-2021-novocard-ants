@@ -14,17 +14,8 @@ import RegistrationCard from './components/RegistrationCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
 
-import YmapPlugin from 'vue-yandex-maps'
-
 import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
-
-const settings = {
-  apiKey: '',
-  lang: 'ru_RU',
-  coordorder: 'latlong',
-  version: '2.1'
-}
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -90,8 +81,6 @@ Vue.use(VueScrollReveal, {
 });
 
 Vue.use(VueMask);
-
-Vue.use(YmapPlugin, settings)
 
 new Vue({
   vuetify,
