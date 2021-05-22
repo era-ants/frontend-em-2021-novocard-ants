@@ -18,7 +18,7 @@
 			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
 				<v-card width=30% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
 				</v-card>
-				<v-card width=30% elevation="0" class="ma-2" color="transparent">
+				<v-card width=50% elevation="0" class="ma-2" color="transparent">
 					<h2 class="my-0"> Ваш баланс: </h2>
 				</v-card>
 			</div>

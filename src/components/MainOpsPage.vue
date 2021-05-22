@@ -1,6 +1,8 @@
 <template>
   <v-app>
-      <v-app-bar app clipped-left color="primary" dark elevate-on-scroll>
+
+      <v-app-bar style="z-index: 1000" app clipped-left color="primary" dark elevate-on-scroll>
+        <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
         <img class="mr-3" :src="require('../assets/app_icon.png')" height="48"/>
         <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
         <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 14px;">Карта жителя Новороссийска</v-toolbar-title>

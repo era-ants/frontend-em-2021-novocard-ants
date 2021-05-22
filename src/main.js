@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import VueQrcodeReader from "vue-qrcode-reader";
 
 import InfoPage from './components/InfoPage.vue'
 import MainOps from './components/MainOpsPage.vue'
@@ -9,12 +10,21 @@ import SettingsCard from './components/SettingsCard.vue'
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import LoginCard from './components/LoginCard.vue'
+import RegistrationCard from './components/RegistrationCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
 
-import VueScrollReveal from 'vue-scroll-reveal'
 import YmapPlugin from 'vue-yandex-maps'
+
+import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
+
+const settings = {
+  apiKey: '',
+  lang: 'ru_RU',
+  coordorder: 'latlong',
+  version: '2.1'
+}
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -28,6 +38,12 @@ const routes = [
         // when /user/:id/profile is matched
         path: 'login',
         component: LoginCard
+      },
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: 'register',
+        component: RegistrationCard
       },
       {
         // UserProfile will be rendered inside User's <router-view>
@@ -59,17 +75,10 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
-const settings = {
-  apiKey: '',
-  lang: 'ru_RU',
-  coordorder: 'latlong',
-  version: '2.1'
-}
-
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-Vue.use(YmapPlugin, settings)
+Vue.use(VueQrcodeReader);
 
 Vue.use(VueScrollReveal, {
   class: 'v-scroll-reveal', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
@@ -81,6 +90,8 @@ Vue.use(VueScrollReveal, {
 });
 
 Vue.use(VueMask);
+
+Vue.use(YmapPlugin, settings)
 
 new Vue({
   vuetify,
