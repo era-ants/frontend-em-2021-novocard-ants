@@ -23,7 +23,7 @@
           <v-icon>mdi-cog-outline</v-icon>
         </v-btn> -->
 
-        <v-menu offset-y transition="slide-y-transition">
+        <v-menu style="z-index: 1000" offset-y transition="slide-y-transition">
           <template v-slot:activator="{ on, attrs }">
             <v-badge bordered bottom color="accent2" dot offset-x="16" offset-y="16" >
               <v-btn icon v-bind="attrs" v-on="on">

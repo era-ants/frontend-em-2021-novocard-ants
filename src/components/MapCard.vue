@@ -29,9 +29,8 @@
       <v-card-title class="text-h5">
         Рекуомендуем Вам:
       </v-card-title>
-      <v-row dense class="my-12">
-        <v-col cols="6">
-          <v-card elevation="0">
+      <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
             <!-- <v-card-title class="text-h5">
               Settings
             </v-card-title> -->
@@ -39,13 +38,13 @@
             <h3>About Subtitle 1</h3>
             <p class=".text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </v-card>
-        </v-col>
-        <v-col cols="6">
-          <v-card v-on:click="selectRecommended(0)" class="change_cursor" elevation="0">
-            <v-img src="../assets/m1.jpg"></v-img>
+          <v-card v-on:click="selectRecommended(0)" elevation="0" class="d-lg-none" color="transparent">
+            <v-img class="ma-8" src="../assets/m1.jpg"></v-img>
           </v-card>
-        </v-col>
-      </v-row>
+          <v-card v-on:click="selectRecommended(0)" elevation="0" class="d-none d-lg-block" max-width="50%" color="transparent">
+            <v-img class="ma-8" src="../assets/m1.jpg"></v-img>
+          </v-card>
+      </div>
     </v-card>
   </v-container>
 </template>

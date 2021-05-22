@@ -42,7 +42,7 @@
 					<a class="my-0" href="URL"> Как получать баллы </a>
 				</v-card>
 				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
-					<a class="my-0" href="URL"> Как пополнить </a>
+					<a class="my-0" href="#/main/paycard"> Как пополнить </a>
 				</v-card>
 				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
 					<a class="my-0" href="URL"> Как получать баллы </a>
