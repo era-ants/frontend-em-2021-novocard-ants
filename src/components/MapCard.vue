@@ -73,6 +73,7 @@ import img from "../assets/m1.jpg"
 import load from 'ymaps-loader'
   let ymaps___;
   let myMap___;
+  let remMulti = null;
 
 
   let listMarker = [
@@ -243,8 +244,12 @@ import load from 'ymaps-loader'
         console.log(item);
         console.log(ymaps___);
         console.log(myMap___);
+		if (remMulti != null)
+        {
+			myMap___.geoObjects.remove(remMulti);
+        }
 
-        let multiRoute = new ymaps___.multiRouter.MultiRoute({   
+			remMulti = new ymaps___.multiRouter.MultiRoute({   
               // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
               referencePoints: item.coords,
           params: {
@@ -257,7 +262,7 @@ import load from 'ymaps-loader'
           boundsAutoApply: true
         });
         // Добавление маршрута на карту.
-        myMap___.geoObjects.add(multiRoute);
+		myMap___.geoObjects.add(remMulti);
       },
     },
     name: 'MapCard',
