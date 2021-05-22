@@ -1,7 +1,7 @@
 <template>
     <v-card outlined>
-        <v-card-title class="text-h5">
-          Карта
+        <v-card-title class="justify-center">
+          Места
         </v-card-title>
           <yandex-map 
             :coords="coorLocation"

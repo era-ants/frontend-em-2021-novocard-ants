@@ -1,6 +1,6 @@
 <template>
   <v-card outlined>
-    <v-card-title class="text-h5">
+    <v-card-title class="justify-center">
       Пропуск
     </v-card-title>
     <v-img :src="require('../assets/qr-access.png')" class="d-none d-lg-block" max-height="70vh" contain :aspect-ratio="1/1" ></v-img>

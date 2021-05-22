@@ -12,13 +12,9 @@
         </v-btn>
 
         <template v-slot:extension>
-          <v-tabs align-with-title class="mx-16 d-none d-lg-block" slider-color="yellow" fixed-tabs v-model="reg_tab">
-            <v-tab key="reg_guest"><v-icon class="mr-4">mdi-account-circle-outline</v-icon>  Карта гостя </v-tab>
-            <v-tab key="reg_citizen"><v-icon class="mr-4">mdi-account-circle</v-icon> Карта жителя </v-tab>
-          </v-tabs>
-          <v-tabs class="d-lg-none" centered slider-color="yellow" fixed-tabs v-model="reg_tab">
-            <v-tab key="reg_guest"><v-icon class="mr-2">mdi-account-circle-outline</v-icon>   Карта гостя </v-tab>
-            <v-tab key="reg_citizen"><v-icon class="mr-2">mdi-account-circle</v-icon> Карта жителя </v-tab>
+          <v-tabs :align-with-title="$vuetify.breakpoint.lg" class="mx-lg-16 mx-md-8" slider-color="yellow" :fixed-tabs="$vuetify.breakpoint.lg" v-model="reg_tab">
+            <v-tab key="reg_guest"><v-icon class="mr-lg-4 mr-2">mdi-account-circle-outline</v-icon>  Карта гостя </v-tab>
+            <v-tab key="reg_citizen"><v-icon class="mr-lg-4 mr-2">mdi-account-circle</v-icon> Карта жителя </v-tab>
           </v-tabs>
         </template>
       </v-app-bar>
@@ -30,7 +26,7 @@
                 <v-tab-item key="reg_guest" >
                   <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
                     <!-- <v-img :src="require('../assets/card-bg.png')" contain> -->
-                      <v-card-title class="text-h5 justify-center">
+                      <v-card-title class="justify-center">
                         Зарегистрировать карту гостя
                       </v-card-title> 
                       
@@ -66,7 +62,7 @@
                 </v-tab-item>
                 <v-tab-item key="reg_citizen" >
                   <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                    <v-card-title class="text-h5 justify-center">
+                    <v-card-title class="justify-center">
                       Зарегистрировать карту жителя
                     </v-card-title> 
                     <v-text-field v-model="first_name" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2" color="accent" label="Имя" placeholder=" " :rules="not_empty" ></v-text-field>

@@ -29,8 +29,9 @@
                 <v-switch v-model="card_type"></v-switch>
               </div> -->
 
-              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                <v-list min-width="100%">
+              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-lg-16 mt-md-8 mt-4">
+
+                <!-- <v-list min-width="100%">
                   <v-list-item link @click="card_type = !card_type">
                     <v-list-item-content>
                       <v-list-item-title v-show="card_type">Карта жителя?</v-list-item-title>
@@ -40,7 +41,14 @@
                       <v-switch v-model="card_type" title="UserType" color="accent" inset readonly></v-switch>
                     </v-list-item-action>
                   </v-list-item>
-                </v-list>
+                </v-list> -->
+                <v-btn :outlined="card_type" tile  elevation="0" :disabled="card_type" width="50%" color="accent" @click="card_type = !card_type">
+                  <span>Карта жителя</span>
+                </v-btn>
+                <v-btn :outlined="!card_type" tile  elevation="0" :disabled="!card_type" width="50%" color="accent" @click="card_type = !card_type" >
+                  <span>Карта гостя</span>
+                </v-btn>
+
               </div>
 
 
@@ -85,7 +93,7 @@
     name: 'LoginPage',
     data: function () {
       return {
-        card_type: false,
+        card_type: false, //
         email: null, 
         phonenum: null, 
         passwrd: null, 
