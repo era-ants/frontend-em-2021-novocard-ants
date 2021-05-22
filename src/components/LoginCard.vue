@@ -1,11 +1,11 @@
 <template>
   <v-card outlined>
-    <v-card-title class="text-h5">
+    <v-card-title  class="text-h5">
       Login
     </v-card-title>
     <v-text-field id="card_number_field" class="ma-16" color="accent" label="Card Number" placeholder="0000-0000-0000-0000" outlined single-line ></v-text-field>
     <v-card-actions>
-      <v-btn color="accent" class="ma-16" right elevation="0" @click="LogInByCardNumber()" >
+      <v-btn href="#/main/personal" color="accent" class="ma-16" right elevation="0" >
         Log In
       </v-btn>
     </v-card-actions>
