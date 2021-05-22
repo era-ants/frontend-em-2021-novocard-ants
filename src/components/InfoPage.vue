@@ -97,37 +97,23 @@
                </div>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-lg-none my-md-6 my-3">НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" color="accent" href="/register" class="my-lg-16 my-md-6 my-3" :x-large="$vuetify.breakpoint.lg" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs">НАЧАТЬ</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
-              <v-scroll-y-reverse-transition appear hide-on-leave>
-                <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="/register" class="d-none d-lg-flex my-lg-16" x-large>НАЧАТЬ</v-btn>
-                </div>
-              </v-scroll-y-reverse-transition>
+
               <v-spacer></v-spacer>
+
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-lg-none my-md-6 my-3">Уже пользуетесь картой?</v-btn>
-                </div>
-              </v-scroll-y-reverse-transition>
-              <v-scroll-y-reverse-transition appear hide-on-leave>
-                <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="d-none d-lg-flex my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="/login" class="my-lg-16 my-md-6 my-3" :x-large="$vuetify.breakpoint.lg" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs">Уже пользуетесь картой?</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
               <v-spacer></v-spacer>
             <!-- </div> -->
 
               <v-fade-transition>
-                <v-btn color="accent" elevation="2" bottom right fixed rounded class="d-lg-none ma-md-6 ma-3" v-show="infofab" href="/register">
+                <v-btn color="accent" elevation="2" :x-large="($vuetify.breakpoint.lg || $vuetify.breakpoint.xl)" :large="$vuetify.breakpoint.md" :small="$vuetify.breakpoint.xs" bottom right fixed rounded class="ma-lg-12 ma-md-6 ma-3" v-show="infofab" href="/register">
                     НАЧАТЬ
-                    <v-icon right dark > mdi-arrow-right </v-icon>
-                </v-btn>
-              </v-fade-transition>
-              <v-fade-transition>
-                <v-btn color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-flex ma-lg-12" v-show="infofab" href="/register">
-                    {{infofab}}
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>
@@ -157,6 +143,7 @@
     name: 'InfoPage',
     data: () => ({
         infofab: true,
+        infofab2: true,
         snackbar_info: false,
         snack_text: '',
         timeout: 2000,
@@ -164,6 +151,7 @@
     methods:{
       updateDataX(bool) {
         this.infofab = bool ;
+        this.infofab2 = bool ;
       },
       accessibility_eyes() {
         sessionStorage.setItem('acc_eye', (sessionStorage.acc_eye == "false"));

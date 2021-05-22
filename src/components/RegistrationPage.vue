@@ -47,10 +47,10 @@
 
                       </v-select>
                       <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                        <v-text-field v-model="phonenum" type="number" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="8(800)-555-35-35"  maxlength="11" :rules="chars11"></v-text-field>
+                        <v-text-field v-model="phonenum" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="8(800)-555-35-35"  maxlength="12" :rules="chars12"></v-text-field>
                       </div>
                       <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                        <v-text-field v-model="passwrd"  type="password" color="accent" label="Пароль" placeholder="" minlength="11" :rules="chars11"></v-text-field>
+                        <v-text-field v-model="passwrd"  type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="chars11"></v-text-field>
                       </div>
                       <v-card-actions>
                         <v-btn text color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" >
@@ -84,7 +84,7 @@
                       <v-text-field v-model="email" type="email" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Почта" placeholder=" @mail.ru" :rules="not_empty"></v-text-field>
                     </div>
                     <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                      <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="11" :rules="chars11"></v-text-field>
+                      <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="chars11"></v-text-field>
                     </div>
 
 
@@ -132,18 +132,18 @@ export default {
     passwrd: null, 
 
     sub_items: [
-      { title: 'Без льгот', int: '0' },
-      { title: 'Пожилой', int: '1' },
-      { title: 'Инвалид', int: '2' },
-      { title: 'Ветеран', int: '3' },
+      { title: 'Без льгот', int: '1' },
+      { title: 'Пожилой', int: '2' },
+      { title: 'Инвалид', int: '3' },
+      { title: 'Ветеран', int: '4' },
     ],
     snackbar: false,
     snack_text: '',
-    timeout: 2000,
+    timeout: 6000,
     not_empty: [v => v.length != 0 || 'Поле не пустое'],
     chars6: [v => !!v || 'Поле не пустое', v => v.length == 6 || '6 sym'],
     chars4: [v => !!v || 'Поле не пустое', v => v.length == 4 || '4 sym'],
-    chars11: [v => !!v || 'Поле не пустое', v => v.length == 11 || 'недостаточно'],
+    chars12: [v => !!v || 'Поле не пустое', v => v.length == 12 || 'недостаточно'],
   }),
 
   methods: {
@@ -151,11 +151,12 @@ export default {
       // 0-guest, 1-citizen
       let allow_registration = true;
 
-      var type = "RegisterGuest";
+      var type;
       var dataToSend;
 
       if(typeint == 0){
         // console.log(this.sub);
+        type = "RegisterGuest";
         dataToSend = JSON.stringify({
           "firstName": this.first_name, 
           "lastName": this.last_name,
@@ -197,7 +198,8 @@ export default {
             body: dataToSend,
         }).then(resp => {
             console.log("Status: " + resp.status);
-            if (resp.status === 200) {
+            if (resp.status === 201) {
+
                 return resp.json()
             } else {
                 return Promise.reject("server")
@@ -205,7 +207,8 @@ export default {
             //console.log(resp);
         })
         .then(dataJson => {
-            this.snack_text = "Зарегистрирован: " + this.first_name + " " + this.last_name + " " + dataJson.clientGuid;
+          console.log(dataJson.clientGuid);
+            this.snack_text = "Зарегистрирован: " + this.first_name + " " + this.last_name; //+  " " + dataJson.clientGuid;
             this.snackbar = true;
         })
       }else{

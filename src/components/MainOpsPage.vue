@@ -102,7 +102,7 @@ export default {
     group: null,
     accmenu:[
       { title: 'Сменить Фото', link: '/login' },
-      { title: 'Ред. профиль', link: '/login' },
+      // { title: 'Ред. профиль', link: '/login' },
     ],
     tab: null,
     tab_items: [

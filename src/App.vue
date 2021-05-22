@@ -26,6 +26,14 @@ export default {
 
     if (typeof sessionStorage.logged_in == 'undefined') {
       sessionStorage.setItem('logged_in', "");
+
+      sessionStorage.setItem('logged_name', "");
+      sessionStorage.setItem('logged_fam', "");
+      sessionStorage.setItem('logged_otch', "");
+      sessionStorage.setItem('logged_type', false);
+
+      sessionStorage.setItem('logged_email', "");
+      sessionStorage.setItem('logged_phone', "");
     }
 
     //dark-theme
