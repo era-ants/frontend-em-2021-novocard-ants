@@ -4,8 +4,8 @@
         
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon_info.png')" height="48"/>
         <v-spacer></v-spacer>
-        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя Новороссийска</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя и гостя</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя и гостя</v-toolbar-title>
         <v-spacer></v-spacer>
 
 
@@ -27,8 +27,8 @@
 
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
-                <h1 class="my-8">About Title 1</h1>
-                <p class="text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1 class="my-8">Оплата проезда</h1>
+                <p class="text-body-1">Используя данные карты «ИМЯ_КАРТЫ», пассажиры могут быстро оплачивать проезд на общественном транспорте, получая скидку согласно выбранному тарифному плану.</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -47,8 +47,8 @@
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
-                <h1 class="text-right my-8">About Title 2</h1>
-                <p class="text-right text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1 class="text-right my-8">Туризм</h1>
+                <p class="text-right text-body-1">Сервис «ИМЯ_СЕРВИСА» предоставляет возможность подробнее узнать о культурно-досуговых возможностях города, а также выбрать один из подготовленных туристических маршрутов для приятной прогулки. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -60,8 +60,8 @@
 
             <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
-                <h1 class="my-8">About Title 3</h1>
-                <p class="text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1 class="my-8">Бонусная система</h1>
+                <p class="text-body-1">Оплачивая расходы картой «ИМЯ_КАРТЫ» и выполняя различные задания, Вы накапливаете бонусные баллы, которые в дальнейшем сможете потратить на скидки в магазинах, музеях и театрах, оплату проезда в общественном транспорте. </p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -80,8 +80,8 @@
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-flex flex-column ma-lg-8 ma-md-4 ma-2" color="transparent">
-                <h1 class="text-right my-8">About Title 4</h1>
-                <p class="text-right text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1 class="text-right my-8">Пополнение карты</h1>
+                <p class="text-right text-body-1">Используйте наш сервис для быстрого и удобного пополнения карты «ИМЯ_КАРТЫ» через любой удобный для Вас банк</p>
               </v-card>
               <v-spacer></v-spacer>
               <v-card elevation="0" class="d-lg-none" color="transparent">
@@ -127,7 +127,7 @@
               </v-fade-transition>
               <v-fade-transition>
                 <v-btn color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-flex ma-lg-12" v-show="infofab" href="/register">
-                    НАЧАТЬ
+                    {{infofab}}
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>

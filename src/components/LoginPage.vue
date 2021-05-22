@@ -2,8 +2,8 @@
   <v-app>
       <v-app-bar color="primary" dark absolute app>
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon.png')" height="48"/>
-        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя Новороссийска</v-toolbar-title>
-        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя Новороссийска</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-none d-lg-block">Карта жителя и гостя</v-toolbar-title>
+        <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Карта жителя и гостя</v-toolbar-title>
         <v-spacer></v-spacer>
 
 
@@ -20,16 +20,50 @@
               <v-card-title class="justify-center">
                 Вход в систему
               </v-card-title>
-              <v-text-field id="card_number_field" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-16" color="accent" label="Card Number" placeholder="0000-0000-0000-0000" outlined single-line ></v-text-field>
+
+
+              <!-- <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                <span v-show="card_type" >Карта жителя?</span>
+                <span v-show="!card_type" >Карта гостя?</span>
+                <v-spacer></v-spacer>
+                <v-switch v-model="card_type"></v-switch>
+              </div> -->
+
+              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                <v-list min-width="100%">
+                  <v-list-item link @click="card_type = !card_type">
+                    <v-list-item-content>
+                      <v-list-item-title v-show="card_type">Карта жителя?</v-list-item-title>
+                      <v-list-item-title v-show="!card_type">Карта гостя?</v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-action>
+                      <v-switch v-model="card_type" title="UserType" color="accent" inset readonly></v-switch>
+                    </v-list-item-action>
+                  </v-list-item>
+                </v-list>
+              </div>
+
+
+              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2" v-show="!card_type" >
+                <v-text-field v-model="phonenum" type="number" v-show="!card_type" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="8(800)-555-35-35"  maxlength="11" :rules="chars11"></v-text-field>
+              </div>
+              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2" v-show="card_type">
+                <v-text-field v-model="email" type="email" v-show="card_type" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Почта" placeholder="example@mail.ru" :rules="not_empty"></v-text-field>
+              </div>
+              <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
+                <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="11" :rules="chars11"></v-text-field>
+              </div>
+              
+              
               <v-card-actions>
                 <!-- <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/main/personal" >
                   Аккаунт
                 </v-btn> -->
-                <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/register" >
+                <v-btn text color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="/register" >
                   Создать аккаунт
                 </v-btn>
                 <v-spacer></v-spacer>
-                <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="LogInByCardNumber()" >
+                <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="LogIn()" >
                   Вход
                 </v-btn>
               </v-card-actions>
@@ -51,36 +85,49 @@
     name: 'LoginPage',
     data: function () {
       return {
+        card_type: false,
+        email: null, 
+        phonenum: null, 
+        passwrd: null, 
         snackbar: false,
         snack_text: '',
         timeout: 2000,
+        not_empty: [v => v.length != 0 || 'Поле не пустое'],
+        chars11: [v => !!v || 'Поле не пустое', v => v.length == 11 || 'недостаточно'],
       }
     },
     methods:{
-      LogInByCardNumber(){
-        let card_number = document.getElementById("card_number_field").value;
-        console.log(card_number);
-        
+      LogIn(){
+        let allow_login = true;
+        var log_text;
 
-        if (card_number != ''){
-          fetch('http://178.154.254.162:8002/Clients/'+ card_number, {
-              method: 'GET',
+        if(this.card_type){
+          //Citizen-email
+          log_text = "Citizen/?email=" + this.email + "&password=" + this.passwrd;
+        }
+        else{
+          //Guest-phone
+          log_text = "Guest/?phoneNumber=" + this.phonenum + "&password=" + this.passwrd;
+
+        }
+
+        if (allow_login){
+          fetch('http://178.154.254.162:8002/Authentication/'+log_text, {
+              method: 'POST',
               headers: {
                 "Access-Control-Allow-Origin": "*",
               },
           }).then(resp => {
               console.log("Status: " + resp.status);
               if (resp.status === 200) {
+                  this.snack_text = "Вход произведен";
+                  this.snackbar = true;
                   return resp.json()
               } else {
-                  this.snack_text = "Не залогинен";
+                  this.snack_text = "Вход не произведен";
                   this.snackbar = true;
                   return Promise.reject("server")
               }
-          })
-          .then(dataJson => {
-              this.snack_text = "Залогинен!: " + dataJson.firstName + " " + dataJson.lastName;
-              this.snackbar = true;
           })
         }else{
           // alert("пуста!!!ууу!");
