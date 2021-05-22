@@ -17,15 +17,15 @@
         <v-container class="d-flex flex-xl-row flex-lg-column pa-2">
           <div style="width: 100%">
             <v-card outlined>
-              <v-text-field id="card_number_field" class="ma-lg-16 ma-md-8 ma-sm-4 ma-2" color="accent" label="Card Number" placeholder="0000-0000-0000-0000" outlined single-line ></v-text-field>
+              <v-text-field id="card_number_field" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-16" color="accent" label="Card Number" placeholder="0000-0000-0000-0000" outlined single-line ></v-text-field>
               <v-card-actions>
-                <v-btn color="accent" class="ma-lg-16 ma-md-8 ma-sm-4 ma-2" right elevation="0" @click="LogInByCardNumber()" >
-                  Log In
+                <v-btn color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="LogInByCardNumber()" >
+                  Вход
+                </v-btn>
+                <v-btn outlined color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" href="#/main/personal" >
+                  Аккаунт
                 </v-btn>
               </v-card-actions>
-              <v-snackbar v-model="snackbar" :timeout="timeout" >
-                {{snack_text}}
-              </v-snackbar>
             </v-card>
           </div>
         </v-container>
@@ -66,16 +66,19 @@
               if (resp.status === 200) {
                   return resp.json()
               } else {
+                  this.snack_text = "Не залогинен";
+                  this.snackbar = true;
                   return Promise.reject("server")
               }
           })
           .then(dataJson => {
-              this.snack_text = "Logged In!: " + dataJson.firstName + " " + dataJson.lastName;
+              this.snack_text = "Залогинен!: " + dataJson.firstName + " " + dataJson.lastName;
               this.snackbar = true;
           })
         }else{
           // alert("пуста!!!ууу!");
         }
+
       },
     }
 

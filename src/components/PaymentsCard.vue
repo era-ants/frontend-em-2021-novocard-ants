@@ -1,5 +1,5 @@
 <template>
-	<v-container>
+  <v-card outlined>
 		<div style="position: relative; left: 1.3em" class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<v-card style="z-index: 100" elevation="0" class="d-flex flex-column ma-0" color="transparent">
 				<v-sheet width="25em" height="13em" color="red">
@@ -181,7 +181,7 @@
 				</v-btn>
 			</template>
 		</v-snackbar>
-	</v-container>
+	</v-card>
 </template>
 
 <script>

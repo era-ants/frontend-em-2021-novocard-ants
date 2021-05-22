@@ -80,6 +80,11 @@
         </v-container>
         <v-snackbar v-model="snackbar" :timeout="timeout" >
           {{snack_text}}
+          <template v-slot:action="{ attrs }">
+            <v-btn color="accent2" text v-bind="attrs" href="#/login" >
+              Логин
+            </v-btn>
+          </template>
         </v-snackbar>
       </v-main>
   </v-app>
@@ -152,6 +157,8 @@ export default {
         })
       }else{
         // alert("пуста!!!ууу!");
+        this.snack_text = "Не Зарегистрирован";
+        this.snackbar = true;
       }
     },
     

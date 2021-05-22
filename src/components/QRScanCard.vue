@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-card-title class="text-h5">
-      QR Scan
+      QR Сканер
     </v-card-title>
     <v-card outlined>
       <QrcodeStream/>

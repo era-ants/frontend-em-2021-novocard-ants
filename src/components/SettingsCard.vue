@@ -1,20 +1,20 @@
 <template>
   <v-card outlined>
     <v-card-title class="text-h5">
-      Settings
+      Настройки
     </v-card-title>
     <v-list>
       <v-divider></v-divider>
-      <v-subheader inset>Notifications</v-subheader>
+      <v-subheader inset>Уведомления</v-subheader><!--  Notifications -->
       <v-list-item link @click="notification_switch = !notification_switch">
         <v-list-item-icon>
           <v-icon>mdi-bell-ring</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Notifications</v-list-item-title>
+          <v-list-item-title>Уведомления</v-list-item-title><!--  Notifications -->
         </v-list-item-content>
         <v-list-item-action>
-          <v-switch v-model="notification_switch" title="Notifications" color="accent" inset readonly></v-switch>
+          <v-switch v-model="notification_switch" title="Уведомления" color="accent" inset readonly></v-switch>
         </v-list-item-action>
       </v-list-item>
       <!-- <v-list-item
@@ -29,13 +29,13 @@
         </v-list-item-content>
       </v-list-item> -->
       <v-divider></v-divider>
-      <v-subheader inset>Appearance</v-subheader>
+      <v-subheader inset>Внешний вид</v-subheader><!--  Appearance -->
       <v-list-item link @click="ChangeTheme()" :disabled="local_theme">
         <v-list-item-icon>
           <v-icon>mdi-brightness-4</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Dark Mode</v-list-item-title>
+          <v-list-item-title>Темная тема</v-list-item-title><!--  Appearance -->
         </v-list-item-content>
         <v-list-item-action>
           <v-switch v-model="$vuetify.theme.dark" title="DarkMode" color="accent" inset readonly></v-switch>
@@ -46,7 +46,7 @@
           <!-- <v-icon>mdi-brightness-4</v-icon> -->
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Follow System Theme</v-list-item-title>
+          <v-list-item-title>Тема как на устройстве</v-list-item-title><!--  Follow System Theme -->
         </v-list-item-content>
         <v-list-item-action>
           <v-checkbox v-model="local_theme" color="accent" class="px-lg-4 px-md-2 px-1" readonly></v-checkbox>

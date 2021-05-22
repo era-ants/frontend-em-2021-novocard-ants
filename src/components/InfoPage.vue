@@ -93,41 +93,49 @@
 
             <!-- <div style="height: 80vh;"> -->
               <v-spacer></v-spacer>
-              <div id="infobtn" style="width:100%; height: 2px; background: #ff0000;">
+              <div id="infobtn" style="width:100%; height: 2px;">
                </div>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="d-lg-none my-md-6 my-3">НАЧАТЬ</v-btn>
-                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="d-none d-lg-block my-lg-16" x-large>НАЧАТЬ</v-btn>
+                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="my-md-6 my-3">НАЧАТЬ</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
+              <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
+                <div class="d-flex">
+                  <v-btn block rounded elevation="0" color="accent" href="#/register" class="d-none d-lg-block my-lg-16" x-large>НАЧАТЬ</v-btn>
+                </div>
+              </v-scroll-y-reverse-transition> -->
               <v-spacer></v-spacer>
               <v-scroll-y-reverse-transition appear hide-on-leave>
                 <div class="d-flex">
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="d-lg-none my-md-6 my-3">Уже пользуетесь картой?</v-btn>
-                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="d-none d-lg-block my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="my-md-6 my-3">Уже пользуетесь картой?</v-btn>
                 </div>
               </v-scroll-y-reverse-transition>
+              <!-- <v-scroll-y-reverse-transition appear hide-on-leave>
+                <div class="d-flex">
+                  <v-btn block outlined rounded elevation="0" color="text_color" href="#/login" class="d-none d-lg-block my-lg-16" x-large>Уже пользуетесь картой?</v-btn>
+                </div>
+              </v-scroll-y-reverse-transition> -->
               <v-spacer></v-spacer>
             <!-- </div> -->
 
               <v-fade-transition>
-                <v-btn id="infofab" color="accent" elevation="2" bottom right fixed rounded class="d-lg-none ma-md-6 ma-3" v-show="infofab1" key="infofabx" href="#/register">
+                <v-btn id="infofab" color="accent" elevation="2" bottom right fixed rounded class="ma-md-6 ma-3" v-show="infofab1" key="infofabx" href="#/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
               </v-fade-transition>
-              <v-fade-transition>
-                <v-btn id="infofab" color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-block ma-lg-12" v-show="infofab2" key="infofabx" href="#/register">
+              <!-- <v-fade-transition>
+                <v-btn id="infofab2" color="accent" elevation="2" x-large bottom right fixed rounded class="d-none d-lg-block ma-lg-12" v-show="infofab2" key="infofabx2" href="#/register">
                     НАЧАТЬ
                     <v-icon right dark > mdi-arrow-right </v-icon>
                 </v-btn>
-              </v-fade-transition>
+              </v-fade-transition> -->
         </v-container>
       <v-footer padless>
         <!-- link to administration -->
         <v-col class="text-center" cols="12" >
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          {{ new Date().getFullYear() }} — <strong>Карта жителя Новороссийска</strong>
         </v-col>
       </v-footer>
   </v-app>

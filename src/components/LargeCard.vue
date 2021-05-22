@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-card-title class="text-h5">
-      LargeCard
+      Галерея
     </v-card-title>
     <v-carousel>
       <v-carousel-item v-for="(item,i) in pics" :key="i" :src="item.src" reverse-transition="fade-transition" transition="fade-transition" ></v-carousel-item>

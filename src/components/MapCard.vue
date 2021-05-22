@@ -1,8 +1,7 @@
 <template>
-  <v-container>
     <v-card outlined>
         <v-card-title class="text-h5">
-          Map
+          Карта
         </v-card-title>
           <yandex-map 
             :coords="coorLocation"
@@ -40,7 +39,6 @@
           </v-card>
       </div>
     </v-card>
-  </v-container>
 </template>
 
 <script>

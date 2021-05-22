@@ -29,11 +29,14 @@
             </v-badge>
           </template>
           <v-list>
+            <v-list-item @click="Personal()" href="#/main/personal" link>
+              <v-list-item-title>Аккаунт</v-list-item-title>
+            </v-list-item>
             <v-list-item v-for="(item, index) in accmenu" :key="index" :href="item.link" link>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
             <v-list-item @click="LogOut()" link>
-              <v-list-item-title>Logout</v-list-item-title>
+              <v-list-item-title>Выйти</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -66,7 +69,7 @@
         </v-container>
       </v-main>
       <v-bottom-navigation class="d-lg-none" v-model="bn_value" :background-color="colorbn" dark shift fixed hide-on-scroll>
-        <v-btn v-for="item in tab_items" :to="item.link" :key="item.title">
+        <v-btn v-for="item in bot_items" :to="item.link" :key="item.title">
           <span>{{item.title}}</span>
           <v-icon>{{item.icon}}</v-icon>
         </v-btn>
@@ -85,17 +88,22 @@ export default {
     navbar: true,
     group: null,
     accmenu:[
-      { title: 'Login', link: '#/login' },
-      { title: 'Change Photo', link: '#/login' },
-      { title: 'Edit profile', link: '#/login' },
+      { title: 'Сменить Фото', link: '#/login' },
+      { title: 'Ред. профиль', link: '#/login' },
     ],
     tab: null,
     tab_items: [
-      { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
-      { title: 'Map', link: '/main/map', icon: 'mdi-map-outline' },
-      { title: 'LargeCard', link: '/main/lgcard', icon: 'mdi-apps-box' },
-      { title: 'Scanner', link: '/main/scan', icon: 'mdi-qrcode-scan' },
-      { title: 'Settings', link: '/main/settings', icon: 'mdi-cog-outline' },
+      { title: 'Карта', link: '/main/map', icon: 'mdi-map-outline' },
+      { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
+      { title: 'Сканер', link: '/main/scan', icon: 'mdi-qrcode-scan' },
+      { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
+      // { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
+    ],
+    bot_items: [
+      { title: 'Карта', link: '/main/map', icon: 'mdi-map-outline' },
+      { title: 'Сканер', link: '/main/scan', icon: 'mdi-qrcode-scan' },
+      { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
+      { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
     ],
   }),
   watch: {
@@ -105,19 +113,18 @@ export default {
   },
   
   methods: {
+    Personal(){
+      // this.bn_value = -1;
+    },   
     LogOut(){
       sessionStorage.setItem("logged_in", "");
     },   
-    Test1: function(){
-      alert("hello");
-      this.mini = true;
-    },    
   },
   computed: {
     colorbn () {
       switch (this.bn_value) {
         case 0: return 'green'
-        case 1: return 'gray'
+        case 1: return 'blue'
         case 2: return 'red'
         case 3: return 'teal'
         default: return 'black'
