@@ -24,6 +24,8 @@ import HistoryPage from './components/HistoryPage.vue'
 import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
 
+localStorage.clear();
+
 const routes = [
   // { path: '/settings', component: SettingsCard },
   { path: '/info', component: InfoPage },
