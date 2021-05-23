@@ -1,6 +1,6 @@
 <template>
   <v-card outlined>
-    <v-card-title class="text-h5">
+    <v-card-title class="justify-center">
       QR Сканер
     </v-card-title>
     <v-card outlined>

@@ -12,14 +12,14 @@
           <p class="ml-2 mt-4 d-none d-lg-block">ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ</p>
         </v-btn> -->
 
-        <v-tooltip bottom>
+        <!-- <v-tooltip bottom>
           <template v-slot:activator="{ on2, attrs2 }">
             <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
               <v-icon>mdi-help-circle-outline</v-icon>
             </v-btn>
           </template>
           <span>О карте</span>
-        </v-tooltip>
+        </v-tooltip> -->
         <!-- <v-btn icon href="#/main/settings">
           <v-icon>mdi-cog-outline</v-icon>
         </v-btn> -->
@@ -80,6 +80,7 @@
         </v-container>
       </v-main>
 
+
       <v-fade-transition>
         <v-bottom-navigation app class="d-lg-none" v-model="bn_value" v-show="bn_show" :background-color="colorbn" dark shift fixed hide-on-scroll>
           <v-btn v-for="item in bot_items" :to="item.link" :key="item.title">
@@ -94,6 +95,13 @@
           <v-icon dark> mdi-apps </v-icon>
         </v-btn>
       </v-fade-transition>
+
+        <v-footer padless>
+          <!-- link to administration -->
+          <v-col class="text-center" cols="12" >
+            <a href="/info" class="light-blue--text text-decoration-underline" style="font-weight: 500;" ><v-icon class="light-blue--text text-decoration-none">mdi-help-circle-outline</v-icon> О карте "Рыбка" </a>
+          </v-col>
+        </v-footer>
   </v-app>
 </template>
 
@@ -118,22 +126,11 @@ export default {
     tab: null,
     tab_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
-      // { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
-      // { title: 'Сканер', link: '/main/scan', icon: 'mdi-qrcode-scan' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
-      // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
-      // { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
-      // { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
-      // { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
     bot_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
-      // { title: 'Сканер', link: '/main/scan', icon: 'mdi-qrcode-scan' },
-      // { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
-      // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
-      // { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
-      // { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
   }),
   watch: {
@@ -162,6 +159,9 @@ export default {
       this.bn_show = false;
     }
     if (location.pathname == "/main/history"){
+      this.bn_show = false;
+    }
+    if (location.pathname == "/main/scan"){
       this.bn_show = false;
     }
 
