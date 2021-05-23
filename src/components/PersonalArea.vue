@@ -19,7 +19,8 @@
 		
 		<div class="d-flex flex-row justify-center">
 			<v-avatar class="ma-8" size="128" color="accent2" v-show="(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))">
-				<img :src="require('../assets/avatar.png')" />
+                  <img :src="require('../assets/fake_user_photo.png')" v-show="logged_in" >
+                  <span v-show="!logged_in">A</span>
 			</v-avatar>
 		</div>
 
@@ -84,6 +85,7 @@
 	// 	},
 	// },
 	data: () => ({
+		logged_in: true,
 		user_lname: 'Петров',
 		user_fname: 'Иван',
 		user_pname: 'Иванович',
@@ -120,6 +122,13 @@
 		})
 	},
 	mounted() {
+		//if logged in -> fake avatar
+		if ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != "")){
+		this.logged_in = true;
+		}else{
+		this.logged_in = false;
+		}
+		
 		this.user_fname = sessionStorage.logged_name;
 		this.user_lname = sessionStorage.logged_fam;
 		this.user_pname = sessionStorage.logged_otch;

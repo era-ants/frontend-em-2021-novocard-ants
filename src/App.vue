@@ -27,9 +27,9 @@ export default {
     if ((typeof sessionStorage.logged_in == 'undefined')||(sessionStorage.logged_in == '')) {
       sessionStorage.setItem('logged_in', "");
 
-      sessionStorage.setItem('logged_name', "tst");
-      sessionStorage.setItem('logged_fam', "tst");
-      sessionStorage.setItem('logged_otch', "tst");
+      sessionStorage.setItem('logged_name', "Иван");
+      sessionStorage.setItem('logged_fam', "Петров");
+      sessionStorage.setItem('logged_otch', "Сидорович");
       sessionStorage.setItem('logged_type', false);
 
       sessionStorage.setItem('logged_email', "");

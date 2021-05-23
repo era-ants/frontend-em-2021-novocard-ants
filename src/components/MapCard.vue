@@ -8,13 +8,13 @@
       
       <div class="d-flex flex-md-row flex-column my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
           <v-spacer></v-spacer>
-          <v-btn> Туризм </v-btn> 
+          <v-btn elevation="0"> Туризм </v-btn> 
           <v-spacer></v-spacer>
-          <v-btn> Досуг </v-btn> 
+          <v-btn elevation="0"> Досуг </v-btn> 
           <v-spacer></v-spacer>
-          <v-btn @click="eventsMaps = true"> События </v-btn>
+          <v-btn elevation="0" @click="eventsMaps = true"> События </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="routesMaps = true"> Маршруты </v-btn>
+          <v-btn elevation="0" @click="routesMaps = true"> Маршруты </v-btn>
           <v-spacer></v-spacer>
       </div>
 
@@ -135,7 +135,8 @@ import load from 'ymaps-loader'
             // Необходимо указать данный тип макета.
             iconLayout: 'default#image',
             // Своё изображение иконки метки.
-            iconImageHref: 'https://image.flaticon.com/icons/png/512/659/659052.png',
+            // iconImageHref: 'https://image.flaticon.com/icons/png/512/659/659052.png',
+            iconImageHref: require('../assets/monum_marker.png'),
             // Размеры метки.
             iconImageSize: [30, 42],
             // Смещение левого верхнего угла иконки относительно
