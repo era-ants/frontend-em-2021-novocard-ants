@@ -49,11 +49,13 @@
 				Отправить
 			</v-btn>
 			<v-spacer></v-spacer>
-			<v-alert width="50%" v-for='item in eventsText' :key='item.id' border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
-				<v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
-					{{ item.text }}
-				</v-card>
-			</v-alert>
+			<div v-for='item in eventsText'  :key='item.id'>
+				<v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
+					<v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
+						{{ item.text }}
+					</v-card>
+				</v-alert>
+			</div>
         </div>
 
   </v-card>
@@ -219,8 +221,10 @@ import load from 'ymaps-loader'
         },
       ],
       msg: '',
-    eventsUse: false,
-    eventsText: [{text: "Начинается концерт, все сюда!!!", coords: [44.734611627760074,37.80458532638649]}],
+    eventsText: [{
+		text: "Начинается концерт, все сюда!!!", 
+		coords: [44.734611627760074,37.80458532638649],
+		num: 0,}],
     img_src: img,
     cutChLoc: false,
     chZoom: false,
@@ -238,12 +242,19 @@ import load from 'ymaps-loader'
     }),
     methods: {
 		sendMsg(){
-			let newEvents = [{text: this.msg, coords: [44.74386882920636,37.72635937352836]}]
+			//let textNew = this.msg;
+			let newEvents = {
+				text: this.msg, 
+				coords: [44.74386882920636,37.72635937352836], 
+				num: 5}
 
+			console.log(this.eventsText);
 			this.eventsText.push(newEvents);
+			console.log(this.eventsText);
 	},
 		focusMaps(item){
-			console.log(item);
+			console.log("gut");
+			console.log(this.eventsText);
 			let myGeoObject = new ymaps___.GeoObject({
             // Описание геометрии.
             geometry: {
