@@ -24,16 +24,19 @@ export default {
       sessionStorage.setItem('acc_eye', false);
     }
 
-    if (typeof sessionStorage.logged_in == 'undefined') {
+    if ((typeof sessionStorage.logged_in == 'undefined')||(sessionStorage.logged_in == '')) {
       sessionStorage.setItem('logged_in', "");
 
-      sessionStorage.setItem('logged_name', "");
-      sessionStorage.setItem('logged_fam', "");
-      sessionStorage.setItem('logged_otch', "");
+      sessionStorage.setItem('logged_name', "Иван");
+      sessionStorage.setItem('logged_fam', "Петров");
+      sessionStorage.setItem('logged_otch', "Сидорович");
       sessionStorage.setItem('logged_type', false);
 
       sessionStorage.setItem('logged_email', "");
       sessionStorage.setItem('logged_phone', "");
+
+      sessionStorage.setItem('logged_money', 0);
+      sessionStorage.setItem('logged_bonus', 0);
     }
 
     //dark-theme

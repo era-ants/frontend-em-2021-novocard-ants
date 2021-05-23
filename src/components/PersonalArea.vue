@@ -3,72 +3,101 @@
     <v-card-title class="justify-center">
       Личный кабинет
     </v-card-title>
+	<div class="d-flex flex-column">	
+				<!--  style="background: red;" -->
 
-			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
-				<v-card elevation="0" class="d-lg-none" color="transparent">
-					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
-				</v-card>
-				<v-card elevation="0" class="d-none d-lg-block" max-width="20%" color="transparent">
-					<v-avatar class="ma-8" src="../assets/avatar.png"></v-avatar>
-				</v-card>
-			</div>
+		<v-spacer></v-spacer>
+		<v-divider></v-divider>
+		<v-spacer></v-spacer>
 
-			<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
-				<v-card elevation="0" class="ma-2 text-center" color="transparent">
-					<h1 class=" my-2">Иванов Иван Иванович</h1>
-				</v-card>
-			</div>
+		<div class=" d-lg-none d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
+			<v-card class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mt-md-6 mt-sm-3 mt-1 rounded-xl" width="95%" elevation="6" color="red">
+				<v-img :src="require('../assets/card-example.png')" :aspect-ratio="3.37/2.125" contain >
+				</v-img>
+			</v-card>
+		</div>
+		
+		<div class="d-flex flex-row justify-center">
+			<v-avatar class="ma-8" size="128" color="accent2" v-show="(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))">
+                  <img :src="require('../assets/fake_user_photo.png')" v-show="logged_in" >
+                  <span v-show="!logged_in">A</span>
+			</v-avatar>
+		</div>
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
-				<v-card width=30% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
-				</v-card>
-				<v-card width=50% elevation="0" class="ma-2" color="transparent">
-					<h2 class="my-0"> Ваш баланс: </h2>
-				</v-card>
-			</div>
+		<div class="d-flex flex-row justify-center mb-lg-12 mb-md-6 mb-sm-3 mb-1">
+			<p class="text-xl-h3 text-lg-h4 text-md-h5 text-sm-h6 text-h6">{{user_lname}} {{user_fname}} {{user_pname}}</p>
+		</div>
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
-				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
-				</v-card>
-				<v-card width=25% elevation="0" class="ma-2" color="transparent">
-					<h2 class="my-0"> 0Р </h2>
-				</v-card>
-				<v-card width=40% elevation="0" class="ma-2" color="transparent">
-					<h2 class="my-0"> 0баллов </h2>
-				</v-card>
-			</div>
+		<v-spacer></v-spacer>
+		<v-divider></v-divider>
+		<v-spacer></v-spacer>
 
-			<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
-				<v-card width=30% elevation="0" class="ma-2 d-none d-lg-block" color="transparent">
-				</v-card>
-				<v-card width=25% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
-					<a class="my-0" href="/main/paycard"> Как пополнить </a>
-				</v-card>
-				<v-card width=40% elevation="0" class="d-none d-lg-block ma-2" color="transparent">
-					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
-				</v-card>
-				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
-					<a class="my-0" href="/main/paycard"> Как пополнить </a>
-				</v-card>
-				<v-card elevation="0" class="d-lg-none ma-2" color="transparent">
-					<a class="my-0" href="/main/paycard"> Как получать баллы </a>
-				</v-card>
-			</div>
+		<div class="d-none d-lg-flex flex-row my-lg-6 my-md-3 my-sm-2 my-1">
+			<v-card class="mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl" width="45%" elevation="6" color="red">
+				<v-img :src="require('../assets/card-example.png')" :aspect-ratio="3.37/2.125" contain >
+				</v-img>
+			</v-card>
+			<v-spacer></v-spacer>
+			<v-card class="mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl" width="50%" outlined> 
+				<v-card-title>
+					Ваш баланс:
+				</v-card-title>
+				<v-card-text class="text-h1">
+					{{user_money}} P
+				</v-card-text>
+				<v-card-text class="text-h3">
+					{{user_bonus}} баллов
+				</v-card-text>
+				<v-card-actions>
+					<v-btn color="accent" href="/main/paycard" text > Пополнить </v-btn>
+					<v-btn color="accent" href="/main/paycard" text > Как получать баллы </v-btn>
+				</v-card-actions>
+			</v-card>
+		</div>
 
-	</v-card>
+		<div class="d-flex d-lg-none flex-column mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl"> 
+			<v-card-title>
+				Ваш баланс:
+			</v-card-title>
+			<v-card-text class="text-h1">
+				{{user_money}} P
+			</v-card-text>
+			<v-card-text class="text-h3">
+				{{user_bonus}} баллов
+			</v-card-text>
+			<v-btn color="accent" href="/main/paycard" text > Пополнить </v-btn>
+			<v-spacer></v-spacer>
+			<v-btn color="accent" href="/main/paycard" text > Как получать баллы </v-btn>
+		</div>
+
+	</div>
+  </v-card>
 </template>
 
 <script>
-	let this_link;
+  let this_link;
   export default {
-		data: () => ({
-		cardNumber: '',
-		CV: '',
-		CCV: '',
-		otherCardMask: "#### #### #### ####",
-		CV_CCV_Mask: "###",
-		bank_logo: "URL",
-		brand_logo: "URL",	
+    name: 'PersonalArea',
+	// props: {
+	// 	card_number: {
+	// 		type: String,
+	// 		required: true
+	// 	},
+	// },
+	data: () => ({
+		logged_in: true,
+		user_lname: 'Петров',
+		user_fname: 'Иван',
+		user_pname: 'Иванович',
+		user_money: 100,
+		user_bonus: 100,
+	// cardNumber: '',
+	// CV: '',
+	// CCV: '',
+	// otherCardMask: "#### #### #### ####",
+	// CV_CCV_Mask: "###",
+	// bank_logo: "URL",
+	// brand_logo: "URL",	
 	}),
 	created() {
 
@@ -93,14 +122,19 @@
 		})
 	},
 	mounted() {
-		},
-	props: {
-		card_number: {
-			type: String,
-			required: true
-		},
-	},
-    name: 'PersonalArea',
+		//if logged in -> fake avatar
+		if ((typeof sessionStorage.logged_in != 'undefined')&&(sessionStorage.logged_in != "")){
+		this.logged_in = true;
+		}else{
+		this.logged_in = false;
+		}
+		
+		this.user_fname = sessionStorage.logged_name;
+		this.user_lname = sessionStorage.logged_fam;
+		this.user_pname = sessionStorage.logged_otch;
+		this.user_money = sessionStorage.logged_money;
+		this.user_bonus = sessionStorage.logged_bonus;
+	}
   }
 </script>
 

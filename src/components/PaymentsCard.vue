@@ -1,9 +1,14 @@
 <template>
-
-	<v-container>
+  <v-card outlined>
+    <v-card-title class="justify-center">
+      Настройки
+    </v-card-title>
+	<v-divider></v-divider>
 		<creditCard></creditCard>
+
 		<div style="height: 10%" class="d-none d-lg-block d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 		</div>
+		
 		<div style="z-index: 1000" class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<v-card elevation="0" style=" position: relative; left: 7em; bottom: 1em" class="d-lg-none" color="transparent">
 				<a @click="snackbar = true" style="font-size: 20px; text-decoration: underline
@@ -16,7 +21,7 @@
 			<v-card elevation="0" class="d-none d-lg-block" width="5%" color="transparent">
 			</v-card>
             <v-card elevation="0" color="transparent" style="position: relative; left: 3em">
-				<v-text-field
+				<v-text-field color="accent"
 					height="50px"
 					label="Сумма"
 					v-model="paySum"
@@ -25,6 +30,7 @@
 				></v-text-field>
 			</v-card>
 		</div>
+
 		<div style="position: relative; bottom: 1.5em; left: 7em;" class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<div class="d-flex flex-row justify-left">
 				<p @click="paySum = 300" style="font-size: 30px; cursor: pointer; position: relative; right: 0.5em; text-decoration: underline
@@ -38,11 +44,7 @@
 
 		<div style="position: relative; bottom: 1em;" class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<v-card style="position: relative; left: 3.5em" elevation="0" class="d-flex flex-row justify-left" color="transparent">
-				<v-checkbox
-					class="justify-left"
-					v-model="checkbox"
-					label="Получить чек"
-				>	
+				<v-checkbox class="justify-left" v-model="checkbox" label="Получить чек" color="accent">	
 				</v-checkbox>
 			</v-card>
 		</div>
@@ -51,10 +53,11 @@
 			<v-card elevation="0" class="d-lg-none d-flex flex-column ma-0  justify-center" color="transparent">
 				<h1 style="position: relative; left: 1.5em; text-align: center;"> Выберите способ оплаты </h1>
 			</v-card>
-			<v-card elevation="0" class="d-none d-lg-block d-flex flex-column ma-0  justify-center" color="transparent">
+			<v-card elevation="0" class="d-none d-lg-flex flex-column ma-0  justify-center" color="transparent">
 				<h1 style="position: relative; left: 0em; text-align: center;"> Выберите способ оплаты </h1>
 			</v-card>
 		</div>
+
 		<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<v-card elevation="0" class="d-none d-lg-block" width="0%" color="transparent">
 			</v-card>
@@ -80,6 +83,7 @@
                 <v-img width="70%" class="ma-0" src="../assets/yandex_money.png"></v-img>
             </v-card>
 		</div>
+
 		<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
 			<v-card width="31%" elevation="0" class="d-flex flex-column ma-0" color="transparent">
 			</v-card>
@@ -89,6 +93,7 @@
 				</v-btn>
 			</v-card>
 		</div>
+
 		<div class="d-flex flex-column flex-lg-row justify-left" v-scroll-reveal>
 			<v-card height="20%" elevation="0" class="d-flex flex-column ma-0" color="transparent">
 			</v-card>
@@ -106,11 +111,11 @@
 					v-bind="attrs"
 					@click="snackbar = false"
 				>
-					Close
+					Закрыть
 				</v-btn>
 			</template>
 		</v-snackbar>
-	</v-container>
+	</v-card>
 </template>
 
 <script>

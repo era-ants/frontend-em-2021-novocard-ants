@@ -1,11 +1,21 @@
 <template>
+  <v-card outlined>
+      <v-card-title class="justify-center">
+        Места
+      </v-card-title>
 
-  <v-container>
-      <div class="flex-column flex-lg-row" v-scroll-reveal>
-        <v-card-title class="text-h5">
-          Map
-        </v-card-title>
-			<div style="height: 50vh; width: 80vw" id="myMap"></div>
+			<div style="height: 50vh;" id="myMap"></div>
+      
+      <div class="d-flex flex-md-row flex-column my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
+          <v-spacer></v-spacer>
+          <v-btn elevation="0"> Туризм </v-btn> 
+          <v-spacer></v-spacer>
+          <v-btn elevation="0"> Досуг </v-btn> 
+          <v-spacer></v-spacer>
+          <v-btn elevation="0" @click="eventsMaps = true"> События </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn elevation="0" @click="routesMaps = true"> Маршруты </v-btn>
+          <v-spacer></v-spacer>
       </div>
       <v-card-title class="text-h5">
         <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
@@ -28,24 +38,18 @@
         </div>
       </v-card-title>
       <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-0" color="transparent">
-            <!-- <v-card-title class="text-h5">
-              Settings
-            </v-card-title> -->
-            <h1>{{ item.name }} </h1>
-            <h3>{{ item.typeName }} </h3>
-            <p class=".text-body-1"> {{ item.text }} </p>
+          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column mx-md-2 mx-sm-1 mx-1" color="transparent">
+            <h1 >{{ item.name }} </h1>
+            <h3 >{{ item.typeName }} </h3>
+            <p class="text-body-1 text-justify "> {{ item.text }} </p>
             <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
       <div v-if="routesMaps" class="d-none d-lg-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column ma-0" color="transparent">
-            <!-- <v-card-title class="text-h5">
-              Settings
-            </v-card-title> -->
+          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column mx-xl-8 mx-lg-4" color="transparent">
             <h1>{{ item.name }} </h1>
             <h3>{{ item.typeName }} </h3>
-            <p class=".text-body-1"> {{ item.text }} </p>
+            <p class="text-body-1 text-justify"> {{ item.text }} </p>
             <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
@@ -63,7 +67,7 @@
 			</v-alert>
         </div>
 
-  </v-container>
+  </v-card>
 </template>
 
 <script>
