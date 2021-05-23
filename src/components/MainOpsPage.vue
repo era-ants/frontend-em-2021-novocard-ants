@@ -90,7 +90,7 @@
       </v-fade-transition>
 
       <v-fade-transition>
-        <v-btn id="appsfab" color="accent" elevation="2" bottom right fixed fab class="d-lg-none ma-md-8 ma-sm-4 ma-2" v-show="!bn_show" key="appsfab" href="/main/map">
+        <v-btn id="appsfab" color="accent2" elevation="2" bottom right fixed fab class="d-lg-none ma-md-8 ma-sm-4 ma-2" v-show="!bn_show" key="appsfab" href="/main/map">
           <v-icon dark> mdi-apps </v-icon>
         </v-btn>
       </v-fade-transition>
@@ -123,8 +123,8 @@ export default {
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
       // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
       // { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
-      { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
-      { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
+      // { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
+      // { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
     bot_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
@@ -132,8 +132,8 @@ export default {
       // { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
       // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
-      { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
-      { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
+      // { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
+      // { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
   }),
   watch: {
@@ -156,6 +156,12 @@ export default {
       this.bn_show = false;
     }
     if (location.pathname == "/main/paycard"){
+      this.bn_show = false;
+    }
+    if (location.pathname == "/main/shop"){
+      this.bn_show = false;
+    }
+    if (location.pathname == "/main/history"){
       this.bn_show = false;
     }
 

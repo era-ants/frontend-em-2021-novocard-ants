@@ -1,12 +1,12 @@
 <template>
   <v-card outlined>
     <v-card-title class="justify-center">
-      Пополнение счета
+      Обмен бонусов
     </v-card-title>
     <v-divider></v-divider>
     <v-row class="my-lg-16 my-md-8 my-sm-4 my-2 mx-lg-8 mx-md-4 mx-sm-2 mx-1">
-      <v-col v-for="item in link" :key="item.id" cols="4" >
-        <v-card class="d-flex-column justify-center" outlined height="250" >
+      <v-col v-for="item in link" :key="item.id" class="col-lg-4 col-md-6 col-12" >
+        <v-card class="d-flex-column justify-center" elevation="2" height="250" >
           
           <v-dialog v-model="item.dialog" :key="item.num" width="500" >
             <template v-slot:activator="{ on, attrs }">
@@ -42,6 +42,7 @@
             </v-card>
           </v-dialog>
 
+            <v-divider></v-divider>
             <v-card-text class="text-subtitle-1 text-center font-weight-medium" height="50">
               {{ item.desc }}
             </v-card-text>
@@ -49,6 +50,10 @@
       </v-col>
 
     </v-row>
+    <v-divider></v-divider>
+    <v-btn color="accent" elevation="0" block style="text-transform: none !important;" href="/main/history" >
+      История операций
+    </v-btn>
   </v-card>
 </template>
 

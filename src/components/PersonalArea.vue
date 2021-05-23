@@ -20,7 +20,7 @@
 		<div class="d-flex flex-row justify-center">
 			<v-avatar class="ma-8" size="128" color="accent2" v-show="(($vuetify.breakpoint.lg)||($vuetify.breakpoint.xl))">
                   <img :src="require('../assets/fake_user_photo.png')" v-show="logged_in" >
-                  <span v-show="!logged_in">A</span>
+                  <span class="text-xl-h3 text-lg-h4 text-md-h5 text-sm-h6 text-h6" v-show="!logged_in">A</span>
 			</v-avatar>
 		</div>
 

@@ -1,5 +1,10 @@
 <template>
-	<div>
+  <v-card outlined>
+    <v-card-title class="justify-center">
+      История операций
+    </v-card-title>
+	<v-divider></v-divider>
+
 		<v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
 			<v-card width="100vw" height="5vh" class="d-flex flex-row" elevation="0">
 				<div style="width: 2%" class="d-none d-lg-block pt-5">
@@ -44,6 +49,7 @@
 				</div>
 			</v-card>
 		</v-alert>
+
 		<div v-for="item in historyList" :key="item.id">
 			<v-alert v-if="item.num != 0"  border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
 				<v-card width="81vw" height="5vh" @click="chooseQR(item.id)" class="d-flex flex-row" elevation="0">
@@ -93,7 +99,8 @@
 				</v-card>
 			</v-alert>
 		</div>
-	</div>
+		
+  </v-card>
 </template>
 
 <script>
