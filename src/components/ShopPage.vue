@@ -4,14 +4,15 @@
       Пополнение счета
     </v-card-title>
     <v-divider></v-divider>
-    <v-row>
+    <v-row class="my-lg-16 my-md-8 my-sm-4 my-2 mx-lg-8 mx-md-4 mx-sm-2 mx-1">
       <v-col v-for="item in link" :key="item.id" cols="4" >
+        <v-card class="d-flex-column justify-center" outlined height="250" >
+          
           <v-dialog v-model="item.dialog" :key="item.num" width="500" >
             <template v-slot:activator="{ on, attrs }">
-              <v-card @click="payInit(item.num)" v-bind="attrs" v-on="on" class="d-flex"  height="200">
-                <v-img :src=item.img></v-img>
-              </v-card>
+              <v-img @click="payInit(item.num)" v-bind="attrs" v-on="on" height="200" :src=item.img></v-img>
             </template>
+
 
             <v-card>
               <v-card-title class="headline">
@@ -31,20 +32,22 @@
 
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="accent" text @click="item.dialog = false">
+                <v-btn color="accent" text @click="item.dialog = false" style="text-transform: none !important;">
                   Отмена
                 </v-btn>
-                <v-btn color="accent" elevation="0" @click="payFinish()" >
+                <v-btn color="accent" elevation="0" style="text-transform: none !important;" @click="payFinish()" >
                   Купить
                 </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
 
-          <v-card class="justify-center pt-3 d-flex" height="50">
-            {{ item.desc }}
+            <v-card-text class="text-subtitle-1 text-center font-weight-medium" height="50">
+              {{ item.desc }}
+            </v-card-text>
           </v-card>
       </v-col>
+
     </v-row>
   </v-card>
 </template>
@@ -52,7 +55,7 @@
 <script>
     export default {
       data: () => ({
-        this_dialog: false,
+        // this_dialog: false,
         newFieldDataBase: {dataChanged: false, product: 'Конверт', date: "10.05.2021", time: "13:55", payment:100, discount: 0, accrued: 0, org: "Новороссийск", site: "https://static.tildacdn"},
         link: [
           {
