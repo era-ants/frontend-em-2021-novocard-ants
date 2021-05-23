@@ -103,7 +103,7 @@
 
 <script>
 //import { loadYmap } from 'vue-yandex-maps'
-import img from "../assets/m1.jpg"
+import img from '../assets/m1.jpg'
 import load from 'ymaps-loader'
   let ymaps___;
   let myMap___;
@@ -208,7 +208,7 @@ import load from 'ymaps-loader'
       eventsMaps: false,
       markerIconPark: {
       layout: 'default#imageWithContent',
-      imageHref: "../assets/welcome.png",
+      imageHref: require('../assets/welcome.png'),
       imageSize: [43, 43],
       imageOffset: [0, 0],
       content: '',
@@ -217,7 +217,7 @@ import load from 'ymaps-loader'
     },
       markerIconMuseum: {
       layout: 'default#imageWithContent',
-      imageHref: "../assets/museum.png",
+      imageHref: require('../assets/museum.png'),
       imageSize: [43, 43],
       imageOffset: [0, 0],
       content: '',
