@@ -96,7 +96,7 @@
         </v-btn>
       </v-fade-transition>
 
-        <v-footer padless>
+        <v-footer padless app>
           <!-- link to administration -->
           <v-col class="text-center" cols="12" >
             <v-icon class="light-blue--text text-decoration-none">mdi-help-circle-outline</v-icon><a href="/info" class="light-blue--text text-decoration-underline" style="font-weight: 500;" > О карте "Рыбка" </a>
@@ -127,10 +127,12 @@ export default {
     tab_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
+      { title: 'Проездной', link: '/main/transport', icon: 'mdi-bus' },
     ],
     bot_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
+      { title: 'Проездной', link: '/main/transport', icon: 'mdi-bus' },
     ],
   }),
   watch: {

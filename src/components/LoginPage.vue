@@ -7,14 +7,14 @@
         <v-spacer></v-spacer>
 
 
-        <v-tooltip bottom>
+        <!-- <v-tooltip bottom>
           <template v-slot:activator="{ on2, attrs2 }">
             <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
               <v-icon>mdi-help-circle-outline</v-icon>
             </v-btn>
           </template>
           <span>О карте</span>
-        </v-tooltip>
+        </v-tooltip> -->
 
       </v-app-bar>
 

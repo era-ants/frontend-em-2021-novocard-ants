@@ -6,14 +6,14 @@
         <v-toolbar-title class="font-weight-medium d-lg-none" style="font-size: 16px;">Регистрация</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-tooltip bottom>
+        <!-- <v-tooltip bottom>
           <template v-slot:activator="{ on2, attrs2 }">
             <v-btn icon v-bind="attrs2" v-on="on2" href="/info">
               <v-icon>mdi-help-circle-outline</v-icon>
             </v-btn>
           </template>
           <span>О карте</span>
-        </v-tooltip>
+        </v-tooltip> -->
 
         <template v-slot:extension>
           <v-tabs :align-with-title="$vuetify.breakpoint.lg" class="mx-lg-16 mx-md-8" slider-color="yellow" :fixed-tabs="$vuetify.breakpoint.lg" v-model="reg_tab">

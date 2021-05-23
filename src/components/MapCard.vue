@@ -29,7 +29,7 @@
 
 
         <div class="d-flex flex-row">
-          <v-tabs v-model="map_tab" fixed-tabs>
+          <v-tabs color="accent"  v-model="map_tab" fixed-tabs>
             <v-tab key="tabitem1">Туризм</v-tab>
             <v-tab key="tabitem2">Досуг</v-tab>
             <v-tab @click="changeMaps(3)" key="tabitem3">События</v-tab>
@@ -39,25 +39,37 @@
 
         <v-tabs-items v-model="map_tab">
           <v-tab-item key="tabitem1" >
-
+            <v-card outlined width="100%" height="50%">
+              <v-card-title>
+                Туризм
+              </v-card-title>
+            </v-card>
           </v-tab-item>
           <v-tab-item key="tabitem2" >
-
+            <v-card outlined width="100%" height="50%">
+              <v-card-title>
+                Досуг
+              </v-card-title>
+            </v-card>
           </v-tab-item>
           <v-tab-item key="tabitem3" >
-
-            <v-text-field v-model="msg" style="position: relative; bottom: 1.5em; width: 50%"> </v-text-field>
-                <v-btn @click="sendMsg" style="position: relative; bottom: 1.5em">
-                  Отправить
-                </v-btn>
-                <v-spacer></v-spacer>
-                <div v-for='item in eventsText'  :key='item.id'>
-                  <v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
-                    <v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
-                      {{ item.text }}
-                    </v-card>
-                  </v-alert>
-                </div>
+            <v-card outlined width="100%">
+              <v-card-title>
+                События
+              </v-card-title>
+              <v-text-field v-model="msg" style="position: relative; bottom: 1.5em; width: 50%"> </v-text-field>
+              <v-btn @click="sendMsg" style="position: relative; bottom: 1.5em">
+                Отправить
+              </v-btn>
+              <v-spacer></v-spacer>
+              <div v-for='item in eventsText'  :key='item.id'>
+                <v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
+                  <v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
+                    {{ item.text }}
+                  </v-card>
+                </v-alert>
+              </div>
+            </v-card>
 
           </v-tab-item>
           <v-tab-item key="tabitem4" >

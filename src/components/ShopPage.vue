@@ -105,7 +105,7 @@
           {
             num: 5,
             img: 'https://www.bolshoi.ru/upload/medialibrary/507/507f15c6113b1650d4843621f27df507.jpg',
-            desc: 'Билет в большой театр. Стоимость: 100Б',
+            desc: 'Билет в театр. Стоимость: 100Б',
             dialog: false,
           }
         ],
