@@ -99,7 +99,7 @@
         <v-footer padless>
           <!-- link to administration -->
           <v-col class="text-center" cols="12" >
-            <a href="/info" class="light-blue--text text-decoration-underline" style="font-weight: 500;" ><v-icon class="light-blue--text text-decoration-none">mdi-help-circle-outline</v-icon> О карте "Рыбка" </a>
+            <v-icon class="light-blue--text text-decoration-none">mdi-help-circle-outline</v-icon><a href="/info" class="light-blue--text text-decoration-underline" style="font-weight: 500;" > О карте "Рыбка" </a>
           </v-col>
         </v-footer>
   </v-app>

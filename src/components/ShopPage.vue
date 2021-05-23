@@ -1,7 +1,9 @@
 <template>
   <v-card outlined>
-    <v-card-title class="justify-center">
+    <v-card-title class="d-flex">
       Обмен бонусов
+      <v-spacer></v-spacer>
+      <p color="accent" class="text-subtitle-1" absolute right > Бонусов осталось: {{bonuses}} </p>
     </v-card-title>
     <v-divider></v-divider>
     <v-row class="my-lg-16 my-md-8 my-sm-4 my-2 mx-lg-8 mx-md-4 mx-sm-2 mx-1">
@@ -54,13 +56,20 @@
     <v-btn color="accent" elevation="0" block style="text-transform: none !important;" href="/main/history" >
       История операций
     </v-btn>
+
+    <v-snackbar v-model="snackbar_shop" :timeout="timeout" >
+      {{snack_text}}
+    </v-snackbar>
   </v-card>
 </template>
 
 <script>
     export default {
       data: () => ({
-        // this_dialog: false,
+        bonuses: 0,
+        snackbar_shop: false,
+        snack_text: '',
+        timeout: 2000,
         newFieldDataBase: {dataChanged: false, product: 'Конверт', date: "10.05.2021", time: "13:55", payment:100, discount: 0, accrued: 0, org: "Новороссийск", site: "https://static.tildacdn"},
         link: [
           {
@@ -103,6 +112,9 @@
         numIt: 0,
         text: ''
       }),
+      mounted(){
+        this.bonuses = sessionStorage.logged_bonus;
+      },
       methods: {
         payInit: function (num){
           console.log('All goods maybi');
@@ -138,31 +150,43 @@
         },
         payFinish: function (itemnum){
           this.link[itemnum].dialog = false;
-          console.log("all_good")
-          let now = new Date();
-
-          this.dialog = false;
+          this.bonuses = sessionStorage.logged_bonus;
           this.newFieldDataBase.dataChanged = true;
 
-          this.newFieldDataBase.date = now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear();
-          this.newFieldDataBase.time = now.getHours() + ":" + now.getMinutes();
+          if(this.bonuses >= 100){
+            let now = new Date();
 
-          let numFields = localStorage.getItem('numFields');
+            this.newFieldDataBase.date = now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear();
+            this.newFieldDataBase.time = now.getHours() + ":" + now.getMinutes();
+            this.newFieldDataBase.dataChanged = true;
 
-          if (!numFields)
-          {
-            numFields = 1;
+            let numFields = localStorage.getItem('numFields');
+
+            if (!numFields)
+            {
+              numFields = 1;
+            }
+            else
+            {
+              numFields = Number(numFields) + 1;
+            }
+            localStorage.setItem('numFields', numFields);
+            localStorage.setItem('date', this.newFieldDataBase.date);
+            localStorage.setItem('product', this.newFieldDataBase.product);
+            localStorage.setItem('time', this.newFieldDataBase.time);
+            localStorage.setItem('dataChanged', true);
+
+            sessionStorage.setItem('logged_bonus', (sessionStorage.logged_bonus - 100));
+            this.bonuses = sessionStorage.logged_bonus;
+
+            console.log(localStorage.getItem('dataChanged'));
+            console.log("bonuses left: "+sessionStorage.logged_bonus);
+            this.snack_text = "Приобретено!";
           }
-          else
-          {
-            numFields = Number(numFields) + 1;
+          else{
+            this.snack_text = "Недостаточно баллов";
           }
-          localStorage.setItem('numFields', numFields);
-          localStorage.setItem('date', this.newFieldDataBase.date);
-          localStorage.setItem('product', this.newFieldDataBase.product);
-          localStorage.setItem('time', this.newFieldDataBase.time);
-          localStorage.setItem('dataChanged', true);
-          console.log(localStorage.getItem('dataChanged'));
+          this.snackbar_shop = true;
         },
         chooseItem: function (numItem){
           console.log(numItem);

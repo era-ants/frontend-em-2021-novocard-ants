@@ -4,10 +4,11 @@
         Места
       </v-card-title>
 
+      <v-divider></v-divider>
 			<div style="height: 50vh;" id="myMap"></div>
-      
-      <v-card-title class="text-h5">
-        <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+      <v-divider></v-divider>
+      <!-- <v-card-title class="text-h5"> -->
+        <!-- <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
             <v-btn> Туризм </v-btn> 
             <v-spacer></v-spacer>
@@ -24,39 +25,66 @@
             <v-btn @click="changeMaps(4)"> Маршруты </v-btn>
             <v-spacer></v-spacer>
           </v-card>
+        </div> -->
+
+
+        <div class="d-flex flex-row">
+          <v-tabs v-model="map_tab" fixed-tabs>
+            <v-tab key="tabitem1">Туризм</v-tab>
+            <v-tab key="tabitem2">Досуг</v-tab>
+            <v-tab @click="changeMaps(3)" key="tabitem3">События</v-tab>
+            <v-tab @click="changeMaps(4)" key="tabitem4">Маршруты</v-tab>
+          </v-tabs>
         </div>
-      </v-card-title>
-      <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column mx-md-2 mx-sm-1 mx-1" color="transparent">
-            <h1 >{{ item.name }} </h1>
-            <h3 >{{ item.typeName }} </h3>
-            <p class="text-body-1 text-justify "> {{ item.text }} </p>
-            <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
-          </v-card>
-      </div>
-      <div v-if="routesMaps" class="d-none d-lg-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column mx-xl-8 mx-lg-4" color="transparent">
-            <h1>{{ item.name }} </h1>
-            <h3>{{ item.typeName }} </h3>
-            <p class="text-body-1 text-justify"> {{ item.text }} </p>
-            <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
-          </v-card>
-      </div>
+
+        <v-tabs-items v-model="map_tab">
+          <v-tab-item key="tabitem1" >
+
+          </v-tab-item>
+          <v-tab-item key="tabitem2" >
+
+          </v-tab-item>
+          <v-tab-item key="tabitem3" >
+
+            <v-text-field v-model="msg" style="position: relative; bottom: 1.5em; width: 50%"> </v-text-field>
+                <v-btn @click="sendMsg" style="position: relative; bottom: 1.5em">
+                  Отправить
+                </v-btn>
+                <v-spacer></v-spacer>
+                <div v-for='item in eventsText'  :key='item.id'>
+                  <v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
+                    <v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
+                      {{ item.text }}
+                    </v-card>
+                  </v-alert>
+                </div>
+
+          </v-tab-item>
+          <v-tab-item key="tabitem4" >
+            <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
+              <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column mx-md-2 mx-sm-1 mx-1" color="transparent">
+                <h1 >{{ item.name }} </h1>
+                <h3 >{{ item.typeName }} </h3>
+                <p class="text-body-1 text-justify "> {{ item.text }} </p>
+                <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
+              </v-card>
+            </div>
+            <div v-if="routesMaps" class="d-none d-lg-flex flex-column flex-lg-row" v-scroll-reveal>
+                  <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column mx-xl-8 mx-lg-4" color="transparent">
+                    <h1>{{ item.name }} </h1>
+                    <h3>{{ item.typeName }} </h3>
+                    <p class="text-body-1 text-justify"> {{ item.text }} </p>
+                    <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
+                  </v-card>
+            </div>
+          </v-tab-item>
+        </v-tabs-items>
+
+      <!-- </v-card-title> -->
+      <!-- 
         <div v-if="eventsMaps">
-			<v-text-field v-model="msg" style="position: relative; bottom: 1.5em; width: 50%">
-			</v-text-field>
-			<v-btn @click="sendMsg" style="position: relative; bottom: 1.5em">
-				Отправить
-			</v-btn>
-			<v-spacer></v-spacer>
-			<div v-for='item in eventsText'  :key='item.id'>
-				<v-alert border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
-					<v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
-						{{ item.text }}
-					</v-card>
-				</v-alert>
-			</div>
-        </div>
+			
+        </div> -->
 
   </v-card>
 </template>
@@ -164,14 +192,15 @@ import load from 'ymaps-loader'
   });
 	},
     data: () => ({
-		eventsMaps: false,
-		markerIconPark: {
-		layout: 'default#imageWithContent',
-		imageHref: "../assets/welcome.png",
-		imageSize: [43, 43],
-		imageOffset: [0, 0],
-		content: '',
-		contentOffset: [0, 15],
+      map_tab: null,
+      eventsMaps: false,
+      markerIconPark: {
+      layout: 'default#imageWithContent',
+      imageHref: "../assets/welcome.png",
+      imageSize: [43, 43],
+      imageOffset: [0, 0],
+      content: '',
+      contentOffset: [0, 15],
       //contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
     },
       markerIconMuseum: {
