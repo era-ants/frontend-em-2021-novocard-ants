@@ -58,16 +58,16 @@
 
 
               <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2" v-show="!card_type" >
-                <v-text-field v-model="phonenum" type="number" v-show="!card_type" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="+7 800 555 35 35"  maxlength="11" :rules="chars11"></v-text-field>
+                <v-text-field v-model="phonenum" type="number" v-show="!card_type" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Номер телефона" placeholder="+7 800 555 35 35"  maxlength="11" :rules="not_empty"></v-text-field>
               </div>
               <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2" v-show="card_type">
                 <v-text-field v-model="email" type="email" v-show="card_type" class="mt-lg-16 mt-md-8 mt-4" color="accent" label="Почта" placeholder="example@mail.ru" :rules="not_empty"></v-text-field>
               </div>
               <div class="d-flex mx-lg-16 mx-md-8 mx-sm-4 mx-2">
-                <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="chars11"></v-text-field>
+                <v-text-field v-model="passwrd" type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="not_empty"></v-text-field>
               </div>
               
-                <v-card outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 my-lg-8 my-md-4 my-sm-2 my-1 pa-lg-8 pa-md-4 pa-sm-2 pa-1" elevation="0" @click="LogInESIA()" >
+                <v-card v-show="card_type" outlined class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 my-lg-8 my-md-4 my-sm-2 my-1 pa-lg-2 pa-md-2 pa-sm-1 pa-1" elevation="0" @click="LogInESIA()" >
                   <v-img class="my-lg-2 my-md-1 my-sm-1 my-1" :src="require('../assets/meth-esia-logo.png')" max-height="20" contain />
                 </v-card>
               
@@ -109,7 +109,7 @@
         snack_text: '',
         timeout: 2000,
         not_empty: [v => v.length != 0 || 'Поле не пустое'],
-        chars11: [v => !!v || 'Поле не пустое', v => v.length < 7 || 'недостаточно', v => v.length > 11 || 'перебор'],
+        // chars11: [v => !!v || 'Поле не пустое'],
         on2: null,
         attr2: null,
       }
