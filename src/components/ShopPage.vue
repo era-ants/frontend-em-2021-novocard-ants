@@ -93,12 +93,20 @@
             desc: "Футболка. Стоимость: 100Б",
             dialog: false,
           },
+          {
+            num: 5,
+            img: 'https://www.bolshoi.ru/upload/medialibrary/507/507f15c6113b1650d4843621f27df507.jpg',
+            desc: 'Билет в большой театр. Стоимость: 100Б',
+            dialog: false,
+          }
         ],
         numIt: 0,
         text: ''
       }),
       methods: {
         payInit: function (num){
+          console.log('All goods maybi');
+          console.log(num);
           this.numIt = num;
 
           if (this.numIt === 0)
@@ -121,12 +129,16 @@
           {
             this.newFieldDataBase.product = 'Футболка';
           }
+          else if (this.numIt === 5)
+          {
+            this.newFieldDataBase.product = 'Билет';
+          }
 
           this.text = this.newFieldDataBase.product;
         },
         payFinish: function (itemnum){
           this.link[itemnum].dialog = false;
-
+          console.log("all_good")
           let now = new Date();
 
           this.dialog = false;

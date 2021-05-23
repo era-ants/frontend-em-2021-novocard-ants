@@ -108,6 +108,8 @@
 		mounted() {
 			let newList = {num: 0, product: '', date: '', time: '', payment: '', discount: '', accrued: 0, ord: '', site: ''};
 
+			newList.product = localStorage.getItem('product')
+			console.log(newList.product);
 			if (localStorage.getItem('dataChanged')) {
 
 				localStorage.setItem('dataChanged', false);

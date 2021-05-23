@@ -143,9 +143,9 @@ import load from 'ymaps-loader'
 				img = "../assets/welcome.png";*/
 			let img
 			if (listMarker[i].type == 2)
-				img = 'https://image.flaticon.com/icons/png/512/659/659052.png';
+				img = require('../assets/monum_marker.png');
 			else
-				img = 'https://image.flaticon.com/icons/png/512/112/112879.png'
+				img = require('../assets/park.png');
 			collection.add(listMarker[i].geo = new ymaps___.Placemark(listMarker[i].coordsLabel,{}, {
             // Опции.
             // Необходимо указать данный тип макета.
@@ -272,6 +272,8 @@ import load from 'ymaps-loader'
 			myMap___.setCenter(item.coords);
 			myMap___.setZoom(15);
 			myMap___.geoObjects.add(myGeoObject);
+
+			window.scrollTo(0, 0);
 		},
 		changeMaps(num){
 			if (num == 3)
@@ -309,6 +311,8 @@ import load from 'ymaps-loader'
         });
         // Добавление маршрута на карту.
 		myMap___.geoObjects.add(remMulti);
+
+		window.scrollTo(0, 0);
       },
     },
     name: 'MapCard',
