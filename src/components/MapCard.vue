@@ -17,7 +17,26 @@
           <v-btn elevation="0" @click="routesMaps = true"> Маршруты </v-btn>
           <v-spacer></v-spacer>
       </div>
-
+      <v-card-title class="text-h5">
+        <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn> Туризм </v-btn> 
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn> Досуг </v-btn> 
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn @click="changeMaps(3)"> События </v-btn>
+            <v-spacer></v-spacer>
+          </v-card>
+          <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
+            <v-btn @click="changeMaps(4)"> Маршруты </v-btn>
+            <v-spacer></v-spacer>
+          </v-card>
+        </div>
+      </v-card-title>
       <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column mx-md-2 mx-sm-1 mx-1" color="transparent">
             <h1 >{{ item.name }} </h1>
@@ -34,20 +53,19 @@
             <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
-
-      <div v-if="eventsMaps" class="d-flex flex-column flex-lg-row" v-scroll-reveal>
-        <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
-          <h1 class="my-8">Концерт </h1>
-          <p class="text-body-1 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </v-card>
-        <v-spacer></v-spacer>
-        <v-card elevation="0" class="d-lg-none" color="transparent">
-          <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
-        </v-card>
-        <v-card elevation="0" class="d-none d-lg-block" max-width="50%" color="transparent">
-          <v-img class="ma-8" src="../assets/f3.jpg"></v-img>
-        </v-card>
-      </div>
+        <div v-if="eventsMaps">
+			<v-text-field v-model="msg" style="position: relative; bottom: 1.5em; width: 50%">
+			</v-text-field>
+			<v-btn @click="sendMsg" style="position: relative; bottom: 1.5em">
+				Отправить
+			</v-btn>
+			<v-spacer></v-spacer>
+			<v-alert width="50%" v-for='item in eventsText' :key='item.id' border="top" class="d-flex flex-row" height="6vh" elevation="0" outlined>
+				<v-card width="35vw" height="5vh" @click="focusMaps(item)" class="d-flex flex-row pt-4" elevation="0">
+					{{ item.text }}
+				</v-card>
+			</v-alert>
+        </div>
 
   </v-card>
 </template>
@@ -58,6 +76,7 @@ import img from "../assets/m1.jpg"
 import load from 'ymaps-loader'
   let ymaps___;
   let myMap___;
+  let remMulti = null;
 
 
   let listMarker = [
@@ -121,7 +140,6 @@ import load from 'ymaps-loader'
 
         ymaps___ = ymaps;
         myMap___ = myMap;
-        console.log(listMarker);
 
         for (let i = 0; i < listMarker.length; i++)
         {
@@ -129,14 +147,17 @@ import load from 'ymaps-loader'
 				img = "../assets/museum.png";
 			else if (listMarker[i].type === 2)
 				img = "../assets/welcome.png";*/
-
+			let img
+			if (listMarker[i].type == 2)
+				img = 'https://image.flaticon.com/icons/png/512/659/659052.png';
+			else
+				img = 'https://image.flaticon.com/icons/png/512/112/112879.png'
 			collection.add(listMarker[i].geo = new ymaps___.Placemark(listMarker[i].coordsLabel,{}, {
             // Опции.
             // Необходимо указать данный тип макета.
             iconLayout: 'default#image',
             // Своё изображение иконки метки.
-            // iconImageHref: 'https://image.flaticon.com/icons/png/512/659/659052.png',
-            iconImageHref: require('../assets/monum_marker.png'),
+            iconImageHref: img,
             // Размеры метки.
             iconImageSize: [30, 42],
             // Смещение левого верхнего угла иконки относительно
@@ -208,6 +229,9 @@ import load from 'ymaps-loader'
           type: 3, 
         },
       ],
+      msg: '',
+    eventsUse: false,
+    eventsText: [{text: "Начинается концерт, все сюда!!!", coords: [44.734611627760074,37.80458532638649]}],
     img_src: img,
     cutChLoc: false,
     chZoom: false,
@@ -224,13 +248,52 @@ import load from 'ymaps-loader'
     }
     }),
     methods: {
+    	sendMsg(){
+    		let newEvents = [{text: '', coords: [44.74386882920636,37.72635937352836]}]
+    	},
+		focusMaps(item){
+			console.log(item);
+			let myGeoObject = new ymaps___.GeoObject({
+            // Описание геометрии.
+            geometry: {
+                type: "Point",
+                coordinates: item.coords
+            },
+            // Свойства.
+            properties: {
+                // Контент метки.
+                iconContent: 'Событие',
+                hintContent: item.text,
+            }
+        }, {
+        });
+			myMap___.setCenter(item.coords);
+			myMap___.setZoom(15);
+			myMap___.geoObjects.add(myGeoObject);
+		},
+		changeMaps(num){
+			if (num == 3)
+			{
+				this.routesMaps = false;
+				this.eventsMaps = true;
+			}
+			else if (num == 4)
+			{	
+				this.routesMaps = true;
+				this.eventsMaps = false;
+			}
+		},
       beginRoutes(item){
 
         console.log(item);
         console.log(ymaps___);
         console.log(myMap___);
+		if (remMulti != null)
+        {
+			myMap___.geoObjects.remove(remMulti);
+        }
 
-        let multiRoute = new ymaps___.multiRouter.MultiRoute({   
+			remMulti = new ymaps___.multiRouter.MultiRoute({   
               // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
               referencePoints: item.coords,
           params: {
@@ -243,7 +306,7 @@ import load from 'ymaps-loader'
           boundsAutoApply: true
         });
         // Добавление маршрута на карту.
-        myMap___.geoObjects.add(multiRoute);
+		myMap___.geoObjects.add(remMulti);
       },
     },
     name: 'MapCard',

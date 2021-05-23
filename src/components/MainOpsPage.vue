@@ -123,6 +123,8 @@ export default {
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
       // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
       // { title: 'Debug', link: '/main/debug', icon: 'mdi-android-debug-bridge' },
+      { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
+      { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
     bot_items: [
       { title: 'Места', link: '/main/map', icon: 'mdi-map-marker-outline' },
@@ -130,6 +132,8 @@ export default {
       // { title: 'Галерея', link: '/main/lgcard', icon: 'mdi-apps-box' },
       { title: 'Пропуск', link: '/main/access', icon: 'mdi-id-card' },
       // { title: 'Настройки', link: '/main/settings', icon: 'mdi-cog-outline' },
+      { title: 'Магазин', link: '/main/shop', icon: 'mdi-id-card' },
+      { title: 'История операций', link: '/main/history', icon: 'mdi-id-card' },
     ],
   }),
   watch: {

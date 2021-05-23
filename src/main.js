@@ -18,9 +18,14 @@ import QRScanCard from './components/QRScanCard.vue'
 import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
+import RegistrationCard from './components/RegistrationCard.vue'
+import ShopPage from './components/ShopPage.vue'
+import HistoryPage from './components/HistoryPage.vue'
 
 import VueScrollReveal from 'vue-scroll-reveal'
 import VueMask from 'v-mask'
+
+localStorage.clear();
 
 const routes = [
   // { path: '/settings', component: SettingsCard },
@@ -64,6 +69,14 @@ const routes = [
       {
         path: 'paycard',
         component: PaymentsCard
+      },
+      {
+        path: 'shop',
+        component: ShopPage,
+      },
+      {
+        path: 'history',
+        component: HistoryPage,
       },
     ]
   },
