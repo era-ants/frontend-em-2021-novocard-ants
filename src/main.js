@@ -11,14 +11,13 @@ import RegistrationPage from './components/RegistrationPage.vue'
 
 import DevDebugCard from './components/DevDebugCard.vue' //debug-card
 import SettingsCard from './components/SettingsCard.vue'
-
 import MapCard from './components/MapCard.vue'
 import LargeCard from './components/LargeCard.vue'
 import QRScanCard from './components/QRScanCard.vue'
 import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
-import RegistrationCard from './components/RegistrationCard.vue'
+
 import ShopPage from './components/ShopPage.vue'
 import HistoryPage from './components/HistoryPage.vue'
 
@@ -37,8 +36,10 @@ const routes = [
     component: MainOps,
     children: [
       {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
+        path: 'login',
+        component: LoginPage
+      },
+      {
         path: 'map',
         component: MapCard,
       },

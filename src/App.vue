@@ -35,8 +35,8 @@ export default {
       sessionStorage.setItem('logged_email', "");
       sessionStorage.setItem('logged_phone', "");
 
-      sessionStorage.setItem('logged_money', 0);
-      sessionStorage.setItem('logged_bonus', 0);
+      sessionStorage.setItem('logged_money', 100);
+      sessionStorage.setItem('logged_bonus', 200);
     }
 
     //dark-theme

@@ -41,6 +41,7 @@
 			<v-card class="mx-lg-4 mx-md-2 mx-sm-1 mx-0 rounded-xl" width="50%" outlined> 
 				<v-card-title>
 					Ваш баланс:
+					<v-btn color="accent" href="/main/paycard" text absolute right style="text-transform: none !important;" > Как получать баллы ? </v-btn>
 				</v-card-title>
 				<v-card-text class="text-h1">
 					{{user_money}} P
@@ -49,8 +50,8 @@
 					{{user_bonus}} баллов
 				</v-card-text>
 				<v-card-actions>
-					<v-btn color="accent" href="/main/paycard" text > Пополнить </v-btn>
-					<v-btn color="accent" href="/main/paycard" text > Как получать баллы </v-btn>
+					<v-btn color="accent" href="/main/paycard" text style="text-transform: none !important;"> Пополнить </v-btn>
+					<v-btn color="accent" href="/main/shop" elevation="0" style="text-transform: none !important;"> Потратить бонусы </v-btn>
 				</v-card-actions>
 			</v-card>
 		</div>
@@ -65,9 +66,11 @@
 			<v-card-text class="text-h3">
 				{{user_bonus}} баллов
 			</v-card-text>
-			<v-btn color="accent" href="/main/paycard" text > Пополнить </v-btn>
+			<v-btn color="accent" href="/main/paycard" text style="text-transform: none !important;"> Пополнить </v-btn>
 			<v-spacer></v-spacer>
-			<v-btn color="accent" href="/main/paycard" text > Как получать баллы </v-btn>
+			<v-btn color="accent" href="/main/paycard" text style="text-transform: none !important;"> Как получать баллы ? </v-btn>
+			<v-spacer></v-spacer>
+			<v-btn color="accent" href="/main/shop" elevation="0" style="text-transform: none !important;" > Потратить бонусы </v-btn>
 		</div>
 
 	</div>

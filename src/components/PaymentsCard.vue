@@ -1,7 +1,7 @@
 <template>
   <v-card outlined>
     <v-card-title class="justify-center">
-      Настройки
+      Пополнение счета
     </v-card-title>
 	<v-divider></v-divider>
 		<creditCard></creditCard>

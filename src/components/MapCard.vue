@@ -248,9 +248,9 @@ import load from 'ymaps-loader'
     }
     }),
     methods: {
-    	sendMsg(){
-    		let newEvents = [{text: '', coords: [44.74386882920636,37.72635937352836]}]
-    	},
+      sendMsg(){
+        //let newEvents = [{text: '', coords: [44.74386882920636,37.72635937352836]}]
+      },
 		focusMaps(item){
 			console.log(item);
 			let myGeoObject = new ymaps___.GeoObject({
