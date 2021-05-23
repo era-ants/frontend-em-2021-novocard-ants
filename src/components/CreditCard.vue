@@ -1,7 +1,10 @@
 <template>
 	<v-container class="justify-center">
+
 		<div class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
+
 			<v-card style="z-index: 100" elevation="0" class="d-flex flex-column ma-0" color="transparent">
+
 				<v-sheet style="position: relative; right: 1.3em" width="25em" color="red">
 					<div class="d-flex flex-column justify-center" v-scroll-reveal>
 						<v-img style="position: relative; left: 2em; top: 1.0em" width="12em" :src="bank_logo">
@@ -44,12 +47,10 @@
 						</v-img>
 					</div>
 				</v-sheet>
+
 			</v-card>
 			<v-card elevation="0" color="transparent">
-				<v-overlay
-				absolute="false"
-				value="true"
-				>
+				<v-overlay absolute="false" value="true" >
 					<v-sheet class="d-none d-lg-block" style="position: relative; top: 4em; right: 6em" width="25em" height="13em" color="#bbb">
 						<v-sheet style="position: relative; top: 3em" width="100%" height="3em" color="black">
 						</v-sheet>
@@ -78,7 +79,9 @@
 					</v-sheet>
 				</v-overlay>
 			</v-card>
+
 		</div>
+
 	</v-container>
 </template>
 

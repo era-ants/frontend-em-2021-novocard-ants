@@ -19,18 +19,18 @@
       </div>
 
       <div v-if="routesMaps" class="d-lg-none d-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column ma-0" color="transparent">
-            <h1>{{ item.name }} </h1>
-            <h3>{{ item.typeName }} </h3>
-            <p class=".text-body-1"> {{ item.text }} </p>
+          <v-card max-width="100%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="d-flex flex-column mx-md-2 mx-sm-1 mx-1" color="transparent">
+            <h1 >{{ item.name }} </h1>
+            <h3 >{{ item.typeName }} </h3>
+            <p class="text-body-1 text-justify "> {{ item.text }} </p>
             <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
       <div v-if="routesMaps" class="d-none d-lg-flex flex-column flex-lg-row" v-scroll-reveal>
-          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column ma-0" color="transparent">
+          <v-card max-width="30%" v-for="item in itemsRoutes" :key="item.id" elevation="0" class="flex-column mx-xl-8 mx-lg-4" color="transparent">
             <h1>{{ item.name }} </h1>
             <h3>{{ item.typeName }} </h3>
-            <p class=".text-body-1"> {{ item.text }} </p>
+            <p class="text-body-1 text-justify"> {{ item.text }} </p>
             <v-btn @click="beginRoutes(item)"> Посмотреть на карте </v-btn>
           </v-card>
       </div>
@@ -38,7 +38,7 @@
       <div v-if="eventsMaps" class="d-flex flex-column flex-lg-row" v-scroll-reveal>
         <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
           <h1 class="my-8">Концерт </h1>
-          <p class="text-body-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="text-body-1 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </v-card>
         <v-spacer></v-spacer>
         <v-card elevation="0" class="d-lg-none" color="transparent">

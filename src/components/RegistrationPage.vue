@@ -56,11 +56,11 @@
                         <v-text-field v-model="passwrd"  type="password" color="accent" label="Пароль" placeholder="" minlength="7" :rules="chars11"></v-text-field>
                       </div>
                       <v-card-actions>
-                        <v-btn text color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" >
+                        <v-btn text color="accent" class="ml-lg-16 ml-md-8 ml-sm-2 ml-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" style="text-transform: none !important;" >
                           Войти
                         </v-btn>
                         <v-spacer></v-spacer>
-                        <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="RegisterClient(0)" >
+                        <v-btn color="accent" class="mr-lg-16 mr-md-8 mr-sm-2 mr-1 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" style="text-transform: none !important;" @click="RegisterClient(0)" >
                           Зарегистрироваться
                         </v-btn>
                       </v-card-actions>
@@ -97,11 +97,11 @@
 
 
                     <v-card-actions>
-                      <v-btn text color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" >
+                      <v-btn text color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" elevation="0" href="/login" style="text-transform: none !important;" >
                         Войти
                       </v-btn>
                       <v-spacer></v-spacer>
-                      <v-btn color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" @click="RegisterClient(1)" >
+                      <v-btn color="accent" class="mx-lg-16 mx-md-8 mx-sm-4 mx-2 mb-lg-16 mb-md-8 mb-sm-4 mb-2 px-lg-8 px-md-4 px-sm-2 px-1" right elevation="0" style="text-transform: none !important;" @click="RegisterClient(1)" >
                         Зарегистрироваться
                       </v-btn>
                     </v-card-actions>

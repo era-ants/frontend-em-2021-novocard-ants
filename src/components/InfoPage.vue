@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app clipped-left color="transparent" dark flat src="../assets/dark_semitransparent_bg.png">
+    <v-app-bar app clipped-left shrink-on-scroll prominent color="transparent" dark flat src="../assets/dark_semitransparent_bg.png">
         
         <img class="mr-lg-3 mr-md-2 mr-1 d-none d-sm-block" :src="require('../assets/app_icon_info.png')" height="48"/>
         <v-spacer></v-spacer>
