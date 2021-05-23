@@ -35,7 +35,7 @@
                 <v-btn color="accent" text @click="item.dialog = false" style="text-transform: none !important;">
                   Отмена
                 </v-btn>
-                <v-btn color="accent" elevation="0" style="text-transform: none !important;" @click="payFinish()" >
+                <v-btn color="accent" elevation="0" style="text-transform: none !important;" @click="payFinish(item.num)" >
                   Купить
                 </v-btn>
               </v-card-actions>
@@ -119,7 +119,8 @@
 
           this.text = this.newFieldDataBase.product;
         },
-        payFinish: function (){
+        payFinish: function (itemnum){
+          this.link[itemnum].dialog = false;
 
           let now = new Date();
 
