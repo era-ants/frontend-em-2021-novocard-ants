@@ -21,7 +21,7 @@
 			<v-card elevation="0" class="d-none d-lg-block" width="5%" color="transparent">
 			</v-card>
             <v-card elevation="0" color="transparent" style="position: relative; left: 3em">
-				<v-text-field
+				<v-text-field color="accent"
 					height="50px"
 					label="Сумма"
 					v-model="paySum"
@@ -44,11 +44,7 @@
 
 		<div style="position: relative; bottom: 1em;" class="d-flex flex-column flex-lg-row justify-center" v-scroll-reveal>
 			<v-card style="position: relative; left: 3.5em" elevation="0" class="d-flex flex-row justify-left" color="transparent">
-				<v-checkbox
-					class="justify-left"
-					v-model="checkbox"
-					label="Получить чек"
-				>	
+				<v-checkbox class="justify-left" v-model="checkbox" label="Получить чек" color="accent">	
 				</v-checkbox>
 			</v-card>
 		</div>
@@ -57,7 +53,7 @@
 			<v-card elevation="0" class="d-lg-none d-flex flex-column ma-0  justify-center" color="transparent">
 				<h1 style="position: relative; left: 1.5em; text-align: center;"> Выберите способ оплаты </h1>
 			</v-card>
-			<v-card elevation="0" class="d-none d-lg-block d-flex flex-column ma-0  justify-center" color="transparent">
+			<v-card elevation="0" class="d-none d-lg-flex flex-column ma-0  justify-center" color="transparent">
 				<h1 style="position: relative; left: 0em; text-align: center;"> Выберите способ оплаты </h1>
 			</v-card>
 		</div>
