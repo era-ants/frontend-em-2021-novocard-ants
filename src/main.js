@@ -18,7 +18,6 @@ import QRScanCard from './components/QRScanCard.vue'
 import AccessIDCard from './components/AccessIDCard.vue'
 import PersonalArea from './components/PersonalArea.vue'
 import PaymentsCard from './components/PaymentsCard.vue'
-import RegistrationCard from './components/RegistrationCard.vue'
 import ShopPage from './components/ShopPage.vue'
 import HistoryPage from './components/HistoryPage.vue'
 

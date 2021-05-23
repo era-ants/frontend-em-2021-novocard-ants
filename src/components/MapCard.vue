@@ -6,17 +6,6 @@
 
 			<div style="height: 50vh;" id="myMap"></div>
       
-      <div class="d-flex flex-md-row flex-column my-lg-16 my-md-8 my-sm-4 my-2" v-scroll-reveal>
-          <v-spacer></v-spacer>
-          <v-btn elevation="0"> Туризм </v-btn> 
-          <v-spacer></v-spacer>
-          <v-btn elevation="0"> Досуг </v-btn> 
-          <v-spacer></v-spacer>
-          <v-btn elevation="0" @click="eventsMaps = true"> События </v-btn>
-          <v-spacer></v-spacer>
-          <v-btn elevation="0" @click="routesMaps = true"> Маршруты </v-btn>
-          <v-spacer></v-spacer>
-      </div>
       <v-card-title class="text-h5">
         <div class="d-flex flex-column flex-lg-row" v-scroll-reveal>
           <v-card elevation="0" class="d-flex flex-column ma-8" color="transparent">
@@ -125,9 +114,12 @@ import load from 'ymaps-loader'
                 ];
 
 
-  load({ apiKey: '1222afeb-4692-4bab-b000-5ce5f9027daa'}).then((ymaps) => {
+  export default {
+	created: function () {
+		load({ apiKey: '1222afeb-4692-4bab-b000-5ce5f9027daa'}).then((ymaps) => {
         // The global variable `ymaps` is available now
         //let img;
+        console.log("ymaps");
         let myMap = new ymaps.Map('myMap', {
 			// центр и коэффициент масштабирования однозначно
 			// определяют область картографирования
@@ -168,9 +160,6 @@ import load from 'ymaps-loader'
 		console.log(collection);
 		myMap___.geoObjects.add(collection);
   });
-
-  export default {
-	created: function () {
 	},
     data: () => ({
 		eventsMaps: false,
@@ -249,7 +238,9 @@ import load from 'ymaps-loader'
     }),
     methods: {
 		sendMsg(){
-			//let newEvents = [{text: '', coords: [44.74386882920636,37.72635937352836]}]
+			let newEvents = [{text: this.msg, coords: [44.74386882920636,37.72635937352836]}]
+
+			this.eventsText.push(newEvents);
 	},
 		focusMaps(item){
 			console.log(item);
